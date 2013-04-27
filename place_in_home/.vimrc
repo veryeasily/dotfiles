@@ -76,3 +76,4 @@ inoremap <F3> <esc>:tabprevious<cr>
 inoremap <C-t> <ESC>:tabnew<cr>
 set pastetoggle=_P
 vnoremap <c-v> "+y
+noremap <c-n> <c-w>v
