@@ -31,12 +31,15 @@ Bundle 'FuzzyFinder'
 Bundle 'html5.vim'
 Bundle 'Markdown-syntax'
 Bundle 'Vimball'
+Bundle 'node.js'
+Bundle 'jshint.vim'
 " non github repos
 Bundle 'git://git.wincent.com/command-t.git'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-Bundle 'SuperTab'
+Bundle 'SuperTab-continued.'
 " ...
 
+filetype plugin on
 filetype plugin indent on     " required!
 "
 " Brief help
@@ -68,11 +71,11 @@ set timeout ttimeoutlen=50
 
 " here is tab creation stuff.
 nnoremap <C-t> :tabnew<cr>
-nnoremap <F2> :tabnext<cr>
-nnoremap <F3> :tabprevious<cr>
+nnoremap <F2> :tabprevious<cr>
+nnoremap <F3> :tabnext<cr>
 map <C-w> :tabclose<cr>
-inoremap <F2> <esc>:tabnext<cr>
-inoremap <F3> <esc>:tabprevious<cr>
+inoremap <F2> <esc>:tabprevious<cr>
+inoremap <F3> <esc>:tabnext<cr>
 inoremap <C-t> <ESC>:tabnew<cr>
 set pastetoggle=_P
 vnoremap <c-v> "+y
