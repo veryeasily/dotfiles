@@ -33,12 +33,15 @@ Bundle 'Markdown-syntax'
 Bundle 'Vimball'
 Bundle 'node.js'
 Bundle 'jshint.vim'
+Bundle 'vim-coffee-script'
+Bundle 'go.vim'
 " non github repos
 Bundle 'git://git.wincent.com/command-t.git'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 Bundle 'SuperTab-continued.'
 " ...
 
+filetype on
 filetype plugin on
 filetype plugin indent on     " required!
 "
@@ -77,6 +80,10 @@ map <C-w> :tabclose<cr>
 inoremap <F2> <esc>:tabprevious<cr>
 inoremap <F3> <esc>:tabnext<cr>
 inoremap <C-t> <ESC>:tabnew<cr>
-set pastetoggle=_P
+set pastetoggle=gT
 vnoremap <c-v> "+y
 noremap <c-n> <c-w>v
+set bs=indent,eol,start
+filetype off
+filetype on
+syntax enable
