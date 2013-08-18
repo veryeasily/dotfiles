@@ -39,6 +39,8 @@ Bundle 'go.vim'
 Bundle 'git://git.wincent.com/command-t.git'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 Bundle 'SuperTab-continued.'
+Bundle 'Tagbar'
+Bundle 'tern_for_vim-master'
 " ...
 
 filetype on
