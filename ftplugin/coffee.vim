@@ -26,7 +26,7 @@ func! s:CompileCoffee()
     let l:input = fnameescape(expand("%:p"))
     let l:output = fnameescape(expand("%:p:r") . ".js")
 
-    let l:cmd = "coffee -c " . l:input . " " . l:output
+    let l:cmd = "coffee -cb " . l:input . " " . l:output
 
     let l:errs = system(l:cmd)
 
