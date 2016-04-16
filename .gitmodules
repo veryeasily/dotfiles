@@ -37,3 +37,6 @@
 [submodule "bundle/vim-easyclip"]
 	path = bundle/vim-easyclip
 	url = git@github.com:svermeulen/vim-easyclip.git
+[submodule "bundle/vim-jsx"]
+	path = bundle/vim-jsx
+	url = git@github.com:mxw/vim-jsx.git
