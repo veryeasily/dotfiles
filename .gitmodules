@@ -28,3 +28,15 @@
 [submodule "bundle/vim-action-ag"]
 	path = bundle/vim-action-ag
 	url = git@github.com:Chun-Yang/vim-action-ag.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = git@github.com:scrooloose/nerdtree.git
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "bundle/vim-repeat"]
+	path = bundle/vim-repeat
+	url = git@github.com:tpope/vim-repeat.git
+[submodule "bundle/vim-easyclip"]
+	path = bundle/vim-easyclip
+	url = git@github.com:svermeulen/vim-easyclip.git
