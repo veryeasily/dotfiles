@@ -19,3 +19,12 @@
 [submodule "bundle/vim-javascript"]
 	path = bundle/vim-javascript
 	url = git@github.com:pangloss/vim-javascript.git
+[submodule "bundle/vim-jsx"]
+	path = bundle/vim-jsx
+	url = git@github.com:mxw/vim-jsx.git
+[submodule "bundle/ag.vim"]
+	path = bundle/ag.vim
+	url = git@github.com:rking/ag.vim.git
+[submodule "bundle/vim-action-ag"]
+	path = bundle/vim-action-ag
+	url = git@github.com:Chun-Yang/vim-action-ag.git
