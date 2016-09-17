@@ -1,11 +1,13 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+export HELPDIR="/usr/share/zsh/help"
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="cloud"
+ZSH_THEME="onehundred"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -45,14 +47,15 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 bindkey '^j' vi-cmd-mode
 
-alias dc=docker-compose
+alias prettyjson='python -m json.tool'
+
+alias doco='docker-compose'
+alias dcr='docker-compose run --rm'
+alias dce='docker-compose exec'
+alias dcl='docker-compose logs -f --tail 10'
+
+[[ -e $(alias run-help)  ]] && unalias run-help
+autoload run-help
 
 # Customize to your needs...
 export EDITOR=vim
-
-export PATH="/home/moresilenter/.rbenv/plugins/ruby-build/bin:/home/moresilenter/.rbenv/shims:/home/moresilenter/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-
-### Added by the Heroku Toolbelt
-# export PATH="/usr/local/heroku/bin:$PATH"
-# NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
-
