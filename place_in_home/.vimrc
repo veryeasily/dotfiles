@@ -53,6 +53,12 @@ nnoremap gk :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 execute pathogen#infect()
 
+if &diff
+  colorscheme crayon
+else
+  colorscheme desertink
+endif
+
 nnoremap <Leader>ag :set nohlsearch<CR>
 
 filetype on
