@@ -4,7 +4,7 @@ export HELPDIR="/usr/share/zsh/help"
 
 ZSH_THEME="onehundred"
 
-plugins=(rails git ruby jump docker docker-compose)
+plugins=(rails git ruby jump docker docker-compose git-extras)
 
 source $ZSH/oh-my-zsh.sh
 bindkey -v
@@ -16,12 +16,15 @@ alias doco='docker-compose'
 alias dcr='docker-compose run --rm'
 alias dcrst='docker-compose restart'
 alias dce='docker-compose exec'
-alias dcl='docker-compose logs -f --tail 10'
 alias dck='docker-compose kill'
 
 [[ -e $(alias run-help)  ]] && unalias run-help
 autoload run-help
 
 source $HOME/.zsh-env
+source $HOME/.zsh-functions
 
 export EDITOR=vim
+
+export NVM_DIR="/home/moresilenter/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

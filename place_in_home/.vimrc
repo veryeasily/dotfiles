@@ -7,20 +7,27 @@ noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 
-let g:ag_working_path_mode="r"
+" Map leader keys
+let mapleader = ","
+let maplocalleader = '\'
+
 let g:CommandTFileScanner = 'git'
+
 let g:EasyClipShareYanks = 1
 let g:EasyMotion_leader_key = '<Space>'
-let g:jsx_ext_required = 0
+
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+let g:ag_working_path_mode="r"
+
+let g:jsx_ext_required = 0
+
 let g:tern_map_keys=1
 let g:tern_map_prefix='<space>'
 let g:tern_request_timeout = 2
 let g:tern_show_argument_hints="on_hold"
-let g:ycm_complete_in_comments = 1
 
-let mapleader = ","
-let maplocalleader = '\'
+let g:ycm_complete_in_comments = 1
 
 let g:ctrlp_map = '<leader>t'
 
@@ -34,12 +41,23 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
+" Syntastic options
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_checkers = ['rubocop']
 
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --nogroup\ --nocolor\ --column
+  set grepformat=%f:%l:%c%m
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -48,20 +66,22 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-" bind K to grep word under cursor
-nnoremap gk :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" bind gk to grep word under cursor
+nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
+
 
 execute pathogen#infect()
 
 if &diff
   colorscheme crayon
 else
-  colorscheme desertink
+  colorscheme lucid
 endif
 
 nnoremap <Leader>ag :set nohlsearch<CR>
 
 filetype on
+filetype indent on
 filetype plugin on
 filetype plugin indent on     " required!
 
@@ -78,10 +98,6 @@ set wildmenu
 
 " set's a reasonable timeout
 set timeout ttimeoutlen=50
-set ts=2
-set sw=2
-set sts=2
-set expandtab
 
 " here is tab creation stuff.
 nnoremap <C-t> :tabnew<cr>
@@ -104,6 +120,8 @@ set tags=tags;
 set autochdir
 set omnifunc=syntaxcomplete#Complete
 
+set smarttab
+
 set nohlsearch
 
 " NERDTree
@@ -122,6 +140,4 @@ autocmd FileType ruby,eruby set ballooneval
 au FileType ruby,eruby nn <buffer> <F5> :!clear<CR>:!ruby %<CR>
 au FileType ruby,eruby nn <buffer> <F9> :!clear<CR>:!rspec %<CR>
 
-filetype off
-filetype on
 syntax enable

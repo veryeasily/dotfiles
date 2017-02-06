@@ -46,3 +46,15 @@
 [submodule "bundle/Dockerfile.vim"]
 	path = bundle/Dockerfile.vim
 	url = git@github.com:ekalinin/Dockerfile.vim.git
+[submodule "bundle/ri.vim"]
+	path = bundle/ri.vim
+	url = git@github.com:danchoi/ri.vim.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = git@github.com:vim-syntastic/syntastic.git
+[submodule "bundle/vim-ruby"]
+	path = bundle/vim-ruby
+	url = git@github.com:vim-ruby/vim-ruby.git
+[submodule "bundle/vim-sleuth"]
+	path = bundle/vim-sleuth
+	url = git@github.com:tpope/vim-sleuth.git
