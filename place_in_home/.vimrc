@@ -1,5 +1,4 @@
 set nocompatible               " be iMproved
-filetype off                   " required!
 
 " Window navigation commands
 noremap <c-j> <c-w>j
@@ -15,6 +14,9 @@ let g:CommandTFileScanner = 'git'
 
 let g:EasyClipShareYanks = 1
 let g:EasyMotion_leader_key = '<Space>'
+
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,eruby EmmetInstall
 
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
@@ -71,6 +73,8 @@ nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
 
 
 execute pathogen#infect()
+filetype plugin indent on     " required!
+syntax on
 
 if &diff
   colorscheme crayon
@@ -79,12 +83,6 @@ else
 endif
 
 nnoremap <Leader>ag :set nohlsearch<CR>
-
-filetype on
-filetype indent on
-filetype plugin on
-filetype plugin indent on     " required!
-
 vnoremap _( <Esc>`>a)<Esc>`<i(<Esc>
 
 " set tab completion in command mode
@@ -139,5 +137,3 @@ autocmd FileType ruby,eruby set ballooneval
 " au FileType ruby,eruby setl tw=79 comments=:#\  isfname+=:
 au FileType ruby,eruby nn <buffer> <F5> :!clear<CR>:!ruby %<CR>
 au FileType ruby,eruby nn <buffer> <F9> :!clear<CR>:!rspec %<CR>
-
-syntax enable

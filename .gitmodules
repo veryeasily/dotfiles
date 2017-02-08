@@ -58,3 +58,9 @@
 [submodule "bundle/vim-sleuth"]
 	path = bundle/vim-sleuth
 	url = git@github.com:tpope/vim-sleuth.git
+[submodule "bundle/vim-autoformat"]
+	path = bundle/vim-autoformat
+	url = git@github.com:Chiel92/vim-autoformat.git
+[submodule "bundle/emmet-vim"]
+	path = bundle/emmet-vim
+	url = git@github.com:mattn/emmet-vim.git
