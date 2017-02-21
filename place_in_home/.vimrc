@@ -10,19 +10,23 @@ noremap <c-h> <c-w>h
 let mapleader = ","
 let maplocalleader = '\'
 
+let g:python_host_prog  = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
+
 let g:CommandTFileScanner = 'git'
 
 let g:EasyClipShareYanks = 1
 let g:EasyMotion_leader_key = '<Space>'
 
+let g:user_emmet_mode='inv'
 let g:user_emmet_install_global = 0
+let g:user_emmet_leader_key='<C-E>'
+autocmd FileType html,css,javascript.jsx,typescript.tsx EmmetInstall
 autocmd FileType html,css,eruby EmmetInstall
 
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 let g:ag_working_path_mode="r"
-
-let g:jsx_ext_required = 0
 
 let g:tern_map_keys=1
 let g:tern_map_prefix='<space>'
@@ -54,25 +58,22 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['rubocop']
 
-" https://robots.thoughtbot.com/faster-grepping-in-vim
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor\ --column
-  set grepformat=%f:%l:%c%m
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
 " bind gk to grep word under cursor
 nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
 
-
 execute pathogen#infect()
+
+" https://robots.thoughtbot.com/faster-grepping-in-vim
+" The Silver Searcher
+" Use ag over grep
+set grepprg=ag\ --nogroup\ --nocolor\ --column
+set grepformat=%f:%l:%c%m
+
+" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+" ag is fast enough that CtrlP doesn't need to cache
+let g:ctrlp_use_caching = 0
 filetype plugin indent on     " required!
 syntax on
 
@@ -133,7 +134,7 @@ au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 au FileType ruby,eruby let g:rubycomplete_rails = 1
 au FileType ruby,eruby let g:rubycomplete_load_gemfile = 1
 au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby set ballooneval
+
 " au FileType ruby,eruby setl tw=79 comments=:#\  isfname+=:
 au FileType ruby,eruby nn <buffer> <F5> :!clear<CR>:!ruby %<CR>
 au FileType ruby,eruby nn <buffer> <F9> :!clear<CR>:!rspec %<CR>

@@ -52,9 +52,6 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = git@github.com:vim-syntastic/syntastic.git
-[submodule "bundle/vim-ruby"]
-	path = bundle/vim-ruby
-	url = git@github.com:vim-ruby/vim-ruby.git
 [submodule "bundle/vim-sleuth"]
 	path = bundle/vim-sleuth
 	url = git@github.com:tpope/vim-sleuth.git
@@ -64,3 +61,6 @@
 [submodule "bundle/emmet-vim"]
 	path = bundle/emmet-vim
 	url = git@github.com:mattn/emmet-vim.git
+[submodule "bundle/vdebug"]
+	path = bundle/vdebug
+	url = git@github.com:joonty/vdebug.git
