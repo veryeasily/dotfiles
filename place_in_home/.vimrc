@@ -123,6 +123,8 @@ set smarttab
 
 set nohlsearch
 
+set ruler
+
 " NERDTree
 autocmd VimEnter * if argc() != 0 || exists("s:std_in") | wincmd p | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
