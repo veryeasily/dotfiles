@@ -48,20 +48,33 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " Syntastic options
+set statusline+=%F
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set statusline+=%14.(%l,%c%V%)\ %P
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_scss_checkers = ['scss_lint']
 let g:syntastic_ruby_checkers = ['rubocop']
+
+fun! SetScssConfig()
+    let scssConfig = findfile('.scss-lint.yml', '.;')
+    if scssConfig != ''
+        let b:syntastic_scss_scss_lint_args = '--config ' . scssConfig
+    endif
+endf
 
 " bind gk to grep word under cursor
 nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
+nnoremap gm m
 
 execute pathogen#infect()
+call pathogen#helptags()
 
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " The Silver Searcher
@@ -73,7 +86,7 @@ set grepformat=%f:%l:%c%m
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " ag is fast enough that CtrlP doesn't need to cache
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 1
 filetype plugin indent on     " required!
 syntax on
 
@@ -83,59 +96,38 @@ else
   colorscheme lucid
 endif
 
-nnoremap <Leader>ag :set nohlsearch<CR>
-vnoremap _( <Esc>`>a)<Esc>`<i(<Esc>
+ino jk <esc>
+cno jk <c-c>
+vno v <esc>
+
+set autochdir
+set bs=indent,eol,start
+set nohlsearch
+set omnifunc=syntaxcomplete#Complete
+set ruler
+set sessionoptions-=options
+set smarttab
+set tags=tags;
 
 " set tab completion in command mode
 set wildmode=longest,list,full
 set wildmenu
 
-" here is insert mode tab completion.
-" inoremap <tab> <c-x><c-o>
-" inoremap <s-tab> <tab>
-
-
 " set's a reasonable timeout
 set timeout ttimeoutlen=50
-
-" here is tab creation stuff.
-nnoremap <C-t> :tabnew<cr>
-nnoremap <F2> :tabprevious<cr>
-nnoremap <F3> :tabnext<cr>
-map <C-w> :tabclose<cr>
-inoremap <F2> <esc>:tabprevious<cr>
-inoremap <F3> <esc>:tabnext<cr>
-inoremap <C-t> <ESC>:tabnew<cr>
-
-ino jk <esc>
-cno jk <c-c>
-vno v <esc>
-
-set pastetoggle=gT
-vnoremap <c-v> "+y
-noremap <c-n> <c-w>v
-set bs=indent,eol,start
-set tags=tags;
-set autochdir
-set omnifunc=syntaxcomplete#Complete
-
-set smarttab
-
-set nohlsearch
-
-set ruler
 
 " NERDTree
 autocmd VimEnter * if argc() != 0 || exists("s:std_in") | wincmd p | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd FileType      scss           :call SetScssConfig()
 
 hi Search cterm=NONE ctermfg=white ctermbg=black
 
 " Ruby
 au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-au FileType ruby,eruby let g:rubycomplete_rails = 1
-au FileType ruby,eruby let g:rubycomplete_load_gemfile = 1
-au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+au FileType ruby,eruby let g:rubycomplete_rails = 0
+au FileType ruby,eruby let g:rubycomplete_load_gemfile = 0
+au FileType ruby,eruby let g:rubycomplete_classes_in_global = 0
 
 " au FileType ruby,eruby setl tw=79 comments=:#\  isfname+=:
 au FileType ruby,eruby nn <buffer> <F5> :!clear<CR>:!ruby %<CR>
