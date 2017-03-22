@@ -1,14 +1,8 @@
 set nocompatible               " be iMproved
 
-" Window navigation commands
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-l> <c-w>l
-noremap <c-h> <c-w>h
-
 " Map leader keys
 let mapleader = ","
-let maplocalleader = '\'
+let maplocalleader = ','
 
 let g:python_host_prog  = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
@@ -69,12 +63,27 @@ fun! SetScssConfig()
     endif
 endf
 
+execute pathogen#infect()
+call pathogen#helptags()
+
+filetype plugin indent on
+syntax on
+
 " bind gk to grep word under cursor
 nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
 nnoremap gm m
+map <leader>a :Ag
 
-execute pathogen#infect()
-call pathogen#helptags()
+" Leave insert and visual mode more easily
+ino jk <esc>
+cno jk <c-c>
+vno v <esc>
+
+" Window navigation commands
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+noremap <c-h> <c-w>h
 
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " The Silver Searcher
@@ -86,9 +95,7 @@ set grepformat=%f:%l:%c%m
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " ag is fast enough that CtrlP doesn't need to cache
-let g:ctrlp_use_caching = 1
-filetype plugin indent on     " required!
-syntax on
+let g:ctrlp_use_caching = 0
 
 if &diff
   colorscheme crayon
@@ -96,12 +103,12 @@ else
   colorscheme lucid
 endif
 
-ino jk <esc>
-cno jk <c-c>
-vno v <esc>
-
 set autochdir
 set bs=indent,eol,start
+
+" Sets the ability for comments at the beginning of files to set vim
+" properties.
+set modeline
 set nohlsearch
 set omnifunc=syntaxcomplete#Complete
 set ruler

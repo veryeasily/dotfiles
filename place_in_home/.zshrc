@@ -17,6 +17,7 @@ alias dcr='docker-compose run --rm'
 alias dcrst='docker-compose restart'
 alias dce='docker-compose exec'
 alias dck='docker-compose kill'
+alias copy='xclip -sel clip'
 
 [[ -e $(alias run-help)  ]] && unalias run-help
 autoload run-help
@@ -28,3 +29,11 @@ export EDITOR=vim
 
 export NVM_DIR="/home/moresilenter/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+alias dcms="docker-compose \
+  -f /home/moresilenter/code/whitney-cms/docker-compose.yml \
+  -f /home/moresilenter/code/whitney-cms/docker-compose.development.override.yml"
+
+alias dapi="docker-compose \
+  -f /home/moresilenter/code/whitney-services/docker-compose.yml \
+  -f /home/moresilenter/code/whitney-services/docker-compose.development.override.yml"
