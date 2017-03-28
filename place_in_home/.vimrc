@@ -14,7 +14,8 @@ let g:EasyMotion_leader_key = '<Space>'
 
 let g:user_emmet_mode='inv'
 let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key='<C-E>'
+let g:user_emmet_leader_key='<C-p>'
+
 autocmd FileType html,css,javascript.jsx,typescript.tsx EmmetInstall
 autocmd FileType html,css,eruby EmmetInstall
 
@@ -34,6 +35,9 @@ let g:ctrlp_map = '<leader>t'
 " ctlrp root path uses git
 let g:ctrlp_working_path_mode = 'ra'
 
+" overcome limit imposed by max height"
+let g:ctrlp_match_window = 'results:20'
+
 " ignore big folders
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|__pycache__|data|node_modules)$',
@@ -41,13 +45,38 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-" Syntastic options
-set statusline+=%F
+" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
+" ag is fast enough that CtrlP doesn't need to cache
+let g:ctrlp_use_caching = 0
+
+" always have a status line, even on 1 window
+set laststatus=2
+
+" Syntastic options
+set statusline=%t       "tail of the filename
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}] "file format
+set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=%y      "filetype
+set statusline+=\ \ \ \ \ \ \ \ \ \ %{getcwd()} "this is my hack for whitespace
+set statusline+=%=      "left/right separator
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set statusline+=%14.(%l,%c%V%)\ %P
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+
+" set statusline+=%F
+" set statusline+=%-{getcwd()}
+" 
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" set statusline+=%14.(%l,%c%V%)\ %P
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
@@ -91,12 +120,6 @@ noremap <c-h> <c-w>h
 set grepprg=ag\ --nogroup\ --nocolor\ --column
 set grepformat=%f:%l:%c%m
 
-" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-" ag is fast enough that CtrlP doesn't need to cache
-let g:ctrlp_use_caching = 0
-
 if &diff
   colorscheme crayon
 else
@@ -114,7 +137,8 @@ set omnifunc=syntaxcomplete#Complete
 set ruler
 set sessionoptions-=options
 set smarttab
-set tags=tags;
+set tags=./tags;/
+set tw=79
 
 " set tab completion in command mode
 set wildmode=longest,list,full
@@ -130,12 +154,16 @@ autocmd FileType      scss           :call SetScssConfig()
 
 hi Search cterm=NONE ctermfg=white ctermbg=black
 
+" Enable autowrapping while editing files
+au BufNewFile,BufRead * setlocal formatoptions=crqn
+
 " Ruby
 au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 au FileType ruby,eruby let g:rubycomplete_rails = 0
-au FileType ruby,eruby let g:rubycomplete_load_gemfile = 0
-au FileType ruby,eruby let g:rubycomplete_classes_in_global = 0
+au FileType ruby,eruby let g:rubycomplete_load_gemfile = 1
+au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+au FileType ruby,eruby setl tw=79 comments=:#\  isfname+=:
 
-" au FileType ruby,eruby setl tw=79 comments=:#\  isfname+=:
+" au BufNewFile,BufRead * setlocal formatoptions-=lo
 au FileType ruby,eruby nn <buffer> <F5> :!clear<CR>:!ruby %<CR>
 au FileType ruby,eruby nn <buffer> <F9> :!clear<CR>:!rspec %<CR>

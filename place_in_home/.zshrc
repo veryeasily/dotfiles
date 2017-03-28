@@ -4,10 +4,10 @@ export HELPDIR="/usr/share/zsh/help"
 
 ZSH_THEME="onehundred"
 
-plugins=(rails git ruby jump docker docker-compose git-extras tmux yarn)
+plugins=(rails git ruby jump docker docker-compose git-extras tmux yarn zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
-bindkey -v
+# bindkey -v
 bindkey '^j' vi-cmd-mode
 
 alias prettyjson='python -m json.tool'
@@ -18,6 +18,7 @@ alias dcrst='docker-compose restart'
 alias dce='docker-compose exec'
 alias dck='docker-compose kill'
 alias copy='xclip -sel clip'
+alias vim='nvim'
 
 [[ -e $(alias run-help)  ]] && unalias run-help
 autoload run-help
@@ -30,10 +31,14 @@ export EDITOR=vim
 export NVM_DIR="/home/moresilenter/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-alias dcms="docker-compose \
+alias dcms='docker-compose \
   -f /home/moresilenter/code/whitney-cms/docker-compose.yml \
-  -f /home/moresilenter/code/whitney-cms/docker-compose.development.override.yml"
+  -f /home/moresilenter/code/whitney-cms/docker-compose.override.yml \
+  -f /home/moresilenter/code/whitney-cms/docker-compose.debugging.override.yml'
 
-alias dapi="docker-compose \
+alias dapi='docker-compose \
   -f /home/moresilenter/code/whitney-services/docker-compose.yml \
-  -f /home/moresilenter/code/whitney-services/docker-compose.development.override.yml"
+  -f /home/moresilenter/code/whitney-services/docker-compose.override.yml \
+  -f /home/moresilenter/code/whitney-services/docker-compose.debugging.override.yml'
+
+autoload -U compinit && compinit
