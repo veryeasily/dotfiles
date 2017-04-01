@@ -18,7 +18,6 @@ alias dcrst='docker-compose restart'
 alias dce='docker-compose exec'
 alias dck='docker-compose kill'
 alias copy='xclip -sel clip'
-alias vim='nvim'
 
 [[ -e $(alias run-help)  ]] && unalias run-help
 autoload run-help
@@ -31,14 +30,14 @@ export EDITOR=vim
 export NVM_DIR="/home/moresilenter/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-alias dcms='docker-compose \
-  -f /home/moresilenter/code/whitney-cms/docker-compose.yml \
-  -f /home/moresilenter/code/whitney-cms/docker-compose.override.yml \
-  -f /home/moresilenter/code/whitney-cms/docker-compose.debugging.override.yml'
-
-alias dapi='docker-compose \
-  -f /home/moresilenter/code/whitney-services/docker-compose.yml \
-  -f /home/moresilenter/code/whitney-services/docker-compose.override.yml \
-  -f /home/moresilenter/code/whitney-services/docker-compose.debugging.override.yml'
+# alias dcms='docker-compose \
+#   -f /home/moresilenter/code/whitney-cms/docker-compose.yml \
+#   -f /home/moresilenter/code/whitney-cms/docker-compose.override.yml \
+#   -f /home/moresilenter/code/whitney-cms/docker-compose.debugging.override.yml'
+# 
+# alias dapi='docker-compose \
+#   -f /home/moresilenter/code/whitney-services/docker-compose.yml \
+#   -f /home/moresilenter/code/whitney-services/docker-compose.override.yml \
+#   -f /home/moresilenter/code/whitney-services/docker-compose.debugging.override.yml'
 
 autoload -U compinit && compinit
