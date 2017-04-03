@@ -4,7 +4,7 @@ export HELPDIR="/usr/share/zsh/help"
 
 ZSH_THEME="onehundred"
 
-plugins=(rails git ruby jump docker docker-compose git-extras tmux yarn zsh-completions)
+plugins=(rails git ruby jump docker docker-compose git-extras tmux yarn aws)
 
 source $ZSH/oh-my-zsh.sh
 # bindkey -v

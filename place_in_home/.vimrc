@@ -121,9 +121,9 @@ set grepprg=ag\ --nogroup\ --nocolor\ --column
 set grepformat=%f:%l:%c%m
 
 if &diff
-  colorscheme crayon
-else
-  colorscheme lucid
+  colorscheme enzyme
+" else
+"   colorscheme lucid
 endif
 
 set autochdir

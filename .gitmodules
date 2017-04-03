@@ -67,3 +67,6 @@
 [submodule "bundle/vim-yardoc"]
 	path = bundle/vim-yardoc
 	url = git@github.com:noprompt/vim-yardoc.git
+[submodule "bundle/rename.vim"]
+	path = bundle/rename.vim
+	url = git@github.com:danro/rename.vim.git
