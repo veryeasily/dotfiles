@@ -126,8 +126,8 @@ set grepformat=%f:%l:%c%m
 
 if &diff
   colorscheme enzyme
-" else
-"   colorscheme lucid
+else
+  colorscheme ubaryd
 endif
 
 set autochdir
