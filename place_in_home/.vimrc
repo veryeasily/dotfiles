@@ -62,6 +62,7 @@ set statusline+=%h      "help file flag
 set statusline+=%m      "modified flag
 set statusline+=%r      "read only flag
 set statusline+=%y      "filetype
+set statusline+=Curent:\ %l\ Total:\ %4L
 set statusline+=\ \ \ \ \ \ \ \ \ \ %{getcwd()} "this is my hack for whitespace
 set statusline+=%=      "left/right separator
 set statusline+=%#warningmsg#
@@ -97,6 +98,9 @@ call pathogen#helptags()
 
 filetype plugin indent on
 syntax on
+
+" round << and >> to the nearest shiftwidth
+set shiftround
 
 " bind gk to grep word under cursor
 nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
@@ -147,9 +151,12 @@ set wildmenu
 " set's a reasonable timeout
 set timeout ttimeoutlen=50
 
-" NERDTree
+" NERDTree config
+" see: https://github.com/scrooloose/nerdtree#faq
 autocmd VimEnter * if argc() != 0 || exists("s:std_in") | wincmd p | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 autocmd FileType      scss           :call SetScssConfig()
 
 hi Search cterm=NONE ctermfg=white ctermbg=black

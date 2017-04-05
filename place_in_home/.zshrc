@@ -7,8 +7,10 @@ ZSH_THEME="onehundred"
 plugins=(rails git ruby jump docker docker-compose git-extras tmux yarn aws)
 
 source $ZSH/oh-my-zsh.sh
-# bindkey -v
-bindkey '^j' vi-cmd-mode
+
+bindkey -v
+# export KEYTIMEOUT=1
+bindkey -M viins 'jk' vi-cmd-mode
 
 alias prettyjson='python -m json.tool'
 
@@ -41,3 +43,7 @@ export NVM_DIR="/home/moresilenter/.nvm"
 #   -f /home/moresilenter/code/whitney-services/docker-compose.debugging.override.yml'
 
 autoload -U compinit && compinit
+
+# Borrowed from [here](https://wiki.gentoo.org/wiki/Zsh/Guide)
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
