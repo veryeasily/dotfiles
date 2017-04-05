@@ -1,0 +1,8 @@
+#!/bin/bash
+SITE="$1"
+if [[ -z $SITE ]]; then
+  echo "Error: Devdocs command requires a search string!" 1>&2
+  exit 128
+fi
+
+nohup google-chrome --new-window http://devdocs.io/#q="$SITE" </dev/null >/dev/null 2>&1 &

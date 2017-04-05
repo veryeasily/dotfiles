@@ -24,7 +24,8 @@ alias copy='xclip -sel clip'
 [[ -e $(alias run-help)  ]] && unalias run-help
 autoload run-help
 
-source $HOME/.zsh-env
+source $HOME/.zshenv-git
+
 source $HOME/.zsh-functions
 
 export EDITOR=vim

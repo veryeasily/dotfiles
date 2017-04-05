@@ -1,0 +1,22 @@
+#!/bin/bash
+if [ "$1" == "add" ]; then
+  AMOUNT=1
+elif [ "$1" == "del" ]; then
+  AMOUNT=-1
+else
+  echo "'add' or 'del' required!"
+  exit
+fi
+
+if [ "$2" == "hor" ]; then
+  DIRECTION="hsize"
+elif [ "$2" == "ver" ]; then
+  DIRECTION="vsize"
+else
+  echo "'hor' or 'ver' not specified!"
+  exit
+fi
+
+CURRENT=`dconf read /org/compiz/profiles/unity/plugins/core/$DIRECTION`
+AMOUNT=$((CURRENT + AMOUNT))
+dconf write /org/compiz/profiles/unity/plugins/core/${DIRECTION} ${AMOUNT}
