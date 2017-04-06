@@ -125,9 +125,9 @@ set grepprg=ag\ --nogroup\ --nocolor\ --column
 set grepformat=%f:%l:%c%m
 
 if &diff
-  colorscheme enzyme
+  colorscheme jellyx
 else
-  colorscheme ubaryd
+  colorscheme sky
 endif
 
 set autochdir
@@ -144,12 +144,20 @@ set smarttab
 set tags=./tags;/
 set tw=79
 
+set sw=2
+set ts=2
+set sts=2
+set expandtab
+set smarttab
+
 " set tab completion in command mode
 set wildmode=longest,list,full
 set wildmenu
 
 " set's a reasonable timeout
-set timeout ttimeoutlen=50
+set ttimeout
+set timeoutlen=150
+set timeout ttimeoutlen=150
 
 " NERDTree config
 " see: https://github.com/scrooloose/nerdtree#faq

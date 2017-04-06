@@ -13,6 +13,7 @@ bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
 
 alias prettyjson='python -m json.tool'
+alias man='vimman'
 
 alias doco='docker-compose'
 alias dcr='docker-compose run --rm'
