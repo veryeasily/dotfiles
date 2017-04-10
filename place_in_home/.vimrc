@@ -127,7 +127,7 @@ set grepformat=%f:%l:%c%m
 if &diff
   colorscheme jellyx
 else
-  colorscheme sky
+  colorscheme seti
 endif
 
 set autochdir
@@ -155,9 +155,7 @@ set wildmode=longest,list,full
 set wildmenu
 
 " set's a reasonable timeout
-set ttimeout
-set timeoutlen=150
-set timeout ttimeoutlen=150
+set timeout timeoutlen=500
 
 " NERDTree config
 " see: https://github.com/scrooloose/nerdtree#faq
