@@ -27,7 +27,7 @@ autoload run-help
 
 source $HOME/.zshenv-mobile
 
-source $HOME/.zsh-functions
+source $HOME/.whitney-helpers
 
 export EDITOR=vim
 

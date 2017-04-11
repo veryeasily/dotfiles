@@ -85,6 +85,9 @@ dcms() {
   fi
 }
 
+unset WHITNEY_CMS_SERVICES
+unset WHITNEY_API_SERVICES
+
 cms() {
   local cms_command
   local args
@@ -397,7 +400,7 @@ _req-api-services() {
     echo "$WHITNEY_API_SERVICES" > "$FILEPATH"
   fi
   if [[ -z "$WHITNEY_API_SERVICES" ]]; then
-    WHITNEY_API_SERVICES=<(cat "$FILEPATH")
+    WHITNEY_API_SERVICES=$(cat "$FILEPATH")
   fi
   export WHITNEY_API_SERVICES
 }
@@ -414,7 +417,7 @@ _req-cms-services() {
     echo "$WHITNEY_CMS_SERVICES" > "$FILEPATH"
   fi
   if [[ -z "$WHITNEY_CMS_SERVICES" ]]; then
-    WHITNEY_CMS_SERVICES=<(cat "$FILEPATH")
+    WHITNEY_CMS_SERVICES=$(cat "$FILEPATH")
   fi
   export WHITNEY_CMS_SERVICES
 }
