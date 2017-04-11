@@ -157,6 +157,9 @@ set wildmenu
 " set's a reasonable timeout
 set timeout timeoutlen=500
 
+" set swapfiles to be in the .vim directory
+set directory=$HOME/.vim/swapfiles//
+
 " NERDTree config
 " see: https://github.com/scrooloose/nerdtree#faq
 autocmd VimEnter * if argc() != 0 || exists("s:std_in") | wincmd p | endif
