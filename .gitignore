@@ -1,0 +1,2 @@
+root/.vim/swapfiles/*
+!root/.vim/swapfiles/.keep
