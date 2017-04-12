@@ -23,6 +23,10 @@ pushd $DIR
 stow -t "$HOME"/ -S root
 popd
 
+if ! hash zsh 2>/dev/null; then
+  chsh -s $(which zsh)
+fi
+
 # Now fix YouCompleteMe
 if ! hash python 2>/dev/null && hash git 2>/dev/null; then
   echo "Python or git is missing. Skipping optional YouCompleteMe install."
