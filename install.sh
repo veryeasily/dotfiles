@@ -33,15 +33,17 @@ fi
 
 chsh -s $(which zsh)
 
-Now fix YouCompleteMe
-if ! hash python 2>/dev/null && hash git 2>/dev/null; then
-  echo "Python or git is missing. Skipping optional YouCompleteMe install."
-  exit 0
-fi
-
-pushd $DIR/root/.vim/bundle
 git submodule update --init --recursive
-pushd YouCompleteMe
-python install.py --tern-completer
-popd
-popd
+
+# Now fix YouCompleteMe
+# if ! hash python 2>/dev/null && hash git 2>/dev/null; then
+#   echo "Python or git is missing. Skipping optional YouCompleteMe install."
+#   exit 0
+# fi
+# 
+# pushd $DIR/root/.vim/bundle
+# git submodule update --init --recursive
+# pushd YouCompleteMe
+# python install.py --tern-completer
+# popd
+# popd
