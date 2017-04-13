@@ -23,9 +23,7 @@ fi
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo "stow -t $HOME/ -S $DIR/root"
-pushd $DIR
-stow -t "$HOME"/ -S root
-popd
+./stow.sh
 
 if ! hash zsh 2>/dev/null; then
   sudo apt install -y zsh
