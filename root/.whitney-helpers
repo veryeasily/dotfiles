@@ -1,5 +1,5 @@
-#!/bin/bash
-# vim: ft=sh
+#!/bin/zsh
+# vim: ft=zsh
 #
 # The following is a collection of bash helper functions for dealing with
 # the Whitney's docker containers. Put this file in your $HOME and make
@@ -37,9 +37,10 @@ cd-gem() {
 # Docker helper functions
 ############################################################################### 
 #
-# Set these to be the two directories for your Whitney repositories
-local API_DIR=""
-local CMS_DIR="/app/cms"
+# First we need to pull in the location of the repos. Make sure to update
+# .whitney-locations with the correct repo locations
+current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $current_dir/.whitney-locations
 
 # This command is good for using with "binding.pry" and breakpoint debugging.
 # Set the breakpoint in a service and then run this to attach your input to the
