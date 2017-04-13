@@ -38,8 +38,8 @@ cd-gem() {
 ############################################################################### 
 #
 # Set these to be the two directories for your Whitney repositories
-local API_DIR="$HOME/code/whitney-services"
-local CMS_DIR="$HOME/code/whitney-cms"
+local API_DIR="/app/services"
+local CMS_DIR=""
 
 # This command is good for using with "binding.pry" and breakpoint debugging.
 # Set the breakpoint in a service and then run this to attach your input to the
