@@ -4,5 +4,5 @@
 ############################################################################### 
 #
 # Set these to be the two directories for your Whitney repositories
-export API_DIR="$HOME/code/whitney-services"
-export CMS_DIR="$HOME/code/whitney-cms"
+export API_DIR=""
+export CMS_DIR="/app/cms"
