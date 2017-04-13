@@ -6,7 +6,7 @@
 # Command check notation borrowed from:
 # http://stackoverflow.com/a/677212/1243823
 if hash apt-get 2>/dev/null; then
-  apt-get update
+  sudo apt-get update
 fi
 
 if ! hash stow 2>/dev/null; then
