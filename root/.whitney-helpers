@@ -61,28 +61,24 @@ dattach() {
 }
 
 dapi() {
-  if [[ -f "$API_DIR"/docker-compose.personal.override.yml ]]; then
+  if [[ -f "$API_DIR"/personal.override.yml ]]; then
     docker-compose -f "$API_DIR"/docker-compose.yml \
       -f "$API_DIR"/docker-compose.override.yml \
-      -f "$API_DIR"/docker-compose.development.override.yml \
-      -f "$API_DIR"/docker-compose.personal.override.yml "$@"
+      -f "$API_DIR"/personal.override.yml "$@"
   else
     docker-compose -f "$API_DIR"/docker-compose.yml \
-      -f "$API_DIR"/docker-compose.override.yml \
-      -f "$API_DIR"/docker-compose.development.override.yml "$@"
+      -f "$API_DIR"/docker-compose.override.yml "$@"
   fi
 }
 
 dcms() {
-  if [[ -f "$CMS_DIR"/docker-compose.personal.override.yml ]]; then
+  if [[ -f "$CMS_DIR"/personal.override.yml ]]; then
     docker-compose -f "$CMS_DIR"/docker-compose.yml \
       -f "$CMS_DIR"/docker-compose.override.yml \
-      -f "$CMS_DIR"/docker-compose.development.override.yml \
-      -f "$CMS_DIR"/docker-compose.personal.override.yml "$@"
+      -f "$CMS_DIR"/personal.override.yml "$@"
   else
     docker-compose -f "$CMS_DIR"/docker-compose.yml \
-      -f "$CMS_DIR"/docker-compose.override.yml \
-      -f "$CMS_DIR"/docker-compose.development.override.yml "$@"
+      -f "$CMS_DIR"/docker-compose.override.yml "$@"
   fi
 }
 
