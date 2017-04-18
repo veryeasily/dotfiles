@@ -2,7 +2,7 @@ ZSH=$HOME/.oh-my-zsh
 
 export HELPDIR="/usr/share/zsh/help"
 
-ZSH_THEME="onehundred"
+ZSH_THEME="whitney"
 
 plugins=(rails git ruby jump docker docker-compose git-extras yarn aws)
 
