@@ -9,11 +9,10 @@ plugins=(rails git ruby jump docker docker-compose git-extras yarn aws)
 source $ZSH/oh-my-zsh.sh
 
 bindkey -v
-# export KEYTIMEOUT=1
 bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M vicmd v edit-command-line
 
 alias prettyjson='python -m json.tool'
-# alias man='vimman'
 
 alias doco='docker-compose'
 alias dcr='docker-compose run --rm'

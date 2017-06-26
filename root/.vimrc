@@ -84,7 +84,7 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_scss_checkers = ['scss_lint']
-let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_checkers = []
 
 fun! SetScssConfig()
     let scssConfig = findfile('.scss-lint.yml', '.;')
@@ -137,7 +137,6 @@ set bs=indent,eol,start
 " properties.
 set modeline
 set nohlsearch
-set omnifunc=syntaxcomplete#Complete
 set ruler
 set sessionoptions-=options
 set smarttab
@@ -176,10 +175,13 @@ au BufNewFile,BufRead * setlocal formatoptions=crqn
 " Ruby
 au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 au FileType ruby,eruby let g:rubycomplete_rails = 0
-au FileType ruby,eruby let g:rubycomplete_load_gemfile = 1
+au FileType ruby,eruby let g:rubycomplete_load_gemfile = 0
 au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 au FileType ruby,eruby setl tw=79 comments=:#\  isfname+=:
 
 " au BufNewFile,BufRead * setlocal formatoptions-=lo
 au FileType ruby,eruby nn <buffer> <F5> :!clear<CR>:!ruby %<CR>
 au FileType ruby,eruby nn <buffer> <F9> :!clear<CR>:!rspec %<CR>
+
+" borrowed from https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
+set gdefault

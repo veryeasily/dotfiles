@@ -45,7 +45,7 @@ all-servers() {
 all-api-servers() {
   for i in {1..3}; do
     [[ -n "$2" ]] && ssh whitney@api${i} "$1" &
-    [[ -z "$2" ]] && ssh api${i} "$1" &
+    [[ -z "$2" ]] && ssh root@api${i} "$1" &
   done
   wait
 }
@@ -53,7 +53,7 @@ all-api-servers() {
 all-cms-servers() {
   for i in {1..3}; do
     [[ -n "$2" ]] && ssh whitney@cms${i} "$1" &
-    [[ -z "$2" ]] && ssh cms${i} "$1" &
+    [[ -z "$2" ]] && ssh root@cms${i} "$1" &
   done
   wait
 }
@@ -65,7 +65,7 @@ all-cms-servers() {
 # First we need to pull in the location of the repos. Make sure to update
 # .w-locations with the correct repo locations
 current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source $current_dir/.w-locations
+source ~/.w-locations
 
 # This command is good for using with "binding.pry" and breakpoint debugging.
 # Set the breakpoint in a service and then run this to attach your input to the
@@ -86,10 +86,10 @@ dattach() {
 }
 
 dapi() {
-  if [[ -f "$API_DIR"/personal.override.yml ]]; then
+  if [[ -f "$API_DIR"/personal.yml ]]; then
     docker-compose -f "$API_DIR"/docker-compose.yml \
       -f "$API_DIR"/docker-compose.override.yml \
-      -f "$API_DIR"/personal.override.yml "$@"
+      -f "$API_DIR"/personal.yml "$@"
   else
     docker-compose -f "$API_DIR"/docker-compose.yml \
       -f "$API_DIR"/docker-compose.override.yml "$@"
@@ -97,10 +97,10 @@ dapi() {
 }
 
 dcms() {
-  if [[ -f "$CMS_DIR"/personal.override.yml ]]; then
+  if [[ -f "$CMS_DIR"/personal.yml ]]; then
     docker-compose -f "$CMS_DIR"/docker-compose.yml \
       -f "$CMS_DIR"/docker-compose.override.yml \
-      -f "$CMS_DIR"/personal.override.yml "$@"
+      -f "$CMS_DIR"/personal.yml "$@"
   else
     docker-compose -f "$CMS_DIR"/docker-compose.yml \
       -f "$CMS_DIR"/docker-compose.override.yml "$@"
