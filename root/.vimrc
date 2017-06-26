@@ -106,6 +106,7 @@ set shiftround
 nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
 nnoremap gm m
 map <leader>a :Ag
+map <leader>A :Ag!
 
 " Leave insert and visual mode more easily
 ino jk <esc>
@@ -117,6 +118,12 @@ noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
+
+" Add shortcut for getting cop names
+noremap <leader>C <esc>:RuboCop -D<CR>
+noremap <leader>rw jjjj0f:f:Bt:"cy$V/\%Vrubocop:disableE
+noremap <leader>rn a # rubocop:disable c
+noremap <leader>ra a c
 
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " The Silver Searcher
@@ -182,6 +189,20 @@ au FileType ruby,eruby setl tw=79 comments=:#\  isfname+=:
 " au BufNewFile,BufRead * setlocal formatoptions-=lo
 au FileType ruby,eruby nn <buffer> <F5> :!clear<CR>:!ruby %<CR>
 au FileType ruby,eruby nn <buffer> <F9> :!clear<CR>:!rspec %<CR>
+
+function! MakeScratch()
+  setlocal buftype=nofile
+  setlocal bufhidden=hide
+  setlocal noswapfile
+endfunction
+
+function! SaveMapList()
+  redir @" | silent map | redir END | botright new | put!
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+endfunction
+
+command Mapsbuffer :call SaveMapList()
+
 
 " borrowed from https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 set gdefault
