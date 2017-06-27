@@ -1,3 +1,4 @@
 root/.vim/swapfiles/*
 root/.w-locations
 !root/.vim/swapfiles/.keep
+YouCompleteMe

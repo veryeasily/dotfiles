@@ -122,6 +122,10 @@ noremap <leader>rw jjjj0f:f:Bt:"cy$V/\%Vrubocop:disableE
 noremap <leader>rn a # rubocop:disable c
 noremap <leader>ra a c
 
+" Toggle paste mode
+noremap <leader>vv <esc>:set paste<CR>i
+noremap <leader>nv <esc>:set nopaste<CR>
+
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " The Silver Searcher
 " Use ag over grep
@@ -140,7 +144,7 @@ set bs=indent,eol,start
 " Sets the ability for comments at the beginning of files to set vim
 " properties.
 set modeline
-set nohlsearch
+set hlsearch
 set ruler
 set sessionoptions-=options
 set smarttab
