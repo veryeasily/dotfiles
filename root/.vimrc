@@ -16,6 +16,10 @@ let g:user_emmet_mode='inv'
 let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key='<C-p>'
 
+" Macro manager
+let g:marvim_find_key = '<leader>m'
+let g:marvim_find_key = '<leader>M'
+
 autocmd FileType html,css,javascript.jsx,typescript.tsx EmmetInstall
 autocmd FileType html,css,eruby EmmetInstall
 
