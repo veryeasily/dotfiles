@@ -187,19 +187,24 @@ au FileType ruby,eruby setl tw=79 comments=:#\  isfname+=:
 au FileType ruby,eruby nn <buffer> <F5> :!clear<CR>:!ruby %<CR>
 au FileType ruby,eruby nn <buffer> <F9> :!clear<CR>:!rspec %<CR>
 
-function! MakeScratch()
-  setlocal buftype=nofile
-  setlocal bufhidden=hide
-  setlocal noswapfile
-endfunction
+if !exists("*MakeScratch")
+  function MakeScratch()
+    setlocal bufhidden=hide
+    setlocal buftype=nofile
+    setlocal noswapfile
+  endfunction
+endif
 
-function! SaveMapList()
-  redir @" | silent verbose map | redir END | botright new | put!
-  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-endfunction
+if !exists("*SaveMapList")
+  function SaveMapList()
+    redir @" | silent verbose map | redir END | botright new | put!
+    setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  endfunction
+endif
 
-command Mapsbuffer :call SaveMapList()
-
+if !exists(":Mapsbuffer")
+  command Mapsbuffer :call SaveMapList()
+endif
 
 " borrowed from https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 set gdefault
