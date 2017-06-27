@@ -1,4 +1,0 @@
-" @ERR []
-function! Hoge()
-  "
-endfunction

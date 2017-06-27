@@ -1,2 +1,0 @@
-" @ERR []
-echo g:hoge

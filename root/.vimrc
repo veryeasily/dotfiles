@@ -75,20 +75,12 @@ set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 
-" set statusline+=%F
-" set statusline+=%-{getcwd()}
-" 
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" set statusline+=%14.(%l,%c%V%)\ %P
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
 let g:syntastic_scss_checkers = ['scss_lint']
-let g:syntastic_ruby_checkers = []
+" let g:syntastic_ruby_checkers = []
 
 fun! SetScssConfig()
     let scssConfig = findfile('.scss-lint.yml', '.;')
@@ -201,7 +193,7 @@ function! MakeScratch()
 endfunction
 
 function! SaveMapList()
-  redir @" | silent map | redir END | botright new | put!
+  redir @" | silent verbose map | redir END | botright new | put!
   setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
 endfunction
 
