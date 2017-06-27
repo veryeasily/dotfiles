@@ -1,6 +1,16 @@
 set nocompatible               " be iMproved
 set hidden
 
+" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" Initialize plugin system
+call plug#end()
+
 " Map leader keys
 let mapleader = ","
 let maplocalleader = ','
@@ -53,6 +63,12 @@ let g:ctrlp_custom_ignore = {
 " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
+
 " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
 
@@ -76,12 +92,12 @@ set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 let g:syntastic_scss_checkers = ['scss_lint']
-" let g:syntastic_ruby_checkers = []
+let g:syntastic_ruby_checkers = []
 
 fun! SetScssConfig()
     let scssConfig = findfile('.scss-lint.yml', '.;')
@@ -117,14 +133,20 @@ noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 
 " Add shortcut for getting cop names
-noremap <leader>C <esc>:RuboCop -D<CR>
+noremap <leader>rc <esc>:RuboCop -D<CR>
 noremap <leader>rw jjjj0f:f:Bt:"cy$V/\%Vrubocop:disableE
 noremap <leader>rn a # rubocop:disable c
 noremap <leader>ra a c
 
 " Toggle paste mode
 noremap <leader>vv <esc>:set paste<CR>i
-noremap <leader>nv <esc>:set nopaste<CR>
+noremap <leader>nn <esc>:set nopaste<CR>
+
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
 
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " The Silver Searcher
@@ -182,14 +204,14 @@ au BufNewFile,BufRead * setlocal formatoptions=crqn
 
 " Ruby
 au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-au FileType ruby,eruby let g:rubycomplete_rails = 0
-au FileType ruby,eruby let g:rubycomplete_load_gemfile = 0
+au FileType ruby,eruby let g:rubycomplete_rails = 1
+au FileType ruby,eruby let g:rubycomplete_load_gemfile = 1
 au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 au FileType ruby,eruby setl tw=79 comments=:#\  isfname+=:
 
 " au BufNewFile,BufRead * setlocal formatoptions-=lo
-au FileType ruby,eruby nn <buffer> <F5> :!clear<CR>:!ruby %<CR>
-au FileType ruby,eruby nn <buffer> <F9> :!clear<CR>:!rspec %<CR>
+" au FileType ruby,eruby nn <buffer> <F5> :!clear<CR>:!ruby %<CR>
+" au FileType ruby,eruby nn <buffer> <F9> :!clear<CR>:!rspec %<CR>
 
 if !exists("*MakeScratch")
   function MakeScratch()
@@ -206,9 +228,34 @@ if !exists("*SaveMapList")
   endfunction
 endif
 
+if !exists("*SaveLetList")
+  function SaveLetList()
+    redir @" | silent verbose let | redir END | botright new | put!
+    setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  endfunction
+endif
+
 if !exists(":Mapsbuffer")
   command Mapsbuffer :call SaveMapList()
 endif
+
+if !exists(":Letsbuffer")
+  command Letsbuffer :call SaveLetList()
+endif
+
+" Borrowed from
+" [here](https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2)
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 " borrowed from https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 set gdefault
