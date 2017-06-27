@@ -1,4 +1,5 @@
 set nocompatible               " be iMproved
+set hidden
 
 " Map leader keys
 let mapleader = ","

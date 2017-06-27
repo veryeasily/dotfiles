@@ -48,3 +48,5 @@ autoload -U compinit && compinit
 # Borrowed from [here](https://wiki.gentoo.org/wiki/Zsh/Guide)
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
