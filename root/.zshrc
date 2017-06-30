@@ -14,6 +14,8 @@ bindkey -M vicmd v edit-command-line
 
 alias prettyjson='python -m json.tool'
 
+alias rg='rg --max-filesize 15M'
+
 alias doco='docker-compose'
 alias dcr='docker-compose run --rm'
 alias dcrst='docker-compose restart'
@@ -59,3 +61,41 @@ zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Borrowed from https://github.com/junegunn/fzf/wiki/Examples#tmux
+# Check if we have fuzzy-finder
+if hash fzf 2>/dev/null; then
+  # Borrowed from https://github.com/junegunn/fzf/wiki/Examples#tmux @elju
+  #
+  # fs [FUZZY PATTERN] - Select selected tmux session
+  #   - Bypass fuzzy finder if there's only one match (--select-1)
+  #   - Exit if there's no match (--exit-0)
+  fs() {
+    local session
+    session=$(tmux list-sessions -F "#{session_name}" | \
+      fzf --query="$1" --select-1 --exit-0) &&
+    tmux switch-client -t "$session"
+  }
+
+  # Borrowed from https://github.com/junegunn/fzf/wiki/Examples#tmux @elju
+  #
+  # ftpane - switch pane (@george-b)
+  ftpane() {
+    local panes current_window current_pane target target_window target_pane
+    panes=$(tmux list-panes -s -F '#I:#P - #{pane_current_path} #{pane_current_command}')
+    current_pane=$(tmux display-message -p '#I:#P')
+    current_window=$(tmux display-message -p '#I')
+
+    target=$(echo "$panes" | grep -v "$current_pane" | fzf +m --reverse) || return
+
+    target_window=$(echo $target | awk 'BEGIN{FS=":|-"} {print$1}')
+    target_pane=$(echo $target | awk 'BEGIN{FS=":|-"} {print$2}' | cut -c 1)
+
+    if [[ $current_window -eq $target_window ]]; then
+      tmux select-pane -t ${target_window}.${target_pane}
+    else
+      tmux select-pane -t ${target_window}.${target_pane} &&
+      tmux select-window -t $target_window
+    fi
+  }
+fi

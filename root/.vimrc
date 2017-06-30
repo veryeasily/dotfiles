@@ -1,12 +1,25 @@
 set nocompatible               " be iMproved
 set hidden
 
+" Autoinstall YCM after download. See
+" [here](https://github.com/junegunn/fzf/wiki/Examples-(vim))
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !./install.py
+  endif
+endfunction
+
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 " Initialize plugin system
 call plug#end()
@@ -157,7 +170,7 @@ set grepformat=%f:%l:%c%m
 if &diff
   colorscheme jellyx
 else
-  colorscheme seti
+  colorscheme janah
 endif
 
 set autochdir
@@ -256,6 +269,15 @@ endif
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+nnoremap <silent> <Leader>C :call fzf#run({
+      \   'source':
+      \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+      \         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+      \   'sink':    'colo',
+      \   'options': '+m',
+      \   'left':    30
+      \ })<CR>
 
 " borrowed from https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 set gdefault
