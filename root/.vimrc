@@ -1,8 +1,7 @@
 set nocompatible               " be iMproved
 set hidden
 
-" Autoinstall YCM after download. See
-" [here](https://github.com/junegunn/fzf/wiki/Examples-(vim))
+" Autoinstall YCM after download.
 function! BuildYCM(info)
   " info is a dictionary with 3 fields
   " - name:   name of the plugin
@@ -49,7 +48,7 @@ autocmd FileType html,css,eruby EmmetInstall
 
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
-let g:ag_working_path_mode="r"
+let g:ag_working_path_mode='r'
 
 let g:tern_map_keys=1
 let g:tern_map_prefix='<space>'
