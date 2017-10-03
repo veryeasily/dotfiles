@@ -8,7 +8,7 @@ function! BuildYCM(info)
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status == 'installed' || a:info.force
-    !./install.py
+    !./install.py --tern-completer --gocode-completer
   endif
 endfunction
 
@@ -16,9 +16,11 @@ endfunction
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'flazz/vim-colorschemes'
+" Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
 
 " Initialize plugin system
 call plug#end()
@@ -124,6 +126,9 @@ call pathogen#helptags()
 filetype plugin indent on
 syntax on
 
+" set background=dark
+" colorscheme solarized
+
 " round << and >> to the nearest shiftwidth
 set shiftround
 
@@ -169,7 +174,7 @@ set grepformat=%f:%l:%c%m
 if &diff
   colorscheme jellyx
 else
-  colorscheme janah
+  colorscheme harlequin
 endif
 
 set autochdir

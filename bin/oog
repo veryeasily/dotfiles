@@ -9,4 +9,6 @@ for term in $@; do
 search="$search%20$term"
 done
 
-nohup google-chrome --new-window "http://www.google.com/search?q=$search" </dev/null >/dev/null 2>&1 &
+OOG_PATH="http:\/\/www.google.com\/search?q=$search"
+
+nohup '/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe' --new-window "$OOG_PATH" </dev/null >/dev/null 2>&1 &

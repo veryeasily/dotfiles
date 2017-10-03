@@ -65,7 +65,7 @@ all-cms-servers() {
 # First we need to pull in the location of the repos. Make sure to update
 # .w-locations with the correct repo locations
 current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source ~/.w-locations
+# source ~/.w-locations
 
 # This command is good for using with "binding.pry" and breakpoint debugging.
 # Set the breakpoint in a service and then run this to attach your input to the

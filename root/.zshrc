@@ -2,9 +2,18 @@ ZSH=$HOME/.oh-my-zsh
 
 export HELPDIR="/usr/share/zsh/help"
 
-ZSH_THEME="whitney"
+if [[ -z "$TMUX" ]]; then
+  echo 'Starting tmux!'
+  tmux new A -s cutelilcomputer
+fi
 
-plugins=(rails git ruby jump docker docker-compose git-extras yarn aws)
+source $HOME/.zshenv-mobile
+
+export ZSH_THEME="gianu"
+
+eval $(dircolors ~/.dircolors)
+
+plugins=(git ruby jump docker docker-compose git-extras yarn aws)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -14,7 +23,7 @@ bindkey -M vicmd v edit-command-line
 
 alias prettyjson='python -m json.tool'
 
-alias rg='rg --max-filesize 15M'
+# alias rg='rg --max-filesize 15M'
 
 alias doco='docker-compose'
 alias dcr='docker-compose run --rm'
@@ -23,10 +32,12 @@ alias dce='docker-compose exec'
 alias dck='docker-compose kill'
 alias copy='xclip -sel clip'
 
+# # See
+# # https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
+# alias tmux='TERM=xterm-256color tmux'
+
 [[ -e $(alias run-help)  ]] && unalias run-help
 autoload run-help
-
-source $HOME/.zshenv-mobile
 
 source $HOME/.w-helpers
 
@@ -99,3 +110,6 @@ if hash fzf 2>/dev/null; then
     fi
   }
 fi
+#
+# 
+# tmux attach -t cutelilcomputer || tmux new -n cutelilcomputer
