@@ -5,9 +5,8 @@
 
 # Command check notation borrowed from:
 # http://stackoverflow.com/a/677212/1243823
-if hash apt-get 2>/dev/null; then
-  sudo apt-get update
-fi
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 if ! hash stow 2>/dev/null; then
   if hash apt-get 2>/dev/null; then
@@ -20,18 +19,18 @@ if ! hash stow 2>/dev/null; then
   fi
 fi
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 echo "stow -t $HOME/ -S $DIR/root"
 ./stow.sh
 
 if ! hash zsh 2>/dev/null; then
-  sudo apt install -y zsh
+  sudo apt-get update && sudo apt-get install -y zsh
 fi
 
 chsh -s $(which zsh)
 
 git submodule update --init --recursive
+
+source $DIR/install-extras.sh
 
 # Now fix YouCompleteMe
 # if ! hash python 2>/dev/null && hash git 2>/dev/null; then
