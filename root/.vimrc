@@ -102,8 +102,8 @@ fun! SetScssConfig()
     endif
 endf
 
-execute pathogen#infect()
-call pathogen#helptags()
+" execute pathogen#infect()
+" call pathogen#helptags()
 
 filetype plugin indent on
 syntax on
@@ -248,7 +248,7 @@ function! MacroInput(txt)
 endfunction
 
 source ~/.vim.fzf-vim-functions.vim
-source ~/.vimrc.highlights.vim
+" source ~/.vimrc.highlights.vim
 
 set history=10000
 

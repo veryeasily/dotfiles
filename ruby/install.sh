@@ -4,6 +4,7 @@
 CUR_SCRIPT_DIR="$( dirname "$0:A" )"
 
 if ! hash rbenv 2>/dev/null; then
+  git clone git@github.com:rbenv/rbenv.git "$HOME"/.rbenv
   eval "$("$HOME"/.rbenv/bin/rbenv init -)"
 fi
 
