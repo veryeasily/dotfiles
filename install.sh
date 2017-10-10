@@ -11,9 +11,9 @@ fi
 
 if ! hash stow 2>/dev/null; then
   if hash apt-get 2>/dev/null; then
-    hash stow 2>/dev/null || sudo apt-get install -y stow
+    sudo apt-get update && sudo apt-get install -y stow
   elif hash yum 2>/dev/null; then
-    hash stow 2>/dev/null || sudo yum install -y stow --enablerepo=epel
+    sudo yum install -y stow --enablerepo=epel
   else
     echo "Neither apt-get nor yum found. Terminating..."
     exit 1
