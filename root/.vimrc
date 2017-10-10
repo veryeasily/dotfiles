@@ -1,26 +1,43 @@
-set nocompatible               " be iMproved
-set hidden
+set nocompatible hidden " be iMproved
 
-" Autoinstall YCM after download.
-" function! BuildYCM(info)
-"   " info is a dictionary with 3 fields
-"   " - name:   name of the plugin
-"   " - status: 'installed', 'updated', or 'unchanged'
-"   " - force:  set on PlugInstall! or PlugUpdate!
-"   if a:info.status == 'installed' || a:info.force
-"     !./install.py --tern-completer --gocode-completer
-"   endif
-" endfunction
+let g:tern_map_keys=1
+let g:tern_map_prefix='<space>'
+let g:tern_request_timeout = 2
+let g:tern_show_argument_hints="on_hold"
 
-" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+""""""""""""""""""""""""""""""""
+" Taken from original ~/.vimrc "
+""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install --all' }
+Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdtree'
+Plug 'mattn/emmet-vim'
+Plug 'othree/html5.vim'
+
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-surround'
+
+Plug 'vim-syntastic/syntastic'
+
+Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'Kuniwak/vint'
+
+Plug 'moll/vim-node'
+
+Plug 'Chiel92/vim-autoformat'
+
+Plug 'junegunn/fzf', { 'dir': $HOME . '/.fzf', 'do': 'yes \| ./install --all' }
 Plug 'junegunn/fzf.vim'
 " Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'flazz/vim-colorschemes'
+Plug 'jacoborus/tender.vim'
 Plug 'haya14busa/incsearch.vim'
 
 " Initialize plugin system
@@ -46,16 +63,7 @@ let g:marvim_find_key = '<leader>M'
 autocmd FileType html,css,javascript.jsx,typescript.tsx EmmetInstall
 autocmd FileType html,css,eruby EmmetInstall
 
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
 let g:ag_working_path_mode='r'
-
-let g:tern_map_keys=1
-let g:tern_map_prefix='<space>'
-let g:tern_request_timeout = 2
-let g:tern_show_argument_hints="on_hold"
-
-let g:ycm_complete_in_comments = 1
 
 " always have a status line, even on 1 window
 set laststatus=2
@@ -146,10 +154,10 @@ set grepformat=%f:%l:%c%m
 if &diff
   colorscheme jellyx
 else
-  colorscheme harlequin
+  colorscheme tender
 endif
 
-set autochdir
+set noautochdir
 set bs=indent,eol,start
 
 " Sets the ability for comments at the beginning of files to set vim
@@ -239,15 +247,23 @@ function! MacroInput(txt)
   return text
 endfunction
 
-" source ./.vim
-
-" noremap! <C-C> <C-[>
-" noremap! <C-J> <C-C>
 source ~/.vim.fzf-vim-functions.vim
 source ~/.vimrc.highlights.vim
 
-" Sets the (q:) command-line history to be ultra long. For more info, see
-" :help q:
 set history=10000
 
 set gdefault
+
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+"""""""""""""""""""""""""
+" END original ~/.vimrc "
+"""""""""""""""""""""""""
