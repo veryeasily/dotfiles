@@ -1,1 +1,0 @@
-redir => g:var

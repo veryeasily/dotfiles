@@ -1,0 +1,6 @@
+# Just extra files to include in bash-profile since the real ~/.profile
+# changes so much between distros we don't touch that
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export PATH="$HOME/.rbenv/bin:$PATH"
