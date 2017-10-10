@@ -11,34 +11,33 @@ let g:tern_show_argument_hints="on_hold"
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/nerdtree'
-Plug 'mattn/emmet-vim'
-Plug 'othree/html5.vim'
+Plug 'junegunn/fzf', { 'dir': $HOME . '/.fzf', 'do': 'yes \| ./install --all' }
+Plug 'junegunn/fzf.vim'
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" TPope stuff
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-surround'
 
+" Assorted
+Plug 'Chiel92/vim-autoformat'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch.vim'
+Plug 'Kuniwak/vint'
+Plug 'mattn/emmet-vim'
+Plug 'moll/vim-node'
+Plug 'othree/html5.vim'
+Plug 'scrooloose/nerdtree'
 Plug 'vim-syntastic/syntastic'
 
-Plug 'christoomey/vim-tmux-navigator'
-
-Plug 'Kuniwak/vint'
-
-Plug 'moll/vim-node'
-
-Plug 'Chiel92/vim-autoformat'
-
-Plug 'junegunn/fzf', { 'dir': $HOME . '/.fzf', 'do': 'yes \| ./install --all' }
-Plug 'junegunn/fzf.vim'
-" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'flazz/vim-colorschemes'
+" Colorschemes
 Plug 'jacoborus/tender.vim'
-Plug 'haya14busa/incsearch.vim'
+Plug 'flazz/vim-colorschemes'
 
 " Initialize plugin system
 call plug#end()
@@ -102,9 +101,6 @@ fun! SetScssConfig()
     endif
 endf
 
-execute pathogen#infect()
-call pathogen#helptags()
-
 filetype plugin indent on
 syntax on
 
@@ -120,7 +116,7 @@ inoremap jk <Esc>`^
 inoremap <C-Q> <Esc>`^
 noremap <C-Q> <Esc>
 vnoremap <C-Q> <Esc>
-cmap <C-Q> <Esc>
+cnoremap <C-Q> <Esc>
 
 " Window navigation commands
 noremap <c-j> <c-w>j
