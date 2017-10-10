@@ -3,4 +3,7 @@
 	url = git@github.com:robbyrussell/oh-my-zsh.git
 [submodule "root/.rbenv"]
 	path = root/.rbenv
-	url = git@github.com:elju/rbenv.git
+	url = git@github.com:rbenv/rbenv.git
+[submodule "root/.nvm"]
+	path = root/.nvm
+	url = git@github.com:creationix/nvm.git

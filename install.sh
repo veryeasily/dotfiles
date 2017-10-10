@@ -30,7 +30,7 @@ chsh -s $(which zsh)
 
 git submodule update --init --recursive
 
-source $DIR/install-extras.sh
+source $DIR/extras.sh
 
 # Now fix YouCompleteMe
 # if ! hash python 2>/dev/null && hash git 2>/dev/null; then
