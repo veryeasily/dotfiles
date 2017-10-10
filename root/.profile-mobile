@@ -1,2 +1,0 @@
-# Make sure to source this in the computer's .profile file
-eval $(dircolors ~/.dircolors.256dark)
