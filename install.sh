@@ -22,6 +22,10 @@ fi
 echo "stow -t $HOME/ -S $DIR/root"
 ./stow.sh
 
+if ! grep 'bash_profile_extras' ~/.bash_profile; then
+  echo 'hi'
+fi
+
 if ! hash zsh 2>/dev/null; then
   sudo apt-get update && sudo apt-get install -y zsh
 fi

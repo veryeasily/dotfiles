@@ -1,68 +1,23 @@
 set nocompatible hidden " be iMproved
 
-let g:tern_map_keys=1
-let g:tern_map_prefix='<space>'
-let g:tern_request_timeout = 2
-let g:tern_show_argument_hints="on_hold"
+""" PLUGIN RELATED STUFF
 
-""""""""""""""""""""""""""""""""
-" Taken from original ~/.vimrc "
-""""""""""""""""""""""""""""""""
-call plug#begin('~/.vim/plugged')
+function! Multiple_cursors_before()
+  let b:deoplete_disable_auto_complete = 1
+endfunction
 
-" Make sure you use single quotes
-Plug 'junegunn/fzf', { 'dir': $HOME . '/.fzf', 'do': 'yes \| ./install --all' }
-Plug 'junegunn/fzf.vim'
+function! Multiple_cursors_after()
+    let b:deoplete_disable_auto_complete = 0
+endfunction
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+source ~/.vimrc.plug
 
-" TPope stuff
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-rbenv'
-Plug 'tpope/vim-surround'
+""" END PLUGIN RELATED STUFF
 
-" Assorted
-Plug 'Chiel92/vim-autoformat'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'easymotion/vim-easymotion'
-Plug 'haya14busa/incsearch.vim'
-Plug 'Kuniwak/vint'
-Plug 'mattn/emmet-vim'
-Plug 'moll/vim-node'
-Plug 'othree/html5.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'vim-syntastic/syntastic'
-
-" Colorschemes
-Plug 'jacoborus/tender.vim'
-Plug 'flazz/vim-colorschemes'
-
-" Initialize plugin system
-call plug#end()
 
 " Map leader keys
 let mapleader = ","
 let maplocalleader = ','
-
-let g:CommandTFileScanner = 'git'
-
-let g:EasyClipShareYanks = 1
-let g:EasyMotion_leader_key = '<Space>'
-
-let g:user_emmet_mode='inv'
-let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key='<C-p>'
-
-" Macro manager
-let g:marvim_find_key = '<leader>m'
-let g:marvim_find_key = '<leader>M'
-
-autocmd FileType html,css,javascript.jsx,typescript.tsx EmmetInstall
-autocmd FileType html,css,eruby EmmetInstall
-
-let g:ag_working_path_mode='r'
 
 " always have a status line, even on 1 window
 set laststatus=2
@@ -87,20 +42,6 @@ set statusline+=\ %P    "percent through file
 set showcmd " Display our current \[count\]
 set incsearch
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_scss_checkers = ['scss_lint']
-let g:syntastic_ruby_checkers = []
-
-fun! SetScssConfig()
-    let scssConfig = findfile('.scss-lint.yml', '.;')
-    if scssConfig != ''
-        let b:syntastic_scss_scss_lint_args = '--config ' . scssConfig
-    endif
-endf
-
 filetype plugin indent on
 syntax on
 
@@ -112,6 +53,7 @@ nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
 nnoremap gm m
 
 " Leave insert and visual mode more easily
+inoremap fj <Esc>`^
 inoremap jk <Esc>`^
 inoremap <C-Q> <Esc>`^
 noremap <C-Q> <Esc>
@@ -124,18 +66,20 @@ noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 
-" Add shortcut for getting cop names
-noremap <leader>rc <esc>:RuboCop -D<CR>
-noremap <leader>rw jjjj0f:f:Bt:"cy$V/\%Vrubocop:disableE
-noremap <leader>rn a # rubocop:disable c
-noremap <leader>ra a c
-
 " Toggle paste mode
 noremap <leader>vv <esc>:set paste<CR>i
 noremap <leader>nn <esc>:set nopaste<CR>
 
 " Search command history
 nnoremap Q <Esc>q:<C-U>?
+
+if has('win32')
+  nmap <C-/> <esc>q/?
+  vmap <C-/> <esc>q/?
+else
+  nmap <C-_> <esc>q/?
+  vmap <C-_> <esc>q/?
+endif
 
 " Scroll through searches. See here:
 " https://superuser.com/questions/345215/vim-how-do-you-efficiently-search-for-text#comment379095_345216
@@ -153,7 +97,7 @@ else
   colorscheme tender
 endif
 
-set noautochdir
+set autochdir
 set bs=indent,eol,start
 
 " Sets the ability for comments at the beginning of files to set vim
@@ -182,13 +126,8 @@ set timeout timeoutlen=300
 " set swapfiles to be in the .vim directory
 set directory=$HOME/.vim/swapfiles//
 
-" NERDTree config
-" see: https://github.com/scrooloose/nerdtree#faq
-autocmd VimEnter * if argc() != 0 || exists("s:std_in") | wincmd p | endif
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-autocmd FileType      scss           :call SetScssConfig()
+nnoremap gz <C-W>\|<C-W>_
+nnoremap g= <C-W>=
 
 hi Search cterm=NONE ctermfg=white ctermbg=black
 
@@ -250,16 +189,6 @@ set history=10000
 
 set gdefault
 
-function! s:fzf_statusline()
-  " Override statusline as you like
-  highlight fzf1 ctermfg=161 ctermbg=251
-  highlight fzf2 ctermfg=23 ctermbg=251
-  highlight fzf3 ctermfg=237 ctermbg=251
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
-
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
-
 """""""""""""""""""""""""
 " END original ~/.vimrc "
-"""""""""""""""""""""""""
+""""""""""""""""""""""""
