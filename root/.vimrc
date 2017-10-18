@@ -34,7 +34,7 @@ set statusline+=Curent:\ %l\ Total:\ %4L
 set statusline+=\ \ \ \ \ \ \ \ \ \ %{getcwd()} "this is my hack for whitespace
 set statusline+=%=      "left/right separator
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
@@ -53,16 +53,22 @@ nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
 nnoremap gm m
 
 " Leave insert and visual mode more easily
-inoremap fj <Esc>`^
+inoremap kj <Esc>`^
 inoremap jk <Esc>`^
 inoremap <C-Q> <Esc>`^
 noremap <C-Q> <Esc>
 vnoremap <C-Q> <Esc>
 cnoremap <C-Q> <Esc>
 
+function! MaybeDown()
+  if 
+endfunction
+
 " Window navigation commands
 noremap <c-j> <c-w>j
+inoremap <expr> <c-j> pumvisible() ? "<c-n>" : "<esc>"
 noremap <c-k> <c-w>k
+inoremap <expr> <c-k> pumvisible() ? "<c-p>" : "<c-w>k"
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 

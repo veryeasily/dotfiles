@@ -10,17 +10,20 @@ export ZSH=$HOME/.oh-my-zsh
 
 export ZSH_THEME="gianu"
 
-plugins=(git ruby jump tmuxinator nvm)
+plugins=(git ruby jump tmuxinator nvm rg zsh-navigation-tools vi-mode)
 
 source $ZSH/oh-my-zsh.sh
+source "$HOME"/.zshrc.tmux
 
 alias prettyjson='python -m json.tool'
 
+alias j='jump'
+
 # export KEYTIMEOUT=1
-bindkey -v # Set vi command mode
-bindkey "^@" vi-cmd-mode
-bindkey -M viins 'jk' vi-cmd-mode
-bindkey -M vicmd v edit-command-line
+# bindkey -v # Set vi command mode
+# bindkey "^@" vi-cmd-mode
+# bindkey -M viins '^Q' vi-cmd-mode
+# bindkey -M vicmd v edit-command-line
 
 # # See
 # # https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
@@ -55,11 +58,6 @@ bindkey -M vicmd v edit-command-line
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# We add the following incase yarn messed up.
-# More info here:
-# https://github.com/yarnpkg/yarn/issues/648
-export PATH="$HOME/.yarn/bin:$PATH"
 
 alias tmuxdie="tmux kill-session -t 0"
 alias mux="tmuxinator"
