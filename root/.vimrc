@@ -53,39 +53,32 @@ nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
 nnoremap gm m
 
 " Leave insert and visual mode more easily
-inoremap kj <Esc>`^
-inoremap jk <Esc>`^
-inoremap <C-Q> <Esc>`^
-noremap <C-Q> <Esc>
-vnoremap <C-Q> <Esc>
-cnoremap <C-Q> <Esc>
-
-function! MaybeDown()
-  if 
-endfunction
+noremap! jk <Esc>`^
 
 " Window navigation commands
-noremap <c-j> <c-w>j
-inoremap <expr> <c-j> pumvisible() ? "<c-n>" : "<esc>"
-noremap <c-k> <c-w>k
-inoremap <expr> <c-k> pumvisible() ? "<c-p>" : "<c-w>k"
-noremap <c-l> <c-w>l
-noremap <c-h> <c-w>h
+" noremap <c-j> <c-w>j
+" noremap <c-k> <c-w>k
+" noremap <c-l> <c-w>l
+" noremap <c-h> <c-w>h
+
+inoremap <expr> <c-j> pumvisible() ? "<c-n>" : "<c-j>"
+inoremap <expr> <c-k> pumvisible() ? "<c-p>" : "<c-k>"
 
 " Toggle paste mode
 noremap <leader>vv <esc>:set paste<CR>i
 noremap <leader>nn <esc>:set nopaste<CR>
 
 " Search command history
-nnoremap Q <Esc>q:<C-U>?
+noremap <Leader>sq <Esc>:History:<CR>
+noremap <Leader>s/ <Esc>:History/<CR>
 
-if has('win32')
-  nmap <C-/> <esc>q/?
-  vmap <C-/> <esc>q/?
-else
-  nmap <C-_> <esc>q/?
-  vmap <C-_> <esc>q/?
-endif
+" if has('win32')
+"   nmap <C-/> <esc>q/?
+"   vmap <C-/> <esc>q/?
+" else
+"   nmap <C-_> <esc>q/?
+"   vmap <C-_> <esc>q/?
+" endif
 
 " Scroll through searches. See here:
 " https://superuser.com/questions/345215/vim-how-do-you-efficiently-search-for-text#comment379095_345216
@@ -192,6 +185,9 @@ source ~/.vim.fzf-vim-functions.vim
 " source ~/.vimrc.highlights.vim
 
 set history=10000
+
+" see https://parceljs.org/hmr.html
+set backupcopy=yes
 
 set gdefault
 

@@ -5,9 +5,12 @@ let g:tern_map_prefix='<space>'
 let g:tern_request_timeout = 2
 let g:tern_show_argument_hints="on_move"
 
+Plug 'jreybert/vimagit'
+
 " Make sure you use single quotes
 Plug 'junegunn/fzf', { 'dir': $HOME . '/.fzf', 'do': 'yes \| ./install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
 
 " Syntax highlighting
 let g:jsx_ext_required = 1
@@ -39,6 +42,10 @@ Plug 'flazz/vim-colorschemes'
 
 Plug 'vim-airline/vim-airline'
 
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
+
+Plug 'ludovicchabant/vim-gutentags'
+
 " Plug 'sheerun/vim-polyglot'
 
 " Test framework for vimscripts. See https://github.com/junegunn/vader.vim
@@ -64,6 +71,7 @@ if has('nvim')
   Plug 'roxma/nvim-completion-manager'
   Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
   Plug 'roxma/ncm-flow'
+  Plug 'roxma/ncm-github'
 
   " let g:deoplete#omni#functions = {}
 
@@ -95,9 +103,7 @@ if has('nvim')
   " endfunction
 
   " Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-  Plug 'Shougo/neco-vim'
-
-  " Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
+  " Plug 'Shougo/neco-vim'
   " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 
   "  Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }

@@ -22,6 +22,14 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
+command! -bang -nargs=* FindFd
+  \ call fzf#run({
+  \   'source':
+  \     split(system("fd -a -t f '' \"./$(git rev-parse --show-cdup)\""), "\n"),
+  \   'sink':    'e',
+  \   'down':    '40%'
+  \  })
+
 nnoremap <silent> <Leader>C :call fzf#run({
       \   'source':
       \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
@@ -31,6 +39,13 @@ nnoremap <silent> <Leader>C :call fzf#run({
       \   'left':    30
       \ })<CR>
 
+command! FZFMru call fzf#run({
+\  'source':  v:oldfiles,
+\  'sink':    'e',
+\  'options': '-m -x +s',
+\  'down':    '40%'})
+
 noremap <leader>g <Esc>:<c-u>Find<cr>
 noremap <leader>l <Esc>:<c-u>Lines<cr>
-noremap <leader>t <Esc>:<c-u>Files<CR>
+noremap <leader>t <Esc>:<c-u>FindFd<CR>
+noremap <leader>o <Esc>:<c-u>FZFMru<CR>
