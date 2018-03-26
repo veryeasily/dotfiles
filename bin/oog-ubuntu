@@ -1,0 +1,15 @@
+#!/bin/bash
+##
+# Borrowed from
+# https://superuser.com/a/47216/157200
+#
+search=""
+echo "Googling: $@"
+for term in $@; do
+search="$search%20$term"
+done
+
+OOG_PATH="http:\/\/www.google.com\/search?q=$search"
+
+nohup google-chrome --new-window "http://www.google.com/search?q=$search" </dev/null >/dev/null 2>&1 &
+# nohup '/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe' --new-window "$OOG_PATH" </dev/null >/dev/null 2>&1 &
