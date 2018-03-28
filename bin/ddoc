@@ -5,4 +5,6 @@ if [[ -z $SITE ]]; then
   exit 128
 fi
 
-nohup google-chrome --new-window http://devdocs.io/#q="$SITE" </dev/null >/dev/null 2>&1 &
+DDOC_PATH="http://devdocs.io/#q=${SITE}"
+
+/mnt/c/Windows/System32/cmd.exe /c 'start chrome /new-window '"$DDOC_PATH" </dev/null >/dev/null 2>&1 &
