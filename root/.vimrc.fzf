@@ -31,6 +31,30 @@ nnoremap <silent> <Leader>C :call fzf#run({
       \   'left':    30
       \ })<CR>
 
-noremap <leader>g <Esc>:<c-u>Find<cr>
+function! s:find_root()
+  for vcs in ['.git', '.svn', '.hg']
+    let dir = finddir(vcs.'/..', ';')
+    if !empty(dir)
+      execute 'FZF' dir
+      return
+    endif
+  endfor
+  FZF
+endfunction
+command! FZFR call s:find_root()
+
+function! s:grep_find_root()
+  for vcs in ['.git', '.svn', '.hg']
+    let dir = finddir(vcs.'/..', ';')
+    if !empty(dir)
+      call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" "" '. dir, 1)
+      return
+    endif
+  endfor
+  FZF
+endfunction
+command! FZFG call s:grep_find_root()
+
+noremap <leader>g <Esc>:<c-u>FZFG<cr>
 noremap <leader>l <Esc>:<c-u>Lines<cr>
-noremap <leader>t <Esc>:<c-u>Files<CR>
+noremap <leader>t :<C-u>FZFR<CR>

@@ -3,3 +3,4 @@ root/.w-locations
 !root/.vim/swapfiles/.keep
 YouCompleteMe
 plugged
+root/.zshenv

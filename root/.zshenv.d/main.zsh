@@ -1,12 +1,13 @@
 # export ZSH_TMUX_AUTOSTART="true"
 # export ZSH_TMUX_FIXTERM="true"
 # export COMPOSE_HTTP_TIMEOUT="10000"
+
 export EDITOR=vim
 export PAGER=less
 export LESS="-isRM"
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 # 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -21,13 +22,16 @@ eval "$(rbenv init -)"
 # https://github.com/yarnpkg/yarn/issues/648
 export PATH="$HOME/.yarn/bin:$PATH"
 
-export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$HOME/.cargo/bin:${PATH}"
 
-export PATH="$PYENV_ROOT/bin:$HOME/.cargo/bin:${PATH}:/home/mors/bin"
+export PATH="${PATH}:/home/mores/bin"
 
-if command -v pyenv 1>/dev/null 2>&1; then
-  echo 'pyenv init'
-  eval "$(pyenv init -)"
-  echo 'pyenv virtualenv init'
-  eval "$(pyenv virtualenv-init -)"
-fi
+# export PYENV_ROOT="$HOME/.pyenv"
+
+# if command -v pyenv 1>/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+# fi
+
+alias docker="docker.exe"
+
+alias docker-compose="docker-compose.exe"

@@ -1,5 +1,3 @@
-set nocompatible hidden " be iMproved
-
 """ PLUGIN RELATED STUFF
 
 function! Multiple_cursors_before()
@@ -55,10 +53,10 @@ nnoremap gm m
 " Leave insert and visual mode more easily
 inoremap kj <Esc>`^
 inoremap jk <Esc>`^
-inoremap <C-Q> <Esc>`^
-noremap <C-Q> <Esc>
-vnoremap <C-Q> <Esc>
-cnoremap <C-Q> <Esc>
+" inoremap <C-Q> <Esc>`^
+" noremap <C-Q> <Esc>
+" vnoremap <C-Q> <Esc>
+" cnoremap <C-Q> <Esc>
 
 function! MaybeDown()
   if 
@@ -94,14 +92,6 @@ endif
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " The Silver Searcher
 " Use ag over grep
-set grepprg=ag\ --nogroup\ --nocolor\ --column
-set grepformat=%f:%l:%c%m
-
-if &diff
-  colorscheme jellyx
-else
-  colorscheme tender
-endif
 
 set autochdir
 set bs=indent,eol,start
@@ -188,8 +178,7 @@ function! MacroInput(txt)
   return text
 endfunction
 
-source ~/.vim.fzf-vim-functions.vim
-" source ~/.vimrc.highlights.vim
+source ~/.vimrc.fzf
 
 set history=10000
 
@@ -198,3 +187,4 @@ set gdefault
 """""""""""""""""""""""""
 " END original ~/.vimrc "
 """"""""""""""""""""""""
+
