@@ -1,8 +1,0 @@
-# vim: ft=zsh
-############################################################################### 
-# Repo locations
-############################################################################### 
-#
-# Set these to be the two directories for your Whitney repositories
-export API_DIR="/app/services"
-export CMS_DIR="/app/cms"

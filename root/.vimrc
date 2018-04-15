@@ -51,16 +51,7 @@ nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
 nnoremap gm m
 
 " Leave insert and visual mode more easily
-inoremap kj <Esc>`^
-inoremap jk <Esc>`^
-" inoremap <C-Q> <Esc>`^
-" noremap <C-Q> <Esc>
-" vnoremap <C-Q> <Esc>
-" cnoremap <C-Q> <Esc>
-
-function! MaybeDown()
-  if 
-endfunction
+inoremap <M-J> <Esc>`^
 
 " Window navigation commands
 noremap <c-j> <c-w>j
