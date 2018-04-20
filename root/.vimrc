@@ -46,35 +46,7 @@ syntax on
 " round << and >> to the nearest shiftwidth
 set shiftround
 
-" bind gk to grep word under cursor
-nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
-nnoremap gm m
-
-" Leave insert and visual mode more easily
-inoremap <M-J> <Esc>`^
-
-" Window navigation commands
-noremap <c-j> <c-w>j
-inoremap <expr> <c-j> pumvisible() ? "<c-n>" : "<esc>"
-noremap <c-k> <c-w>k
-inoremap <expr> <c-k> pumvisible() ? "<c-p>" : "<c-w>k"
-noremap <c-l> <c-w>l
-noremap <c-h> <c-w>h
-
-" Toggle paste mode
-noremap <leader>vv <esc>:set paste<CR>i
-noremap <leader>nn <esc>:set nopaste<CR>
-
-" Search command history
-nnoremap Q <Esc>q:<C-U>?
-
-if has('win32')
-  nmap <C-/> <esc>q/?
-  vmap <C-/> <esc>q/?
-else
-  nmap <C-_> <esc>q/?
-  vmap <C-_> <esc>q/?
-endif
+source $HOME/.vimrc.maps
 
 " Scroll through searches. See here:
 " https://superuser.com/questions/345215/vim-how-do-you-efficiently-search-for-text#comment379095_345216
@@ -112,9 +84,6 @@ set timeout timeoutlen=300
 
 " set swapfiles to be in the .vim directory
 set directory=$HOME/.vim/swapfiles//
-
-nnoremap gz <C-W>\|<C-W>_
-nnoremap g= <C-W>=
 
 hi Search cterm=NONE ctermfg=white ctermbg=black
 

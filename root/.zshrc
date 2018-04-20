@@ -7,6 +7,9 @@ if [[ -n $VIMRUNTIME ]]; then
     return 0
 fi
 
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.cache/zshcompdump
+
 # tmux_automatically_attach attachs tmux session
 # automatically when your are in zsh
 if [[ -x ~/bin/tmuxx ]]; then

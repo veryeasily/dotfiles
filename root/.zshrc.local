@@ -1,20 +1,20 @@
 # vi: set ft=zsh :
-[[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
-[[ -f ~/.zsh_functions ]] && source ~/.zsh_functions
+# [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
+# [[ -f ~/.zsh_functions ]] && source ~/.zsh_functions
 
-bindkey -s "^@" "^["
+export EDITOR=vim
+zmodload zsh/zprof
+autoload edit-command-line
+zle -N edit-command-line
 
+bindkey -M vicmd v edit-command-line
+
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git"'
 # if [[ -n "$WSL_HACK" ]]; then
 #   unset WSL_HACK
 #   TERM="xterm-256color" tmux -2
 #   exit $?
 # fi
-
-zmodload zsh/zprof
-
-export EDITOR=vim
-
-bindkey "jk" vi-cmd-mode
 
 # Borrowed from
 # [here](https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2)
@@ -23,27 +23,16 @@ bindkey "jk" vi-cmd-mode
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git"'
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-rg_into_less() {
-  rg --pretty "$@" | less
-}
+bindkey -M vicmd "/" vi-history-search-backward
+bindkey -M vicmd "?" vi-history-search-forward
 
-alias tmuxdie="tmux kill-session -t 0"
-alias mux="tmuxinator"
-# alias lso="/bin/ls"
-# alias ls="exa"
-# alias latr="exa -la --sort date"
-alias el="exa -la"
-alias rgl="rg_into_less"
-alias vagrant="vagrant.exe"
+bindkey "jk" vi-cmd-mode
 
-# bindkey -M vicmd "/" vi-history-search-backward
-# bindkey -M vicmd "?" vi-history-search-forward
+export DISPLAY=:0
 
-# Remove ^Q command so vim can use it
-bindkey -r '^Q'
-
-alias sush="sudo ssh -F ~/.ssh/config"
+unalias run-help
+autoload -Uz run-help
+alias info="info --vi-keys"

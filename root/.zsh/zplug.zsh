@@ -9,7 +9,7 @@ zplug "~/.zsh", from:local, use:"<->_*.zsh"
 zplug 'dracula/zsh', as:theme
 zplug "rupa/z", use:"z.sh"
 zplug "zsh-users/zsh-completions"
-#zplug "zsh-users/zsh-history-substring-search", defer:3
+zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 zplug "glidenote/hub-zsh-completion"
@@ -26,11 +26,15 @@ zplug "junegunn/fzf-bin", \
     rename-to:"fzf", \
     frozen:1
 
+zplug "junegunn/fzf", \
+    from:github, \
+    use:"shell/*.zsh"
+
 zplug "BurntSushi/ripgrep", \
     from:gh-r, \
     as:command, \
     rename-to:rg, \
-    use:"*windows*"
+    use:"*x86_64-unknown-linux*"
 
 zplug 'knqyf263/pet', as:command, hook-build:'go get -d && go build'
 
@@ -38,10 +42,6 @@ zplug "philovivero/distribution", \
     as:command, \
     use:distribution, \
     if:'(( $+commands[perl] ))'
-
-zplug "mitmproxy/mitmproxy", \
-    as:command, \
-    hook-build:"sudo python ./setup.py install"
 
 zplug "wg/wrk", \
     as:command, \
@@ -57,13 +57,9 @@ zplug "jhawthorn/fzy", \
     as:command, \
     hook-build:"make && sudo make install"
 
-zplug 'andialbrecht/sqlparse', \
-    as:command, \
-    hook-build:'python setup.py install'
-
+# ZSH_AUTOSUGGEST_USE_ASYNC=true
+# 
 # zplug "zsh-users/zsh-autosuggestions"
-
-ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 # zplug 'b4b4r07/history', use:misc/zsh/init.zsh
 # if zplug check 'b4b4r07/history'; then

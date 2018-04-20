@@ -40,7 +40,7 @@ Plug 'othree/eregex.vim'
 
 " Colorschemes
 Plug 'flazz/vim-colorschemes'
-Plug 'altercation/vim-colors-solarized'
+Plug 'w0ng/vim-hybrid'
 
 Plug 'vim-airline/vim-airline'
 
@@ -132,7 +132,7 @@ call plug#end()
 
 set background=dark
 if &diff
-  colorscheme solarized
+  colorscheme hybrid
 else
   colorscheme solarized
 endif
