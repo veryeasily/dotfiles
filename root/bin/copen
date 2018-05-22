@@ -1,0 +1,7 @@
+#!/bin/bash
+##
+# Borrowed from
+# https://superuser.com/a/47216/157200
+#
+
+/mnt/c/Windows/System32/cmd.exe /c start chrome /new-window "$(wslpath -r -s -w "$@")"

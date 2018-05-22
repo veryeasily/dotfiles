@@ -1,0 +1,23 @@
+#!/bin/bash
+
+_launch-dwww() {
+  local search="$1"
+  local base='http://localhost:8080/cgi-bin/dwww'
+  local LAUNCH_PATH
+
+  if [[ "$search" ]]; then
+    printf "\nOpening dwww for $@ ...\n\n"
+    LAUNCH_PATH="${base}?search=$search&programsubmit=Search&searchtype=p"
+  else
+    printf "\nOpening dwww...\n\n"
+    LAUNCH_PATH="${base}"
+  fi
+
+  echo "LAUNCH_PATH=$LAUNCH_PATH"
+
+  /mnt/c/Windows/System32/cmd.exe /c start chrome /new-window "$LAUNCH_PATH"
+}
+
+_temparg=
+
+_launch-dwww "$(echo $@ | sed -r 's/[[:blank:]]+/%20/g')"

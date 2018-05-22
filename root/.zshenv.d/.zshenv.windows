@@ -1,1 +1,0 @@
-export BROWSER="/mnt/c/Windows/System32/cmd.exe /c 'start chrome /new-window %s'"

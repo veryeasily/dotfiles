@@ -31,3 +31,6 @@ endif
 
 nnoremap gz <C-W>\|<C-W>_
 nnoremap g= <C-W>=
+
+" Set up ALE toggle
+map <Leader>at <Plug>(ale_toggle_buffer)

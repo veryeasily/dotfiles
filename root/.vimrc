@@ -1,16 +1,15 @@
-""" PLUGIN RELATED STUFF
-
-function! Multiple_cursors_before()
-  let b:deoplete_disable_auto_complete = 1
-endfunction
-
-function! Multiple_cursors_after()
-    let b:deoplete_disable_auto_complete = 0
-endfunction
-
+" Setup plugins
 source ~/.vimrc.plug
 
-""" END PLUGIN RELATED STUFF
+" The next two lines are covered by vim-plug, so we don't need to do them.
+" filetype plugin indent on
+" syntax on
+
+set encoding=utf8 nobomb
+set binary
+
+
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 
 
 " Map leader keys
@@ -40,9 +39,6 @@ set statusline+=\ %P    "percent through file
 set showcmd " Display our current \[count\]
 set incsearch
 
-filetype plugin indent on
-syntax on
-
 " round << and >> to the nearest shiftwidth
 set shiftround
 
@@ -59,9 +55,14 @@ source $HOME/.vimrc.maps
 set autochdir
 set bs=indent,eol,start
 
-" Sets the ability for comments at the beginning of files to set vim
-" properties.
+" Respect modeline in files
 set modeline
+set modelines=4
+
+" Enable per-directory .vimrc files and disable unsafe commands in them
+set exrc
+set secure
+
 set hlsearch
 set ruler
 set sessionoptions-=options
@@ -82,8 +83,15 @@ set wildmenu
 " set's a reasonable timeout
 set timeout timeoutlen=300
 
-" set swapfiles to be in the .vim directory
-set directory=$HOME/.vim/swapfiles//
+" Centralize backups, swapfiles and undo history
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+if exists("&undodir")
+  set undodir=~/.vim/undo
+endif
+
+" Don’t create backups when editing files in certain directories
+set backupskip=/tmp/*,/private/tmp/*
 
 hi Search cterm=NONE ctermfg=white ctermbg=black
 

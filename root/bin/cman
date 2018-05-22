@@ -1,0 +1,5 @@
+#!/bin/bash
+man_path=$(man --where $1)
+man_file="$1.html"
+man2html $man_path >/mnt/c/Users/mores/.junk/$man_file
+copen /mnt/c/Users/mores/.junk/$man_file

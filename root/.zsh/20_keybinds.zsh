@@ -260,9 +260,3 @@
 # zle -N globalias
 # 
 # bindkey " " globalias
-
-bindkey "^@" vi-cmd-mode
-bindkey -s "^[l" "e -la^M"
-
-# Remove ^Q command so vim can use it
-bindkey -r '^Q'

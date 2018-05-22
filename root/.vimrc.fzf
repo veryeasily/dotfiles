@@ -11,16 +11,21 @@
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 command! -bar -bang MapsAll call fzf#vim#maps("", <bang>0)
 
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+command! -bang -nargs=* FZFSplit
+  \ call fzf#run({
+  \   'source': "rg --files --hidden --follow --glob '!.git/*' ./",
+  \   'sink': "split"
+  \ })
+
+command! -bang -nargs=* FZFVSplit
+  \ call fzf#run({
+  \   'source': "rg --files --hidden --follow --glob '!.git/*' ./",
+  \   'sink': "vsplit"
+  \ })
 
 nnoremap <silent> <Leader>C :call fzf#run({
       \   'source':
@@ -31,21 +36,21 @@ nnoremap <silent> <Leader>C :call fzf#run({
       \   'left':    30
       \ })<CR>
 
-function! s:find_root()
-  for vcs in ['.git', '.svn', '.hg']
-    let dir = finddir(vcs.'/..', ';')
-    if !empty(dir)
-      execute 'FZF' dir
-      return
-    endif
-  endfor
-  FZF
-endfunction
-command! FZFR call s:find_root()
+" function! s:find_root()
+"   for vcs in ['.git', '.svn', '.hg']
+"     let dir = FindRootDirectory()
+"     if !empty(dir)
+"       execute 'FZF' dir
+"       return
+"     endif
+"   endfor
+"   FZF
+" endfunction
+" command! FZFR call s:find_root()
 
 function! s:grep_find_root()
   for vcs in ['.git', '.svn', '.hg']
-    let dir = finddir(vcs.'/..', ';')
+    let dir = FindRootDirectory()
     if !empty(dir)
       call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" "" '. dir, 1)
       return
@@ -55,6 +60,8 @@ function! s:grep_find_root()
 endfunction
 command! FZFG call s:grep_find_root()
 
-noremap <leader>g <Esc>:<c-u>FZFG<cr>
+noremap <leader>g <Esc>:<c-u>Find<cr>
 noremap <leader>l <Esc>:<c-u>Lines<cr>
-noremap <leader>t :<C-u>FZFR<CR>
+noremap <leader>t <Esc>:<c-u>FZFVSplit<cr>
+noremap <leader>T <Esc>:<c-u>FZFSplit<cr>
+noremap <leader>u <Esc>:<c-u>FZFMru<cr>

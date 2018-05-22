@@ -10,6 +10,6 @@ search="$search%20$term"
 done
 
 OOG_PATH="http:\/\/www.google.com\/search?q=$search"
-CHROME_COMMAND="/mnt/c/Windows/System32/cmd.exe /c 'start chrome /new-window "
 
-/mnt/c/Windows/System32/cmd.exe /c 'start chrome /new-window '"$OOG_PATH"
+# /mnt/c/Windows/System32/cmd.exe /c start chrome /new-window "$OOG_PATH"
+/mnt/c/Windows/System32/cmd.exe /c start chrome "$OOG_PATH"

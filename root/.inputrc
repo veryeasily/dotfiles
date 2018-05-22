@@ -1,8 +1,8 @@
-set completion-ignore-case On
-set editing-mode vi
-set bell-style none
-
-$if mode=vi
-  set keymap vi-insert
-  "\C-j": vi-movement-mode
-  "jk": vi-movement-mode
+# set completion-ignore-case On
+# set editing-mode vi
+# set bell-style none
+# 
+# $if mode=vi
+#   set keymap vi-insert
+#   "\C-j": vi-movement-mode
+#   "jk": vi-movement-mode
