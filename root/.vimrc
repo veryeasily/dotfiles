@@ -1,5 +1,3 @@
-set nocompatible hidden " be iMproved
-
 """ PLUGIN RELATED STUFF
 
 function! Multiple_cursors_before()
@@ -11,6 +9,10 @@ function! Multiple_cursors_after()
 endfunction
 
 source ~/.vimrc.plug
+
+" set t_Co=256
+" set t_AB=^[[48;5;%dm
+" set t_AF=^[[38;5;%dm
 
 """ END PLUGIN RELATED STUFF
 
@@ -53,7 +55,8 @@ nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
 nnoremap gm m
 
 " Leave insert and visual mode more easily
-noremap! jk <Esc>`^
+" noremap! jk <Esc>`^
+noremap! jk <Esc>
 
 " Window navigation commands
 " noremap <c-j> <c-w>j
@@ -93,7 +96,7 @@ set grepformat=%f:%l:%c%m
 if &diff
   colorscheme jellyx
 else
-  colorscheme tender
+  colorscheme CandyPaper
 endif
 
 set autochdir
@@ -181,7 +184,7 @@ function! MacroInput(txt)
   return text
 endfunction
 
-source ~/.vim.fzf-vim-functions.vim
+source ~/.vimrc.fzf
 " source ~/.vimrc.highlights.vim
 
 set history=10000
@@ -191,6 +194,10 @@ set backupcopy=yes
 
 set gdefault
 
+set nu
+
 """""""""""""""""""""""""
 " END original ~/.vimrc "
 """"""""""""""""""""""""
+
+hi Normal guibg=NONE ctermbg=NONE

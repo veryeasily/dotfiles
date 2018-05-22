@@ -25,8 +25,16 @@ command! -bang -nargs=* Rg
 command! -bang -nargs=* FindFd
   \ call fzf#run({
   \   'source':
-  \     split(system("fd -a -t f '' \"./$(git rev-parse --show-cdup)\""), "\n"),
-  \   'sink':    'e',
+  \     split(system("rg --follow --files --hidden --glob '!.git/'"), "\n"),
+  \   'sink':    'vs',
+  \   'down':    '40%'
+  \  })
+
+command! -bang -nargs=* FindFdTwo
+  \ call fzf#run({
+  \   'source':
+  \     split(system("rg --follow --files --hidden --glob '!.git/'"), "\n"),
+  \   'sink':    'sp',
   \   'down':    '40%'
   \  })
 
@@ -47,5 +55,8 @@ command! FZFMru call fzf#run({
 
 noremap <leader>g <Esc>:<c-u>Find<cr>
 noremap <leader>l <Esc>:<c-u>Lines<cr>
-noremap <leader>t <Esc>:<c-u>FindFd<CR>
+noremap <leader>t <Esc>:<c-u>FZF<CR>
+noremap <leader>u <Esc>:<c-u>History<CR>
+" noremap <leader>t <Esc>:<c-u>FindFd<CR>
+noremap <leader>T <Esc>:<c-u>FindFdTwo<CR>
 noremap <leader>o <Esc>:<c-u>FZFMru<CR>

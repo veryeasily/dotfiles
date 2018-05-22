@@ -1,66 +1,67 @@
-# # See
-# # https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
+# bindkey -d
+
+# Return if zsh is called from Vim
+
+if [[ "$TERM" = "xterm" ]]; then TERM="xterm-256color" fi
+
+if [[ -n $VIMRUNTIME ]]; then
+    return 0
+fi
 alias tmux='TERM=xterm-256color tmux'
 
+# # See
+# # https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
+[[ -f ~/.dircolors ]] && eval "$(dircolors ~/.dircolors)"
+
 # Get into tmux if we aren't already
-[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session && exit;}
+[ -z "$TMUX"  ] && {exec tmux new-session && exit $?;}
 
-# Start actual zshrc here
-source ~/.fresh/build/shell.sh
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.cache/zshcompdump
 
-export EDITOR=vim
+# tmux_automatically_attach attachs tmux session
+# automatically when your are in zsh
+if [[ -x ~/bin/tmuxx ]]; then
+    ~/bin/tmuxx
+fi
 
-eval $(dircolors ~/.dircolors)
+if [[ -f ~/.zplug/init.zsh ]]; then
+    export ZPLUG_LOADFILE=~/.zsh/main.zsh
+    source ~/.zplug/init.zsh
 
-export DISABLE_LS_COLORS="true"
+    if ! zplug check --verbose; then
+        printf "Install? [y/N]: "
+        if read -q; then
+            echo; zplug install
+        fi
+        echo
+    fi
+    zplug load
+fi
 
-export ZSH=$HOME/.oh-my-zsh
+if [[ -f ~/.zshrc.local ]]; then
+    source ~/.zshrc.local
+fi
 
-export ZSH_THEME="gianu"
-
-plugins=(git ruby jump tmuxinator nvm rg zsh-navigation-tools vi-mode)
-
-source $ZSH/oh-my-zsh.sh
-source "$HOME"/.zshrc.tmux
-
-alias prettyjson='python -m json.tool'
-
-alias j='jump'
-
-export KEYTIMEOUT=20
-bindkey -v # Set vi command mode
-bindkey "jk" vi-cmd-mode
-bindkey -M vicmd v edit-command-line
-
-# [[ -e $(alias run-help)  ]] && unalias run-help
-# autoload run-help
-
-# alias dcms='docker-compose \
-#   -f /home/moresilenter/code/whitney-cms/docker-compose.yml \
-#   -f /home/moresilenter/code/whitney-cms/docker-compose.override.yml \
-#   -f /home/moresilenter/code/whitney-cms/docker-compose.debugging.override.yml'
-# 
-# alias dapi='docker-compose \
-#   -f /home/moresilenter/code/whitney-services/docker-compose.yml \
-#   -f /home/moresilenter/code/whitney-services/docker-compose.override.yml \
-#   -f /home/moresilenter/code/whitney-services/docker-compose.debugging.override.yml'
-
-autoload -U compinit && compinit
-
-# Borrowed from [here](https://wiki.gentoo.org/wiki/Zsh/Guide)
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
-
-# Borrowed from
-# [here](https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2)
-# --files: List files that would be searched but do not search
-# --no-ignore: Do not respect .gitignore, etc...
-# --hidden: Search hidden files and folders
-# --follow: Follow symlinks
-# --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-export FZF_DEFAULT_COMMAND='fd --type f'
+export GOPATH=$HOME/go
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias tmuxdie="tmux kill-session -t 0"
-alias mux="tmuxinator"
+# bindkey -M viins "^j" "tmux select-pane -D"
+# bindkey -M viins "^k" "tmux select-pane -U"
+# bindkey -M viins "^h" "tmux select-pane -L"
+# bindkey -M viins "^l" "tmux select-pane -R"
+
+source ~/.fzf/shell/completion.zsh
+source ~/.fzf/shell/key-bindings.zsh
+
+export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore-vcs'
+
+# Have to overwrite to make it use fd
+_fzf_compgen_path() {
+  echo "$1"
+  command fd --hidden --type file --no-ignore-vcs 2> /dev/null | sed 's@^\./@@'
+}
+# export FZF_COMPLETION_TRIGGER=''
+# bindkey '^T' fzf-completion
+# bindkey '^I' $fzf_default_completion

@@ -10,12 +10,7 @@ eval "$(rbenv init -)"
 
 # This loads nvm
 export NVM_DIR="$HOME/.nvm"
-
-function nvm {
-  . "$NVM_DIR/nvm.sh"
-  nvm use system
-  nvm $@
-}
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 if [[ -z "$VIM" ]]; then
   [[ -e "$NVM_DIR/nvm.sh" ]] && . "$NVM_DIR/nvm.sh"
