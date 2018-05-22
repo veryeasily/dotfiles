@@ -16,6 +16,11 @@ Plug 'junegunn/vim-peekaboo'
 let g:jsx_ext_required = 1
 Plug 'sheerun/vim-polyglot'
 
+let g:rooter_silent_chdir = 1
+Plug 'airblade/vim-rooter'
+
+Plug 'ap/vim-css-color'
+
 " TPope stuff
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
@@ -51,11 +56,20 @@ Plug 'ludovicchabant/vim-gutentags'
 " Test framework for vimscripts. See https://github.com/junegunn/vader.vim
 Plug 'junegunn/vader.vim'
 
+if v:version >= 800
+  Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'roxma/nvim-completion-manager'
+  let g:ale_open_list = 1
+
+  Plug 'w0rp/ale'
+endif
+
 " neovim specific
 if has('nvim')
+  let g:ale_open_list = 1
+
   Plug 'w0rp/ale'
 
-  " let g:ale_open_list = 1
   " let g:ale_list_window_size = 3
   
 
