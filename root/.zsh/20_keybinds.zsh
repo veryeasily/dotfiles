@@ -263,7 +263,9 @@
 
 bindkey "^@" vi-cmd-mode
 bindkey "jk" vi-cmd-mode
-bindkey -s "^[l" "e -la^M"
+bindkey -s "^[l" "e -a^M"
+bindkey "^[;" execute-named-cmd
+
 
 # Remove ^Q command so vim can use it
 bindkey -r '^Q'

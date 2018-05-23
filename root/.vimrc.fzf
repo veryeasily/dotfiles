@@ -55,8 +55,24 @@ command! FZFMru call fzf#run({
 
 noremap <leader>g <Esc>:<c-u>Find<cr>
 noremap <leader>l <Esc>:<c-u>Lines<cr>
-noremap <leader>t <Esc>:<c-u>FZF<CR>
+" noremap <leader>t <Esc>:<c-u>FZF<CR>
 noremap <leader>u <Esc>:<c-u>History<CR>
 " noremap <leader>t <Esc>:<c-u>FindFd<CR>
 noremap <leader>T <Esc>:<c-u>FindFdTwo<CR>
 noremap <leader>o <Esc>:<c-u>FZFMru<CR>
+
+function! FzyCommand(choice_command, vim_command)
+  try
+    let output = system(a:choice_command . " | fzy ")
+  catch /Vim:Interrupt/
+    " Swallow errors from ^C, allow redraw! below
+  endtry
+  redraw!
+  if v:shell_error == 0 && !empty(output)
+    exec a:vim_command . ' ' . output
+  endif
+endfunction
+
+nnoremap <leader>fe :call FzyCommand("fd --no-ignore-vcs --type file --hidden", ":e")<cr>
+nnoremap <leader>fv :call FzyCommand("fd --no-ignore-vcs --type file --hidden", ":vs")<cr>
+nnoremap <leader>fx :call FzyCommand("fd --no-ignore-vcs --type file --hidden", ":sp")<cr>
