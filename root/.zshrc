@@ -4,9 +4,9 @@
 
 if [[ "$TERM" = "xterm" ]]; then TERM="xterm-256color" fi
 
-if [[ -n $VIMRUNTIME ]]; then
-    return 0
-fi
+# if [[ -n $VIMRUNTIME ]]; then
+#     return 0
+# fi
 alias tmux='TERM=xterm-256color tmux'
 
 # # See
@@ -14,7 +14,7 @@ alias tmux='TERM=xterm-256color tmux'
 [[ -f ~/.dircolors ]] && eval "$(dircolors ~/.dircolors)"
 
 # Get into tmux if we aren't already
-[ -z "$TMUX"  ] && {exec tmux new-session && exit $?;}
+[ -z ${TMUX+x}  ] && {exec tmux new-session && exit $?;}
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.cache/zshcompdump
