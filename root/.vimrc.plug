@@ -12,6 +12,8 @@ Plug 'junegunn/fzf', { 'dir': $HOME . '/.fzf', 'do': 'yes \| ./install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 
+Plug 'pbogut/fzf-mru.vim'
+
 " Syntax highlighting
 let g:jsx_ext_required = 1
 Plug 'sheerun/vim-polyglot'

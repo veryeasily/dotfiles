@@ -22,22 +22,6 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
-command! -bang -nargs=* FindFd
-  \ call fzf#run({
-  \   'source':
-  \     split(system("rg --follow --files --hidden --glob '!.git/'"), "\n"),
-  \   'sink':    'vs',
-  \   'down':    '40%'
-  \  })
-
-command! -bang -nargs=* FindFdTwo
-  \ call fzf#run({
-  \   'source':
-  \     split(system("rg --follow --files --hidden --glob '!.git/'"), "\n"),
-  \   'sink':    'sp',
-  \   'down':    '40%'
-  \  })
-
 nnoremap <silent> <Leader>C :call fzf#run({
       \   'source':
       \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
@@ -55,24 +39,22 @@ command! FZFMru call fzf#run({
 
 noremap <leader>g <Esc>:<c-u>Find<cr>
 noremap <leader>l <Esc>:<c-u>Lines<cr>
-" noremap <leader>t <Esc>:<c-u>FZF<CR>
-noremap <leader>u <Esc>:<c-u>History<CR>
-" noremap <leader>t <Esc>:<c-u>FindFd<CR>
-noremap <leader>T <Esc>:<c-u>FindFdTwo<CR>
-noremap <leader>o <Esc>:<c-u>FZFMru<CR>
+noremap <leader>o <Esc>:<c-u>History<CR>
+noremap <leader>u <Esc>:<c-u>FZFMru<CR>
+noremap <leader>t <Esc>:<c-u>FZF<CR>
 
-function! FzyCommand(choice_command, vim_command)
-  try
-    let output = system(a:choice_command . " | fzy ")
-  catch /Vim:Interrupt/
-    " Swallow errors from ^C, allow redraw! below
-  endtry
-  redraw!
-  if v:shell_error == 0 && !empty(output)
-    exec a:vim_command . ' ' . output
-  endif
-endfunction
+" function! FzyCommand(choice_command, vim_command)
+"   try
+"     let output = system(a:choice_command . " | fzy ")
+"   catch /Vim:Interrupt/
+"     " Swallow errors from ^C, allow redraw! below
+"   endtry
+"   redraw!
+"   if v:shell_error == 0 && !empty(output)
+"     exec a:vim_command . ' ' . output
+"   endif
+" endfunction
 
-nnoremap <leader>fe :call FzyCommand("fd --no-ignore-vcs --type file --hidden", ":e")<cr>
-nnoremap <leader>fv :call FzyCommand("fd --no-ignore-vcs --type file --hidden", ":vs")<cr>
-nnoremap <leader>fx :call FzyCommand("fd --no-ignore-vcs --type file --hidden", ":sp")<cr>
+" nnoremap <leader>t :call FzyCommand("fd --no-ignore-vcs --type file --hidden", ":e")<cr>
+" nnoremap <leader>v :call FzyCommand("fd --no-ignore-vcs --type file --hidden", ":vs")<cr>
+" nnoremap <leader>x :call FzyCommand("fd --no-ignore-vcs --type file --hidden", ":sp")<cr>

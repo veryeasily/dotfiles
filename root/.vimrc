@@ -93,10 +93,12 @@ noremap <Leader>s/ <Esc>:History/<CR>
 set grepprg=ag\ --nogroup\ --nocolor\ --column
 set grepformat=%f:%l:%c%m
 
+set background=dark
+
 if &diff
   colorscheme jellyx
 else
-  colorscheme CandyPaper
+  colorscheme PaperColor
 endif
 
 set autochdir
