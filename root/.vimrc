@@ -9,13 +9,7 @@ function! Multiple_cursors_after()
 endfunction
 
 source ~/.vimrc.plug
-
-" set t_Co=256
-" set t_AB=^[[48;5;%dm
-" set t_AF=^[[38;5;%dm
-
 """ END PLUGIN RELATED STUFF
-
 
 " Map leader keys
 let mapleader = ","
@@ -68,12 +62,7 @@ inoremap <expr> <c-j> pumvisible() ? "<c-n>" : "<c-j>"
 inoremap <expr> <c-k> pumvisible() ? "<c-p>" : "<c-k>"
 
 " Toggle paste mode
-noremap <leader>vv <esc>:set paste<CR>i
-noremap <leader>nn <esc>:set nopaste<CR>
-
-" Search command history
-noremap <Leader>sq <Esc>:History:<CR>
-noremap <Leader>s/ <Esc>:History/<CR>
+set pastetoggle=<F2>
 
 " if has('win32')
 "   nmap <C-/> <esc>q/?
@@ -93,8 +82,13 @@ noremap <Leader>s/ <Esc>:History/<CR>
 set grepprg=ag\ --nogroup\ --nocolor\ --column
 set grepformat=%f:%l:%c%m
 
-set background=dark
+" set Vim-specific sequences for RGB colors
+" Borrowed from https://github.com/vim/vim/issues/993
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
+set termguicolors
+set background=light
 if &diff
   colorscheme jellyx
 else
@@ -128,12 +122,18 @@ set wildmenu
 set timeout timeoutlen=300
 
 " set swapfiles to be in the .vim directory
-set directory=$HOME/.vim/swapfiles//
+" set directory=$HOME/.vim/swapfiles//
 
 nnoremap gz <C-W>\|<C-W>_
 nnoremap g= <C-W>=
 
-hi Search cterm=NONE ctermfg=white ctermbg=black
+" Centralize backups, swapfiles and undo history
+set backupdir=$HOME/.vim/backups
+set directory=$HOME/.vim/swaps
+if exists("&undodir")
+  set undofile
+  set undodir=$HOME/.vim/undo
+endif
 
 " Enable autowrapping while editing files
 au BufNewFile,BufRead * setlocal formatoptions=crqn
