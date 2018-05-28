@@ -44,7 +44,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 
 " Colorschemes
-Plug 'jacoborus/tender.vim'
+" Plug 'jacoborus/tender.vim'
+" Plug 'flazz/vim-colorschemes'
+Plug 'rakr/vim-one'
 Plug 'flazz/vim-colorschemes'
 
 Plug 'vim-airline/vim-airline'
