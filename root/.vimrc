@@ -82,19 +82,6 @@ set pastetoggle=<F2>
 set grepprg=ag\ --nogroup\ --nocolor\ --column
 set grepformat=%f:%l:%c%m
 
-" set Vim-specific sequences for RGB colors
-" Borrowed from https://github.com/vim/vim/issues/993
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-set termguicolors
-set background=light
-if &diff
-  colorscheme jellyx
-else
-  colorscheme PaperColor
-endif
-
 set autochdir
 set bs=indent,eol,start
 
@@ -202,4 +189,19 @@ set nu
 " END original ~/.vimrc "
 """"""""""""""""""""""""
 
-hi Normal guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
+
+"""
+" COLORS
+set background=light
+" set Vim-specific sequences for RGB colors
+" Borrowed from https://github.com/vim/vim/issues/993
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" set termguicolors
+if &diff
+  silent! colorscheme jellyx
+else
+  silent! colorscheme PaperColor
+endif
