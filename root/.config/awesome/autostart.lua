@@ -25,7 +25,8 @@ run_once("volti")
 run_once("blueman-applet")
 
 -- change monitor colors at night
-run_once("fluxgui")
+-- @veryeasily Tue May 29 14:13:40 PDT 2018 - flux doesn't work on my computer
+-- run_once("fluxgui")
 
 --- compositing for transparency
 run_once("unagi")
