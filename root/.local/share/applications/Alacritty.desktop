@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+TryExec=/usr/local/bin/alacritty
+Exec=/usr/local/bin/alacritty
+Icon=custom-alacritty-logo
+Terminal=false
+X-Catagories=System;TerminalEmulator
+Name=Alacritty
+GenericName=Terminal
+Comment=A cross-platform, GPU enhanced terminal emulator
+StartupWMClass=Alacritty
