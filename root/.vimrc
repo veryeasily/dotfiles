@@ -1,4 +1,5 @@
 """ PLUGIN RELATED STUFF
+set nocompatible
 
 function! Multiple_cursors_before()
   let b:deoplete_disable_auto_complete = 1
@@ -9,6 +10,7 @@ function! Multiple_cursors_after()
 endfunction
 
 source ~/.vimrc.plug
+set nocompatible
 """ END PLUGIN RELATED STUFF
 
 " Map leader keys
@@ -173,6 +175,7 @@ function! MacroInput(txt)
   return text
 endfunction
 
+set nocompatible
 source ~/.vimrc.fzf
 " source ~/.vimrc.highlights.vim
 
@@ -196,12 +199,15 @@ set nu
 set background=light
 " set Vim-specific sequences for RGB colors
 " Borrowed from https://github.com/vim/vim/issues/993
-" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-" set termguicolors
+set termguicolors
 if &diff
   silent! colorscheme jellyx
 else
-  silent! colorscheme PaperColor
+  silent! colorscheme Light
 endif
+
+hi Normal ctermbg=NONE guibg=NONE
+
