@@ -13,7 +13,7 @@ end
 run_once("syndaemon -i 1 -d  -t -K")
 
 -- keyboard mappings (ie: capslock->ctrl)
-run_once("xmodmap ~/.Xmodmap")
+run_once("~/scripts/reassign-caps-lock.sh")
 
 -- gnome-network-manager
 run_once("nm-applet")
