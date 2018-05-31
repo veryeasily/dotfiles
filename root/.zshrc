@@ -11,7 +11,7 @@ alias tmux='TERM=xterm-256color tmux'
 
 # # See
 # # https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
-[[ -e ~/.dircolors ]] && eval "$(dircolors ~/.dircolors)"
+[[ -e ~/.dircolors ]] && eval "$(dircolors "$HOME/.dircolors")"
 
 # Get into tmux if we aren't already
 [ -z ${TMUX+x}  ] && {exec tmux new-session && exit $?;}

@@ -192,22 +192,21 @@ set nu
 " END original ~/.vimrc "
 """"""""""""""""""""""""
 
-" hi Normal guibg=NONE ctermbg=NONE
+if &diff
+  silent! colorscheme jellyx
+else
+  silent! colorscheme gruvbox
+endif
 
 """
 " COLORS
 set background=light
 " set Vim-specific sequences for RGB colors
 " Borrowed from https://github.com/vim/vim/issues/993
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+silent! let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+silent! let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
 
 set termguicolors
-if &diff
-  silent! colorscheme jellyx
-else
-  silent! colorscheme Light
-endif
-
 hi Normal ctermbg=NONE guibg=NONE
-
+hi NonText ctermbg=NONE guibg=NONE

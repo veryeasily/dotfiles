@@ -78,7 +78,7 @@ font:
     # Style can be specified to pick a specific face.
 
   # Point size of the font
-  size: 12.0
+  size: 14.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -164,33 +164,33 @@ colors:
 #     white:   '0x3c3836'
 
 ## Colors (Seagull)
-#colors:
-#  # Default colors
-#  primary:
-#    background: '0xffffff'
-#    foreground: '0x61707a'
-#
-#  # Normal colors
-#  normal:
-#    black:   '0x0b141a'
-#    red:     '0xff4053'
-#    green:   '0x11ab00'
-#    yellow:  '0xbf8c00'
-#    blue:    '0x0099ff'
-#    magenta: '0x9854ff'
-#    cyan:    '0x00a5ab'
-#    white:   '0xffffff'
-#
-#  # Bright colors
-#  bright:
-#    black:   '0x0b141a'
-#    red:     '0xff4053'
-#    green:   '0x11ab00'
-#    yellow:  '0xbf8c00'
-#    blue:    '0x0099ff'
-#    magenta: '0x9854ff'
-#    cyan:    '0x00a5ab'
-#    white:   '0xffffff'
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0xffffff'
+#     foreground: '0x61707a'
+# 
+#   # Normal colors
+#   normal:
+#     black:   '0x0b141a'
+#     red:     '0xff4053'
+#     green:   '0x11ab00'
+#     yellow:  '0xbf8c00'
+#     blue:    '0x0099ff'
+#     magenta: '0x9854ff'
+#     cyan:    '0x00a5ab'
+#     white:   '0xffffff'
+# 
+#   # Bright colors
+#   bright:
+#     black:   '0x0b141a'
+#     red:     '0xff4053'
+#     green:   '0x11ab00'
+#     yellow:  '0xbf8c00'
+#     blue:    '0x0099ff'
+#     magenta: '0x9854ff'
+#     cyan:    '0x00a5ab'
+#     white:   '0xffffff'
 
 # Visual Bell
 #
@@ -219,7 +219,7 @@ visual_bell:
   duration: 0
 
 # Background opacity
-background_opacity: 0.75
+background_opacity: 0.9
 
 # Mouse bindings
 #

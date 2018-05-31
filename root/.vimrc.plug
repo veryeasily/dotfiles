@@ -5,7 +5,7 @@ let g:tern_map_prefix='<space>'
 let g:tern_request_timeout = 2
 let g:tern_show_argument_hints="on_move"
 
-" Plug 'jreybert/vimagit'
+Plug 'jreybert/vimagit'
 
 " Make sure you use single quotes
 Plug 'junegunn/fzf', { 'dir': $HOME . '/.fzf', 'do': 'yes \| ./install --all' }
@@ -40,22 +40,25 @@ Plug 'mattn/emmet-vim'
 Plug 'moll/vim-node'
 Plug 'othree/html5.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 
 Plug 'terryma/vim-multiple-cursors'
 
 " Colorschemes
-" Plug 'jacoborus/tender.vim'
-" Plug 'flazz/vim-colorschemes'
+Plug 'jacoborus/tender.vim'
 Plug 'rakr/vim-one'
-Plug 'flazz/vim-colorschemes'
+" Plug 'flazz/vim-colorschemes'
+let g:gruvbox_contrast_light="hard"
+Plug 'morhetz/gruvbox'
 
 Plug 'vim-airline/vim-airline'
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
 
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 " Test framework for vimscripts. See https://github.com/junegunn/vader.vim
 Plug 'junegunn/vader.vim'

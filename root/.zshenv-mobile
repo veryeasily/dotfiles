@@ -1,9 +1,40 @@
 # export ZSH_TMUX_AUTOSTART="true"
 # export ZSH_TMUX_FIXTERM="true"
 # export COMPOSE_HTTP_TIMEOUT="10000"
+
+typeset -gx -U path
+path=( \
+    ~/bin(N-/) \
+    ~/.zplug/bin(N-/) \
+    ~/.tmux/bin(N-/) \
+    "$path[@]" \
+    )
+
+# NOTE: set fpath before compinit
+typeset -gx -U fpath
+fpath=( \
+    ~/.zsh/completion(N-/) \
+    ~/.zsh/functions(N-/) \
+    ~/.zsh/plugins/zsh-completions(N-/) \
+    /usr/local/share/zsh/site-functions(N-/) \
+    $fpath \
+)
+# 
+# # autoload
+autoload -Uz run-help
+autoload -Uz add-zsh-hook
+autoload -Uz colors && colors
+autoload -Uz compinit && compinit -u
+autoload -Uz is-at-least
+
 export EDITOR=vim
 export PAGER=less
 export LESS="-isRM"
+
+if [[ -z "$XDG_DATA_HOME" ]]; then
+  export XDG_DATA_HOME="$HOME/.local/share"
+  [[ -e "$XDG_DATA_HOME" ]] ||  mkdir -p "$XDG_DATA_HOME"
+fi
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
