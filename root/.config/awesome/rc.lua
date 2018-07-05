@@ -1,3 +1,14 @@
+-- Override awesome.quit when we're using GNOME
+_awesome_quit = awesome.quit
+awesome.quit = function()
+    if os.getenv("DESKTOP_SESSION") == "awesome-gnome" then
+       os.execute("/usr/bin/gnome-session-quit") -- for Ubuntu 14.04
+       os.execute("pkill -9 gnome-session") -- I use this on Ubuntu 16.04
+    else
+    _awesome_quit()
+    end
+end
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -21,6 +32,9 @@ require("autostart")
 
 -- Load Debian menu entries
 local debian = require("debian.menu")
+
+-- See https://github.com/lcpz/awesome-freedesktop/wiki
+local freedesktop = require("freedesktop")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -112,11 +126,15 @@ myawesomemenu = {
    { "quit", function() awesome.quit() end}
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "open terminal", terminal }
-                                  }
-                        })
+mymainmenu = freedesktop.menu.build({
+    before = {
+      { "awesome", myawesomemenu, beautiful.awesome_icon },
+      { "Debian", debian.menu.Debian_menu.Debian }
+    },
+    after = {
+      { "open terminal", terminal }
+    }
+})
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
@@ -134,7 +152,7 @@ local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = awful.widget.textclock(" %a %b %d, %l:%M%P   ", 15)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(

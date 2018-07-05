@@ -147,3 +147,4 @@ alias sushi="sudo ssh -F ~/.ssh/config"
 alias j='jump'
 
 alias ls='exa --group-directories-first'
+alias l='ls -la'

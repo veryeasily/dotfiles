@@ -88,10 +88,10 @@ function make_global_keys(modkey)
             function () awful.util.spawn("mediacontrol PlayPause") end
         ),
         awful.key({}, "Print",
-            function () awful.util.spawn("/home/mors/bin/sharenix-window") end
+            function () awful.util.spawn("/home/mors/bin/screenshot") end
         ),
         awful.key({ "Shift" }, "Print",
-            function () awful.util.spawn("/home/mors/bin/sharenix-section") end
+            function () awful.util.spawn("/home/mors/bin/sharenix-window") end
         ),
         awful.key({ modkey, "Shift" }, "Print",
             function () awful.util.spawn("/home/mors/bin/sharenix-record") end

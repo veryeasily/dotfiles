@@ -56,16 +56,14 @@ fi
 # More info here:
 # https://github.com/yarnpkg/yarn/issues/648
 export PATH="$HOME/.yarn/bin:$PATH"
-
-# export PYENV_ROOT="$HOME/.pyenv"
-
 export PATH="$HOME/.cargo/bin:${PATH}:/home/mors/bin"
-
 if command -v go 1>/dev/null 2>&1; then
   export GOPATH="$HOME/go"
   export PATH="$PATH:$(go env GOPATH)/bin"
 fi
-
-# if command -v pyenv 1>/dev/null 2>&1; then
-#   eval "$(pyenv init -)"
-# fi
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if ! command -v pyenv 1>/dev/null 2>&1; then
+  git clone git@github.com:pyenv/pyenv.git ~/.pyenv
+fi
+eval "$(pyenv init -)"

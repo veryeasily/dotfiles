@@ -14,7 +14,7 @@ alias tmux='TERM=xterm-256color tmux'
 [[ -e ~/.dircolors ]] && eval "$(dircolors "$HOME/.dircolors")"
 
 # Get into tmux if we aren't already
-[ -z ${TMUX+x}  ] && {exec tmux new-session && exit $?;}
+# [ -z ${TMUX+x}  ] && {exec tmux new-session && exit $?;}
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.cache/zshcompdump
@@ -55,7 +55,7 @@ export GOPATH=$HOME/go
 source ~/.fzf/shell/completion.zsh
 source ~/.fzf/shell/key-bindings.zsh
 
-export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore-vcs'
+export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore-vcs --ignore-file /home/mors/.ignore' 
 
 # Have to overwrite to make it use fd
 _fzf_compgen_path() {
