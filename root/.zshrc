@@ -14,7 +14,7 @@ alias tmux='TERM=xterm-256color tmux'
 [[ -e ~/.dircolors ]] && eval "$(dircolors "$HOME/.dircolors")"
 
 # Get into tmux if we aren't already
-# [ -z ${TMUX+x}  ] && {exec tmux new-session && exit $?;}
+[ -z ${TMUX+x}  ] && {exec tmux new-session && exit $?;}
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.cache/zshcompdump
@@ -29,13 +29,13 @@ if [[ -f ~/.zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=~/.zsh/main.zsh
     source ~/.zplug/init.zsh
 
-    if ! zplug check --verbose; then
-        printf "Install? [y/N]: "
-        if read -q; then
-            echo; zplug install
-        fi
-        echo
-    fi
+    # if ! zplug check --verbose; then
+    #     printf "Install? [y/N]: "
+    #     if read -q; then
+    #         echo; zplug install
+    #     fi
+    #     echo
+    # fi
     zplug load
 fi
 

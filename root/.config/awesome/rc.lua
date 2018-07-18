@@ -152,7 +152,7 @@ local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = awful.widget.textclock(" %a %b %d, %l:%M%P   ", 15)
+mytextclock = wibox.widget.textclock(" %a %b %d, %l:%M%P   ", 15)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(

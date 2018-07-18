@@ -23,7 +23,6 @@ Plug 'airblade/vim-rooter'
 
 Plug 'ap/vim-css-color'
 
-Plug 'vim-vdebug/vdebug'
 
 " TPope stuff
 Plug 'tpope/vim-bundler'
@@ -57,10 +56,14 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
 
-Plug 'ludovicchabant/vim-gutentags'
+if has('python3')
+  Plug 'vim-vdebug/vdebug'
+  Plug 'ludovicchabant/vim-gutentags'
+end
 Plug 'majutsushi/tagbar'
 
 Plug 'sheerun/vim-polyglot'
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'mxw/vim-jsx'
 
 " Test framework for vimscripts. See https://github.com/junegunn/vader.vim
