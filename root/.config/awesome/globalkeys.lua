@@ -17,9 +17,9 @@ end
 
 local naughtybightid = nil
 function change_brightness(how)
-    os.execute("xbacklight " .. how)
-    awful.spawn.with_line_callback("xbacklight", {
-        stdout = function (line) 
+    os.execute("light " .. how)
+    awful.spawn.with_line_callback("light", {
+        stdout = function (line)
             naughtybrightid = naughty.notify({
                 text = string.format("%0.1f%%", tonumber(line)),
                 title = "Brightness",
@@ -53,16 +53,16 @@ function make_global_keys(modkey)
     
         -- Brightness
         awful.key({ }, "XF86MonBrightnessUp",
-            function() change_brightness("+5%") end
+            function() change_brightness("-A 5") end
         ),
         awful.key({ }, "XF86MonBrightnessDown",
-            function() change_brightness("-5%") end
+            function() change_brightness("-U 5") end
         ),
         awful.key({ "Shift"}, "XF86MonBrightnessUp",
-            function() change_brightness("+1%") end
+            function() change_brightness("-A 1") end
         ),
         awful.key({ "Shift"}, "XF86MonBrightnessDown",
-            function() change_brightness("-1%") end
+            function() change_brightness("-U 1") end
         ),
     
         -- Lock

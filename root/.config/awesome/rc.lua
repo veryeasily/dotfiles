@@ -3,7 +3,7 @@ _awesome_quit = awesome.quit
 awesome.quit = function()
     if os.getenv("DESKTOP_SESSION") == "awesome-gnome" then
        os.execute("/usr/bin/gnome-session-quit") -- for Ubuntu 14.04
-       os.execute("pkill -9 gnome-session") -- I use this on Ubuntu 16.04
+       -- os.execute("pkill -9 gnome-session") -- I use this on Ubuntu 16.04
     else
     _awesome_quit()
     end
@@ -82,11 +82,11 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
+    awful.layout.suit.floating,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,

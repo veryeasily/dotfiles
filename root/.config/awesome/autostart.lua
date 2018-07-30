@@ -31,3 +31,5 @@ run_once("xmodmap ~/.Xmodmap")
 
 --- compositing for transparency
 run_once("unagi")
+
+run_once("unclutter -idle 2 -root")

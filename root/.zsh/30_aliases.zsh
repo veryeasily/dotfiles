@@ -46,7 +46,6 @@ alias lr='ls -lR'          # Recursive ls
 # The ubiquitous 'll': directories first, with alphanumeric sorting:
 #alias ll='ls -lv --group-directories-first'
 
-alias cp="${ZSH_VERSION:+nocorrect} cp -i"
 alias mv="${ZSH_VERSION:+nocorrect} mv -i"
 alias mkdir="${ZSH_VERSION:+nocorrect} mkdir"
 
