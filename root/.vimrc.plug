@@ -43,9 +43,6 @@ Plug 'mattn/emmet-vim'
 Plug 'moll/vim-node'
 Plug 'othree/html5.vim'
 
-" This is a very slow plugin, so disabled
-" Plug 'scrooloose/nerdtree'
-
 Plug 'scrooloose/nerdcommenter'
 
 " Colorschemes
@@ -71,33 +68,20 @@ Plug 'mxw/vim-jsx'
 " Test framework for vimscripts. See https://github.com/junegunn/vader.vim
 Plug 'junegunn/vader.vim'
 
+let g:ale_enabled = 1
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 'on_save'
+
 if v:version >= 800
   Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'roxma/nvim-completion-manager'
-  let g:ale_enabled = 1
-  let g:ale_set_quickfix = 1
-  let g:ale_open_list = 'on_save'
-
-  breakadd here
-
   Plug 'w0rp/ale'
 endif
 
 " neovim specific
 if has('nvim')
-  let g:ale_open_list = 1
-
   Plug 'w0rp/ale'
-
-  " let g:ale_list_window_size = 3
   
-
-  " let g:deoplete#enable_at_startup = 1
-  " if !exists('g:deoplete#omni#input_patterns')
-  "   let g:deoplete#omni#input_patterns = {}
-  " endif
-  " " let g:deoplete#disable_auto_complete = 1
-  " " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
   set completeopt=longest,menuone,preview
 
@@ -106,58 +90,8 @@ if has('nvim')
   Plug 'roxma/ncm-flow'
   Plug 'roxma/ncm-github'
 
-  " let g:deoplete#omni#functions = {}
-
-  " let g:deoplete#sources = {}
-  " let g:tern#command = ['tern']
-  " let g:deoplete#sources['javascript.jsx'] = ['file', 'ternjs']
-  " let g:tern#arguments = ['--persistent']
-
-  " let g:deoplete#sources#ternjs#types = 1
-  " let g:deoplete#sources#ternjs#docs = 1
-  " let g:deoplete#sources#ternjs#case_insensitive = 1
-
-  " let g:deoplete#omni#functions.javascript = [
-  "   \ 'tern#Complete',
-  "   \ 'jspc#omni'
-  " \ ]
-
-  " let g:deoplete#complete_method = 'omnifunc'
-
-  " let g:SuperTabClosePreviewOnPopupClose = 1
-
-  " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-  " Plug 'ervandew/supertab'
-  " autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
-  " function! DoRemote(arg)
-  "   UpdateRemotePlugins
-  " endfunction
-
-  " Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-  " Plug 'Shougo/neco-vim'
-  " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-
-  "  Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-
-  " augroup omnifuncs
-  "   autocmd!
-  "   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  "   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  "   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  "   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  "   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  " augroup end
-  " tern
-  " if exists('g:plugs["tern_for_vim"]')
-  "   let g:tern_show_argument_hints = 'on_hold'
-  "   let g:tern_show_signature_in_pum = 1
-  "   autocmd FileType javascript setlocal omnifunc=tern#Complete
-  " endif
-
-  set undodir=~/.config/nvim/undodir
-  set undofile
+  " There used to be tons of deoplete, tern, and supertab stuff here! Check the
+  " git history for more info!
 endif
 call plug#end()
 
@@ -179,15 +113,8 @@ let g:marvim_find_key = '<leader>M'
 autocmd FileType html,css,javascript.jsx,typescript.tsx EmmetInstall
 autocmd FileType html,css,eruby EmmetInstall
 
-let g:ag_working_path_mode='r'
-
-" NERDTree popup
-
-" NERDTree config
-" see: https://github.com/scrooloose/nerdtree#faq
-" autocmd VimEnter * if argc() != 0 || exists("s:std_in") | wincmd p | endif
-" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" All the NERDTree stuff used to be here on opening when vim just opens a
+" folder. Check the git history for more info!
 
 function! s:fzf_statusline()
   " Override statusline as you like
