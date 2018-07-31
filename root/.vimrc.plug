@@ -59,7 +59,6 @@ Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javasc
 if has('python3')
   Plug 'ludovicchabant/vim-gutentags'
 end
-Plug 'majutsushi/tagbar'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'ekalinin/Dockerfile.vim'
@@ -70,7 +69,9 @@ Plug 'junegunn/vader.vim'
 
 let g:ale_enabled = 1
 let g:ale_set_quickfix = 1
-let g:ale_open_list = 'on_save'
+let g:ale_lint_delay = 600
+let g:ale_lint_on_enter = 0
+map <Leader>ad <Plug>(ale_detail)
 
 if v:version >= 800
   Plug 'roxma/vim-hug-neovim-rpc'
