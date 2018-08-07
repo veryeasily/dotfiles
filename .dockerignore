@@ -1,2 +1,8 @@
 root/.vim/plugged
 root/.oh-my-zsh
+root/.vim/swaps/*
+root/.vim/undo/*
+root/.vim/backups/*
+!root/.vim/swaps/.keep
+!root/.vim/undo/.keep
+!root/.vim/backups/.keep

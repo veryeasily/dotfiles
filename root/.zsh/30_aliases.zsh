@@ -133,7 +133,11 @@ alias -g HL=' 2>&1 | less'
 
 # END copied stuff
 
-alias e='exa'
+if command -v exa &>/dev/null; then
+  alias e='exa'
+  alias ls='exa --group-directories-first'
+fi
+
 alias _='sudo'
 
 alias tmuxdie="tmux kill-session -t 0"
@@ -145,5 +149,4 @@ alias sushi="sudo ssh -F ~/.ssh/config"
 
 alias j='jump'
 
-alias ls='exa --group-directories-first'
 alias l='ls -la'

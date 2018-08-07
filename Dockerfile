@@ -1,7 +1,7 @@
 FROM debian:9.5
 RUN apt-get update \
-      && apt-get install -y wget curl vim-nox git zsh libncurses5-dev \
-                            python3-pip \
+      && apt-get install -y wget curl build-essential git zsh libncurses5-dev \
+                            python3-pip locales \
       && mkdir -p /root/.vim/autoload /root/.vim/undo /root/.vim/backups \
                   /root/.vim/swaps \
       && mkdir -p /tmp/downloads \
@@ -10,20 +10,20 @@ RUN apt-get update \
       && tar -zxvf ripgrep-0.8.1-x86_64-unknown-linux-musl.tar.gz \
       && cd ripgrep-0.8.1-x86_64-unknown-linux-musl \
       && mv rg /usr/bin/rg && mv ./doc/rg.1 /usr/share/man/man1/rg.1 \
-      && cd /tmp/downloads \
-      && wget https://github.com/vim/vim/archive/v8.1.0240.tar.gz \
-      && tar -zxvf v8.1.0240.tar.gz && cd v8.1.0240.tar.gz \
-      && ./configure && make && make install \
-      && cd /root && rm -rf /tmp/downloads \
-      && git clone https://github.com/zplug/zplug .zplug
+      && cd /tmp/downloads
+
+COPY ["tools", "/tmp/downloads"]
+RUN cd /tmp/downloads && ./install-vim.sh && ./install-tmux.sh
 
 WORKDIR /root
 ADD ["root", "/root/"]
-RUN tic ./screen-256color.ti && rm screen-256color.ti \
-  && vim +PlugInstall +qall
-
-RUN apt-get clean
-
+RUN chown -R root:root /root/.ssh && vim +PlugInstall +qall \
+      && git clone git@github.com:zplug/zplug.git /root/.zplug \
+      && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+      && locale-gen \
+      && apt-get clean
+ENV LANG=en_US.UTF-8  LANGUAGE=en_US:en  LC_ALL=en_US.UTF-8  
 ENV SHELL=/bin/bash
+ENV TERM=xterm-256color
 ENTRYPOINT ["/root/entrypoint.sh"]
 CMD ["/bin/bash"]
