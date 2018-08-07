@@ -261,11 +261,10 @@
 # 
 # bindkey " " globalias
 
-bindkey "^@" vi-cmd-mode
-bindkey "jk" vi-cmd-mode
-bindkey -s "^[l" "e -a^M"
-bindkey "^[;" execute-named-cmd
-
+bindkey '^@' vi-cmd-mode
+bindkey '^[l' clear-screen
+bindkey -s '^[L' 'e -a^M'
+bindkey '^[;' execute-named-cmd
 
 # Remove ^Q command so vim can use it
-bindkey -r '^Q'
+# bindkey -r '^Q'

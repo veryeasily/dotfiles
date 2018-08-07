@@ -1,10 +1,11 @@
+" vi: ft=vim
 " bind gk to grep word under cursor
 nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
 nnoremap gm m
 
 " Leave insert and visual mode more easily
 " noremap! jk <Esc>`^
-noremap! jk <Esc>
+noremap! <Nul> <Esc>
 
 " Window navigation commands
 " noremap <c-j> <c-w>j

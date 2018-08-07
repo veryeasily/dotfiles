@@ -1,3 +1,4 @@
+" vi: ft=vim
 " File specifically for integration between VIM and FZF
 
 " Borrowed from

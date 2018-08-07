@@ -1,3 +1,4 @@
+" vi: ft=vim
 call plug#begin('~/.vim/plugged')
 
 let g:tern_map_keys=1
@@ -5,7 +6,10 @@ let g:tern_map_prefix='<space>'
 let g:tern_request_timeout = 2
 let g:tern_show_argument_hints="on_move"
 
-Plug 'jreybert/vimagit'
+Plug 'tpope/vim-fugitive'
+
+Plug 'mattn/webapi-vim' " Required by gist-vim
+Plug 'mattn/gist-vim'
 
 " Make sure you use single quotes
 Plug 'junegunn/fzf', { 'dir': $HOME . '/.fzf', 'do': 'yes \| ./install --all' }
@@ -69,7 +73,7 @@ Plug 'junegunn/vader.vim'
 
 let g:ale_enabled = 1
 let g:ale_set_quickfix = 1
-let g:ale_lint_delay = 600
+let g:ale_lint_delay = 200
 let g:ale_lint_on_enter = 0
 map <Leader>ad <Plug>(ale_detail)
 

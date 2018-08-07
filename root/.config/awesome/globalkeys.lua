@@ -94,7 +94,7 @@ function make_global_keys(modkey)
             function () awful.util.spawn("/home/mors/bin/sharenix-window") end
         ),
         awful.key({ modkey, "Shift" }, "Print",
-            function () awful.util.spawn("/home/mors/bin/sharenix-record") end
+            function () awful.util.spawn("kazam") end
         ),
 
         -- Toggle wibox.

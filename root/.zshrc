@@ -43,6 +43,8 @@ if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
 fi
 
+PROMPT=" [%j]$PROMPT"
+
 export GOPATH=$HOME/go
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -54,8 +56,6 @@ export GOPATH=$HOME/go
 
 source ~/.fzf/shell/completion.zsh
 source ~/.fzf/shell/key-bindings.zsh
-
-export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore-vcs --ignore-file /home/mors/.ignore' 
 
 # Have to overwrite to make it use fd
 _fzf_compgen_path() {

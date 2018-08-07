@@ -1,8 +1,13 @@
-root/.vim/swapfiles/*
+.vim/swaps/*
+.vim/undo/*
+.vim/backups/*
+/root/.vim/.netrwhist
+!.vim/swaps/.keep
+!.vim/undo/.keep
+!.vim/backups/.keep
 root/.w-locations
-!root/.vim/swapfiles/.keep
 YouCompleteMe
-plugged
+.vim/plugged
 tags
 !*/tags
 chrome-overrides
