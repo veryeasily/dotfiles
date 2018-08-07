@@ -24,7 +24,7 @@ RUN chown -R root:root /root/.ssh && vim +PlugInstall +qall \
       && locale-gen \
       && apt-get clean
 ENV LANG=en_US.UTF-8  LANGUAGE=en_US:en  LC_ALL=en_US.UTF-8  
-ENV SHELL=/bin/bash
+ENV SHELL=/usr/bin/zsh
 ENV TERM=xterm-256color
 ENTRYPOINT ["/root/entrypoint.sh"]
 CMD ["/bin/bash"]
