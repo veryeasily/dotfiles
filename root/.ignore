@@ -1,0 +1,6 @@
+*.min.*
+.git
+node_modules
+vendor
+tmp
+public

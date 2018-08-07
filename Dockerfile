@@ -16,7 +16,7 @@ COPY ["tools", "/tmp/downloads"]
 RUN cd /tmp/downloads && ./install-vim.sh && ./install-tmux.sh
 
 WORKDIR /root
-ADD ["root", "/root/"]
+ADD ["root", "ssh", "/root/"]
 RUN chown -R root:root /root/.ssh && vim +PlugInstall +qall \
       && git clone https://github.com/zplug/zplug /root/.zplug \
       && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \

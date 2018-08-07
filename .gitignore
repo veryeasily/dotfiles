@@ -2,8 +2,8 @@
 .vim/undo/*
 .vim/backups/*
 /root/.vim/.netrwhist
-root/.ssh/*
-!root/.ssh/.keep
+ssh/*
+!ssh/.keep
 !.vim/swaps/.keep
 !.vim/undo/.keep
 !.vim/backups/.keep
