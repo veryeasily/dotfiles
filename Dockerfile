@@ -18,7 +18,7 @@ RUN cd /tmp/downloads && ./install-vim.sh && ./install-tmux.sh
 ENV INSIDE_DOCKER=true
 
 WORKDIR /root
-ADD ["root", "/root/"]
+ADD ["root", "entrypoint.sh", "/root/"]
 ADD ["ssh", "/root/.ssh"]
 RUN chown -R root:root /root/.ssh && vim +PlugInstall +qall \
       && git clone https://github.com/zplug/zplug /root/.zplug \
