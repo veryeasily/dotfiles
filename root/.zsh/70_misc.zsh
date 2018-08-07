@@ -72,7 +72,7 @@ export FZF_DEFAULT_OPTS='
 --bind=ctrl-d:page-down
 --bind=ctrl-z:toggle-all
 '
-export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore-vcs --ignore-file /home/mors/.ignore' 
+export FZF_DEFAULT_COMMAND="fd --hidden --type file --no-ignore-vcs --ignore-file $HOME/.ignore"
 
 export LC_COLLATE="C"
 export CDPATH="$CDPATH:$HOME"

@@ -1,7 +1,7 @@
 FROM debian:9.5
 RUN apt-get update \
       && apt-get install -y wget curl build-essential git zsh libncurses5-dev \
-                            python3-pip locales \
+                            python3-pip locales ctags \
       && mkdir -p /root/.vim/autoload /root/.vim/undo /root/.vim/backups \
                   /root/.vim/swaps \
       && mkdir -p /tmp/downloads \
@@ -14,6 +14,8 @@ RUN apt-get update \
 
 COPY ["tools", "/tmp/downloads"]
 RUN cd /tmp/downloads && ./install-vim.sh && ./install-tmux.sh
+
+ENV INSIDE_DOCKER=true
 
 WORKDIR /root
 ADD ["root", "/root/"]
