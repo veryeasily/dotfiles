@@ -19,9 +19,9 @@ ENV INSIDE_DOCKER=true
 
 WORKDIR /root
 ADD ["root", "entrypoint.sh", "/root/"]
-ADD ["ssh", "/root/.ssh"]
-RUN chown -R root:root /root/.ssh && vim +PlugInstall +qall \
-      && git clone https://github.com/zplug/zplug /root/.zplug \
+# Since we dont have ssh inside the container, we need this
+ENV ZPLUG_PROTOCOL HTTPS
+RUN vim +PlugInstall +qall \
       && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
       && locale-gen \
       && apt-get clean
