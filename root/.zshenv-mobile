@@ -68,6 +68,8 @@ if ! command -v pyenv 1>/dev/null 2>&1; then
 fi
 eval "$(pyenv init -)"
 
-export COMPOSE_API_VERSION=1.25
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
+# export COMPOSE_API_VERSION=1.25
 
 # [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver

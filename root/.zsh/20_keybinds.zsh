@@ -265,6 +265,18 @@ bindkey '^@' vi-cmd-mode
 bindkey '^[l' clear-screen
 bindkey -s '^[L' 'e -a^M'
 bindkey '^[;' execute-named-cmd
+bindkey '^[q' push-line
+
+# From
+# https://github.com/knqyf263/pet/tree/e2b42ac4c7067ae474d54a16054b840848c11d85#bashzsh
+function pet-select() {
+  BUFFER=$(pet search --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+zle -N pet-select
+stty -ixon
+bindkey '^s' pet-select
 
 # Remove ^Q command so vim can use it
 # bindkey -r '^Q'

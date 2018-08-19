@@ -8,3 +8,10 @@ function lju::bak bak() {
 function lju::less_esc less_esc() {
   env LESS="-CQix4" less "$@"
 }
+
+# From
+# https://github.com/knqyf263/pet/tree/e2b42ac4c7067ae474d54a16054b840848c11d85#bashzsh
+function prev() {
+  PREV=$(fc -lrn | head -n 1)
+  sh -c "pet new `printf %q "$PREV"`"
+}

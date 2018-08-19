@@ -88,13 +88,13 @@ function make_global_keys(modkey)
             function () awful.util.spawn("mediacontrol PlayPause") end
         ),
         awful.key({}, "Print",
-            function () awful.util.spawn("/home/mors/bin/screenshot") end
+            function () awful.util.spawn("shutter --disable_systray") end
         ),
         awful.key({ "Shift" }, "Print",
             function () awful.util.spawn("/home/mors/bin/sharenix-window") end
         ),
         awful.key({ modkey, "Shift" }, "Print",
-            function () awful.util.spawn("kazam") end
+            function () awful.util.spawn("shutter -s --disable_systray") end
         ),
 
         -- Toggle wibox.

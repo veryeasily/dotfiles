@@ -24,6 +24,7 @@ ENV ZPLUG_PROTOCOL HTTPS
 RUN vim +PlugInstall +qall \
       && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
       && locale-gen \
+      && touch /root/.z \
       && apt-get clean
 ENV LANG=en_US.UTF-8  LANGUAGE=en_US:en  LC_ALL=en_US.UTF-8  
 ENV SHELL=/usr/bin/zsh

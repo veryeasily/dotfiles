@@ -17,6 +17,9 @@ set pastetoggle=<F2>
 " always have a status line, even on 1 window
 set laststatus=2
 
+" See https://stackoverflow.com/a/16114535
+set nofixendofline
+
 " Syntastic options
 set statusline=%t       "tail of the filename
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
