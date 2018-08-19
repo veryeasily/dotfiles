@@ -1,1 +1,0 @@
-/home/mors/.zplug/repos/zplug/zplug/init.zsh
