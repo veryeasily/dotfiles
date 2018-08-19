@@ -103,27 +103,13 @@ setopt no_prompt_cr
 # Let me know mail arrival
 setopt mail_warning
 
-# Do not record an event that was just recorded again.
-setopt hist_ignore_dups
 
-# Delete an old recorded event if a new event is a duplicate.
-setopt hist_ignore_all_dups
 setopt hist_save_nodups
 
-# Expire a duplicate event first when trimming history.
-setopt hist_expire_dups_first
 
-# Do not display a previously found event.
-setopt hist_find_no_dups
 
-# Shere history
-setopt share_history
 
-# Pack extra blank
-setopt hist_reduce_blanks
 
-# Write to the history file immediately, not when the shell exits.
-setopt inc_append_history
 
 # Remove comannd of 'hostory' or 'fc -l' from history list
 # setopt hist_no_store
@@ -131,20 +117,11 @@ setopt inc_append_history
 # Remove functions from history list
 setopt hist_no_functions
 
-# Record start and end time to history file
-setopt extended_history
 
-# Ignore the beginning space command to history file
-setopt hist_ignore_space
 
 # Append to history file
 setopt append_history
 
-# Edit history file during call history before executing
-setopt hist_verify
-
-# Enable history system like a Bash
-setopt bang_hist
 
 setopt always_last_prompt
 setopt auto_cd
@@ -158,20 +135,22 @@ setopt interactive_comments
 setopt list_types
 setopt magic_equal_subst
 
+# zplug acts crazy without this sometimes
+setopt monitor
+
 ###
 # Taken from ./70_misc.zsh
 # @elju 3/8/18
-setopt BANG_HIST                 # Treat the '!' character specially during expansion.
-setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
-setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
-setopt SHARE_HISTORY             # Share history between all sessions.
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
-setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
-setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
-setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
-setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
-setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
-setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
-setopt HIST_BEEP                 # Beep when accessing nonexistent history.
-setopt MONITOR
+setopt bang_hist                 # Treat the '!' character specially during expansion.
+setopt extended_history          # Write the history file in the ":start:elapsed;command" format.
+setopt inc_append_history        # Write to the history file immediately, not when the shell exits.
+setopt share_history             # Share history between all sessions.
+setopt hist_expire_dups_first    # Expire duplicate entries first when trimming history.
+setopt hist_ignore_dups          # Don't record an entry that was just recorded again.
+setopt hist_ignore_all_dups      # Delete old recorded entry if new entry is a duplicate.
+setopt hist_find_no_dups         # Do not display a line previously found.
+setopt hist_ignore_space         # Don't record an entry starting with a space.
+setopt hist_save_no_dups         # Don't write duplicate entries in the history file.
+setopt hist_reduce_blanks        # Remove superfluous blanks before recording entry.
+setopt hist_verify               # Don't execute immediately upon history expansion.
+setopt hist_beep                 # Beep when accessing nonexistent history.
