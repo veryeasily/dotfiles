@@ -3,7 +3,6 @@
 # folder of all of your autocomplete functions
 fpath=($HOME/.zsh-completions $fpath)
 
-
 ZPLUG_SUDO_PASSWORD="$(cat "$HOME/.lju-pass")"
 ZPLUG_PROTOCOL=ssh
 
