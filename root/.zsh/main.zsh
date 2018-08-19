@@ -3,8 +3,8 @@
 # folder of all of your autocomplete functions
 fpath=($HOME/.zsh-completions $fpath)
 
-ZPLUG_SUDO_PASSWORD="$(cat "$HOME/.lju-pass")"
-ZPLUG_PROTOCOL=ssh
+# ZPLUG_SUDO_PASSWORD="$(cat "$HOME/.lju-pass")"
+# ZPLUG_PROTOCOL=ssh
 
 zplug "zplug/zplug", hook-build:'zplug --self-manage'
 zplug "~/.zsh", from:local, use:"<->_*.zsh"
