@@ -19,23 +19,17 @@ alias tmux='TERM=xterm-256color tmux'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.cache/zshcompdump
 
-# tmux_automatically_attach attachs tmux session
-# automatically when your are in zsh
-if [[ -x ~/bin/tmuxx ]]; then
-    ~/bin/tmuxx
-fi
-
 if [[ -f ~/.zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=~/.zsh/main.zsh
     source ~/.zplug/init.zsh
 
-    # if ! zplug check --verbose; then
-    #     printf "Install? [y/N]: "
-    #     if read -q; then
-    #         echo; zplug install
-    #     fi
-    #     echo
-    # fi
+    if ! zplug check --verbose; then
+        printf "Install? [y/N]: "
+        if read -q; then
+            echo; zplug install
+        fi
+        echo
+    fi
     zplug load
 fi
 

@@ -13,3 +13,4 @@ YouCompleteMe
 tags
 !*/tags
 chrome-overrides
+*.bak
