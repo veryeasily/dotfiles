@@ -2,7 +2,3 @@
 	path = root/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 	branch = master
-[submodule "root/.zplug"]
-	path = root/.zplug
-	url = https://github.com/zplug/zplug
-	branch = master
