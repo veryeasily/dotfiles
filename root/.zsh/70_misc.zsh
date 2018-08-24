@@ -75,4 +75,4 @@ export FZF_DEFAULT_OPTS='
 export FZF_DEFAULT_COMMAND="fd --hidden --type file --no-ignore-vcs --ignore-file $HOME/.ignore"
 
 export LC_COLLATE="C"
-export CDPATH="$CDPATH:$HOME"
+export CDPATH="$CDPATH:$HOME:$HOME/code"

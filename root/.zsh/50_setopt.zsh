@@ -1,5 +1,5 @@
 # Do not print the directory stack after pushd or popd.
-# setopt pushd_silent
+setopt pushd_silent
 # Replace 'cd -' with 'cd +'
 setopt pushd_minus
 

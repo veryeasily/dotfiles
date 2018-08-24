@@ -105,7 +105,7 @@ set nocompatible
 let g:CommandTFileScanner = 'git'
 
 let g:EasyClipShareYanks = 1
-map <Leader><Leader> <Plug>(easymotion-prefix)
+map <Space> <Plug>(easymotion-prefix)
 
 let g:user_emmet_mode='inv'
 let g:user_emmet_install_global = 0

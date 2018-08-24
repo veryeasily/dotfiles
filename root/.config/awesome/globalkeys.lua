@@ -15,7 +15,7 @@ function change_volume(how)
     })
 end
 
-local naughtybightid = nil
+local naughtybrightid = nil
 function change_brightness(how)
     os.execute("light " .. how)
     awful.spawn.with_line_callback("light", {

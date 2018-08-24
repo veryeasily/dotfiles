@@ -1,5 +1,4 @@
 alias d='docker'
-alias dc='docker-compose'
 alias g='git'
 
 # BEGIN copied stuff
@@ -134,8 +133,8 @@ alias -g HL=' 2>&1 | less'
 # END copied stuff
 
 if command -v exa &>/dev/null; then
-  alias e='exa'
-  alias ls='exa --group-directories-first'
+  alias e='exa --color=auto --group-directories-first'
+  alias ls='ls --color=auto --group-directories-first'
 fi
 
 alias _='sudo'
@@ -150,3 +149,17 @@ alias sushi="sudo ssh -F ~/.ssh/config"
 alias j='jump'
 
 alias l='ls -la'
+
+# From https://gist.github.com/maxcnunes/7b5eae9cb884f126a70f
+alias c='docker-compose'
+alias cb='docker-compose build'
+alias cup='docker-compose up'
+alias cr='docker-compose run --service-ports --rm'
+alias crl='docker-compose run --service-ports --rm local'
+alias crd='docker-compose run --service-ports --rm develop'
+alias crt='docker-compose run --rm test'
+alias crp='docker-compose run --rm provision'
+alias crci='docker-compose run --rm ci'
+alias crwt='docker-compose run --rm watchtest'
+alias cps='docker-compose ps'
+alias clogs='docker-compose logs'

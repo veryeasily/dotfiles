@@ -9,6 +9,10 @@ awesome.quit = function()
     end
 end
 
+local focus_opacity = 0.9
+local unfocus_opacity = 0.8
+local opacity_arr = { 0.2, 0.4, 0.6, 0.8, 1 }
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -66,7 +70,8 @@ end
 
 -- @veryeasily modifying this
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init("/home/mors/.config/awesome/themes/default/theme.lua")
+beautiful.init("~/.config/awesome/themes/default/theme.lua")
+beautiful.master_width_factor = 0.666
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -372,6 +377,17 @@ globalkeys = gears.table.join(globalkeys,
               {description = "show the menubar", group = "launcher"})
 )
 
+local naughtyopcid = nil
+function change_opacity(c, amt)
+  local newopc = math.min(math.max(0.5, c.opacity + amt), 1)
+  c.opacity = newopc
+  naughtyopcid = naughty.notify({
+      text = string.format("%0.2f%%", newopc * 100),
+      title = "Opacity",
+      replaces_id = naughtyopcid
+  }).id
+end
+
 clientkeys = gears.table.join(
     awful.key({ modkey,           }, "f",
         function (c)
@@ -413,7 +429,22 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"})
+        {description = "(un)maximize horizontally", group = "client"}),
+
+        -- Change window opacity
+    awful.key({ modkey,  }, ".",
+        function (c)
+            change_opacity(c, 0.05)
+            c:raise()
+        end ,
+        {description = "raise opacity for client", group = "client"}),
+    awful.key({ modkey,  }, ",",
+        function (c)
+            change_opacity(c, -0.05)
+            c:raise()
+        end ,
+        {description = "lower opacity for client", group = "client"})
+
 )
 
 -- Bind all key numbers to tags.
@@ -486,6 +517,8 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons,
+                     opacity = focus_opacity,
+                     o_idx = nil,
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
@@ -594,6 +627,15 @@ end)
 --     end
 -- end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("focus", function(c)
+  c.border_color = beautiful.border_focus
+  c.opacity = focus_opacity
+  c.o_idx = #opacity_arr - 1
+end)
+
+client.connect_signal("unfocus", function(c)
+  c.border_color = beautiful.border_normal
+  c.opacity = unfocus_opacity
+  c.o_idx = #opacity_arr - 1
+end)
 -- }}}

@@ -9,8 +9,8 @@ path=( \
     ~/.tmux/bin(N-/) \
     "$path[@]" \
     )
-
-# NOTE: set fpath before compinit
+# 
+# # NOTE: set fpath before compinit
 typeset -gx -U fpath
 fpath=( \
     ~/.zsh/completion(N-/) \
@@ -39,18 +39,15 @@ fi
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-# This loads nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-if [[ -z "$VIM" ]]; then
-  [[ -e "$NVM_DIR/nvm.sh" ]] && . "$NVM_DIR/nvm.sh"
-
-  if ! nvm use node;  then
-    echo 'weird nvm error again'
-    nvm ls
-  fi
+# if [[ -z "$VIM" ]]; then
+if [[ -e "$NVM_DIR/nvm.sh" ]]; then
+  . "$NVM_DIR/nvm.sh"
 fi
+# else
+#   export PATH="$PATH:$NVM_DIR/versions/node/$(cat $NVM_DIR/alias/default)/bin"
+# fi
 
 # We add the following incase yarn messed up.
 # More info here:
@@ -73,3 +70,5 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 # export COMPOSE_API_VERSION=1.25
 
 # [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
+
+[[ -e "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"
