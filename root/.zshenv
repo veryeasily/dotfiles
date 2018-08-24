@@ -36,7 +36,8 @@ if [[ -z "$XDG_DATA_HOME" ]]; then
   [[ -e "$XDG_DATA_HOME" ]] ||  mkdir -p "$XDG_DATA_HOME"
 fi
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+export RBENV_ROOT="/usr/local/lib/rbenv"
+export PATH="$RBENV_ROOT/bin:$PATH"
 eval "$(rbenv init -)"
 
 export NVM_DIR="$HOME/.nvm"
@@ -58,7 +59,7 @@ if command -v go 1>/dev/null 2>&1; then
   export GOPATH="$HOME/go"
   export PATH="$PATH:$(go env GOPATH)/bin"
 fi
-export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT="/usr/local/lib/pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if ! command -v pyenv 1>/dev/null 2>&1; then
   git clone git@github.com:pyenv/pyenv.git ~/.pyenv

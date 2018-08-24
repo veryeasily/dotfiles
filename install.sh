@@ -34,6 +34,10 @@ chsh -s $(which zsh)
 
 git submodule update --init --recursive
 
+sudo mkdir -p /usr/local/lib
+sudo git clone https://github.com/rbenv/rbenv "/usr/local/lib/rbenv"
+sudo git clone https://github.com/pyenv/pyenv "/usr/local/lib/pyenv"
+
 source $DIR/extras.sh
 
 # Now fix YouCompleteMe
