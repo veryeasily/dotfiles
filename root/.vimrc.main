@@ -4,8 +4,8 @@ filetype plugin indent on
 syntax on
  
 " Map leader keys
-let mapleader = ","
-let maplocalleader = ","
+let mapleader = " "
+let maplocalleader = " "
 
 " profile file {/home/mors/.vimrc.main,/home/mors/.vimrc.plug}
 source ~/.vimrc.plug
@@ -159,9 +159,15 @@ set nu
 
 if has('termguicolors')
   set termguicolors
-endif
 
-set background=dark
+  """
+  " COLORS
+  " set Vim-specific sequences for RGB colors
+  " Borrowed from https://github.com/vim/vim/issues/993
+
+  silent! let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  silent! let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 
 if &diff
   silent! colorscheme jellyx
@@ -169,12 +175,4 @@ else
   silent! colorscheme gruvbox
 endif
 
-"""
-" COLORS
-" set Vim-specific sequences for RGB colors
-" Borrowed from https://github.com/vim/vim/issues/993
-silent! let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-silent! let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-hi Normal ctermbg=NONE guibg=NONE
-hi NonText ctermbg=NONE guibg=NONE
+set background=dark

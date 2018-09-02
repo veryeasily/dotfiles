@@ -3,14 +3,14 @@ _awesome_quit = awesome.quit
 awesome.quit = function()
     if os.getenv("DESKTOP_SESSION") == "awesome-gnome" then
        os.execute("/usr/bin/gnome-session-quit") -- for Ubuntu 14.04
-       os.execute("pkill -9 gnome-session") -- I use this on Ubuntu 16.04
+       os.execute("/usr/bin/gnome-session-quit --force") -- I use this on Ubuntu 16.04
     else
     _awesome_quit()
     end
 end
 
-local focus_opacity = 0.9
-local unfocus_opacity = 0.8
+local focus_opacity = 1
+local unfocus_opacity = 0.88
 local opacity_arr = { 0.2, 0.4, 0.6, 0.8, 1 }
 
 -- Standard awesome library
@@ -627,15 +627,15 @@ end)
 --     end
 -- end)
 
-client.connect_signal("focus", function(c)
-  c.border_color = beautiful.border_focus
-  c.opacity = focus_opacity
-  c.o_idx = #opacity_arr - 1
-end)
+--client.connect_signal("focus", function(c)
+  --c.border_color = beautiful.border_focus
+  --c.opacity = focus_opacity
+  --c.o_idx = #opacity_arr - 1
+--end)
 
-client.connect_signal("unfocus", function(c)
-  c.border_color = beautiful.border_normal
-  c.opacity = unfocus_opacity
-  c.o_idx = #opacity_arr - 1
-end)
+--client.connect_signal("unfocus", function(c)
+  --c.border_color = beautiful.border_normal
+  --c.opacity = unfocus_opacity
+  --c.o_idx = #opacity_arr - 1
+--end)
 -- }}}

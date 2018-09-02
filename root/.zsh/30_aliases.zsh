@@ -1,5 +1,6 @@
-alias d='docker'
+# alias d='docker'
 alias g='git'
+alias d='docker'
 
 # BEGIN copied stuff
 
@@ -163,3 +164,7 @@ alias crci='docker-compose run --rm ci'
 alias crwt='docker-compose run --rm watchtest'
 alias cps='docker-compose ps'
 alias clogs='docker-compose logs'
+
+alias cat='bat'
+
+alias RG='rg --color=always'

@@ -3,13 +3,13 @@
 # folder of all of your autocomplete functions
 fpath=($HOME/.zsh-completions $fpath)
 
-# ZPLUG_SUDO_PASSWORD="$(cat "$HOME/.lju-pass")"
-# ZPLUG_PROTOCOL=ssh
+ZPLUG_SUDO_PASSWORD="$(cat "$HOME/.lju-pass")"
+ZPLUG_PROTOCOL=ssh
 
 zplug "zplug/zplug", hook-build:'zplug --self-manage'
 zplug "~/.zsh", from:local, use:"<->_*.zsh"
 
-zplug 'dracula/zsh', as:theme
+zplug 'denysdovhan/spaceship-prompt', use:spaceship.zsh, from:github, as:theme
 
 zplug "rupa/z", use:"z.sh"
 zplug "zsh-users/zsh-completions"
@@ -89,25 +89,25 @@ zplug "lib/spectrum", from:oh-my-zsh
 
 # zplug 'zsh-users/zsh-autosuggestions', as:plugin
 
-function vim_prompt_info() {
-	local new_str i_str n_str to_append
-  if ! [ -z ${KEYMAP+x} ]; then
-    n_str="N"
-    i_str="I"
-    new_str="$(echo "$KEYMAP" | sed -r "s#(main|viins)#$i_str#")"
-    new_str="$(echo "$new_str" | sed -r "s#vicmd#$n_str#")"
-    new_str="$(echo "$new_str" | xargs)"
-  else
-    new_str="?"
-  fi
-  _vim_prompt_info_last_str="$new_str"
-  echo "%{$fg_no_bold[white]%} $new_str%{$reset_color%}"
-}
+#function vim_prompt_info() {
+	#local new_str i_str n_str to_append
+  #if ! [ -z ${KEYMAP+x} ]; then
+    #n_str="N"
+    #i_str="I"
+    #new_str="$(echo "$KEYMAP" | sed -r "s#(main|viins)#$i_str#")"
+    #new_str="$(echo "$new_str" | sed -r "s#vicmd#$n_str#")"
+    #new_str="$(echo "$new_str" | xargs)"
+  #else
+    #new_str="?"
+  #fi
+  #_vim_prompt_info_last_str="$new_str"
+  #echo "%{$fg_no_bold[white]%} $new_str%{$reset_color%}"
+#}
 
-function zle-line-init zle-keymap-select {
-  [ -z ${_LJU_OLD_PROMPT+x} ] && _LJU_OLD_PROMPT="$PROMPT"
-	PROMPT='$(vim_prompt_info)'"$_LJU_OLD_PROMPT"
-  zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
+#function zle-line-init zle-keymap-select {
+  #[ -z ${_LJU_OLD_PROMPT+x} ] && _LJU_OLD_PROMPT="$PROMPT"
+	#PROMPT='$(vim_prompt_info)'"$_LJU_OLD_PROMPT"
+  #zle reset-prompt
+#}
+#zle -N zle-line-init
+#zle -N zle-keymap-select

@@ -1,9 +1,9 @@
 bind -v
-bind "^J" vi-command-mode
-
-# http://dev.mysql.com/doc/refman/5.6/en/mysql-tips.html
+bind "^@" vi-command-mode
+# 
+# # http://dev.mysql.com/doc/refman/5.6/en/mysql-tips.html
 bind "^U" vi-kill-line-prev
 bind "^W" ed-delete-prev-word
-
-# http://bugs.mysql.com/bug.php?id=60465
+ 
+ # http://bugs.mysql.com/bug.php?id=60465
 bind "^R" em-inc-search-prev

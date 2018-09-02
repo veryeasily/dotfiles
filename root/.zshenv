@@ -36,7 +36,7 @@ if [[ -z "$XDG_DATA_HOME" ]]; then
   [[ -e "$XDG_DATA_HOME" ]] ||  mkdir -p "$XDG_DATA_HOME"
 fi
 
-export RBENV_ROOT="/usr/local/lib/rbenv"
+export RBENV_ROOT="$HOME/.rbenv"
 export PATH="$RBENV_ROOT/bin:$PATH"
 eval "$(rbenv init -)"
 
@@ -59,7 +59,7 @@ if command -v go 1>/dev/null 2>&1; then
   export GOPATH="$HOME/go"
   export PATH="$PATH:$(go env GOPATH)/bin"
 fi
-export PYENV_ROOT="/usr/local/lib/pyenv"
+export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if ! command -v pyenv 1>/dev/null 2>&1; then
   git clone git@github.com:pyenv/pyenv.git ~/.pyenv
@@ -73,3 +73,5 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 # [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 
 [[ -e "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"
+
+source /home/mors/.phpbrew/bashrc

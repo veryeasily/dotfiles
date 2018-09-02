@@ -23,21 +23,22 @@ if [[ -f ~/.zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=~/.zsh/main.zsh
     source ~/.zplug/init.zsh
 
-    if ! zplug check --verbose; then
-        printf "Install? [y/N]: "
-        if read -q; then
-            echo; zplug install
-        fi
-        echo
-    fi
+    # if ! zplug check --verbose; then
+    #     printf "Install? [y/N]: "
+    #     if read -q; then
+    #         echo; zplug install
+    #     fi
+    #     echo
+    # fi
     zplug load
+    spaceship_vi_mode_enable
 fi
 
 if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
 fi
 
-PROMPT=" [%j]$PROMPT"
+#PROMPT=" [%j]$PROMPT"
 
 export GOPATH=$HOME/go
 
@@ -59,3 +60,5 @@ _fzf_compgen_path() {
 # export FZF_COMPLETION_TRIGGER=''
 # bindkey '^T' fzf-completion
 # bindkey '^I' $fzf_default_completion
+
+[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver

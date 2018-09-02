@@ -41,14 +41,15 @@ command! FZFMru call fzf#run({
 \  'options': '-m -x +s',
 \  'down':    '40%'})
 
-noremap <leader>g <Esc>:<c-u>Rg<space>
-noremap <leader>l <Esc>:<c-u>Lines<cr>
-noremap <leader>o <Esc>:<c-u>History<CR>
-noremap <leader>b <Esc>:<c-u>Buffer<CR>
-noremap <leader>u <Esc>:<c-u>FZFMru<CR>
-noremap <leader>t <Esc>:<c-u>FZF<CR>
-noremap <Leader>q <Esc>:History:<CR>
-noremap <Leader>/ <Esc>:History/<CR>
+noremap <leader>f  <Esc>:<c-u>FZF<CR>
+noremap <leader>fg <Esc>viw"jy:<c-u>Rg<space><c-r>j
+noremap <leader>fr <Esc>:<c-u>Rg<space>
+noremap <leader>fl <Esc>:<c-u>Lines<cr>
+noremap <leader>fo <Esc>:<c-u>History<CR>
+noremap <leader>fb <Esc>:<c-u>Buffer<CR>
+noremap <leader>fu <Esc>:<c-u>FZFMru<CR>
+noremap <Leader>fq <Esc>:History:<CR>
+noremap <Leader>f/ <Esc>:History/<CR>
 
 " function! FzyCommand(choice_command, vim_command)
 "   try

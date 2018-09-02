@@ -5,3 +5,6 @@ vendor
 tmp
 public
 tags
+test
+tests
+spec

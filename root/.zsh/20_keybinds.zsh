@@ -4,22 +4,22 @@
 # bindkey -M viins 'jj' vi-cmd-mode
 # 
 # # Add emacs-like keybind to viins mode
-# bindkey -M viins '^F'  forward-char
-# bindkey -M viins '^B'  backward-char
-# # bindkey -M viins '^P'  up-line-or-history
-# # bindkey -M viins '^N'  down-line-or-history
-# bindkey -M viins '^A'  beginning-of-line
-# bindkey -M viins '^E'  end-of-line
-# bindkey -M viins '^K'  kill-line
-# # bindkey -M viins '^R'  history-incremental-pattern-search-backward
+bindkey -M viins '^F'  forward-char
+bindkey -M viins '^B'  backward-char
+bindkey -M viins '^P'  up-line-or-history
+bindkey -M viins '^N'  down-line-or-history
+bindkey -M viins '^A'  beginning-of-line
+bindkey -M viins '^E'  end-of-line
+bindkey -M viins '^S'  kill-line
+bindkey -M viins '^R'  history-incremental-pattern-search-backward
 # # bindkey -M viins '\er' history-incremental-pattern-search-forward
-# bindkey -M viins '^Y'  yank
-# bindkey -M viins '^W'  backward-kill-word
-# bindkey -M viins '^U'  backward-kill-line
-# bindkey -M viins '^H'  backward-delete-char
-# bindkey -M viins '^?'  backward-delete-char
-# bindkey -M viins '^G'  send-break
-# bindkey -M viins '^D'  delete-char-or-list
+bindkey -M viins '^Y'  yank
+bindkey -M viins '^W'  backward-kill-word
+bindkey -M viins '^U'  backward-kill-line
+bindkey -M viins '^H'  backward-delete-char
+bindkey -M viins '^?'  backward-delete-char
+bindkey -M viins '^G'  send-break
+bindkey -M viins '^D'  delete-char-or-list
 # 
 # bindkey -M vicmd '^A'  beginning-of-line
 # bindkey -M vicmd '^E'  end-of-line
@@ -262,10 +262,10 @@
 # bindkey " " globalias
 
 bindkey '^@' vi-cmd-mode
-bindkey '^[l' clear-screen
-bindkey -s '^[L' 'e -a^M'
-bindkey '^[;' execute-named-cmd
-bindkey '^[q' push-line
+bindkey '^sl' clear-screen
+bindkey -s '^se' 'e -a^M'
+bindkey '^s;' execute-named-cmd
+bindkey '^sn' push-line
 
 # From
 # https://github.com/knqyf263/pet/tree/e2b42ac4c7067ae474d54a16054b840848c11d85#bashzsh
@@ -276,7 +276,7 @@ function pet-select() {
 }
 zle -N pet-select
 stty -ixon
-bindkey '^s' pet-select
+bindkey '^ss' pet-select
 
 # Remove ^Q command so vim can use it
 # bindkey -r '^Q'

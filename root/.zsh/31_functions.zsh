@@ -1,11 +1,13 @@
-function lju::bak bak() {
-  [ -z $1 ] && echo "bak requires a file argument to backup" && return 1
-  local new_name="$1.$(date -uIseconds).bak"
+#!/bin/zsh
+function bak {
+  [ -z "$1" ] && echo "bak requires a file argument to backup" && return 1
+  local new_name
+  new_name="$1.$(date -uIseconds).bak"
   echo "Creating backup $new_name"
   cp $1 $new_name
 }
 
-function lju::less_esc less_esc() {
+function less_esc {
   env LESS="-CQix4" less "$@"
 }
 
@@ -16,7 +18,7 @@ function prev() {
   sh -c "pet new `printf %q "$PREV"`"
 }
 
-function lju::noalias noalias() {
+function noalias() {
   local aliaskey aliasval
   aliaskey=$1
   aliasval=$(alias | grep -o -P '(?<=ls=).*' &>/dev/null)
