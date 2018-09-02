@@ -95,7 +95,7 @@ if has('nvim')
   Plug 'w0rp/ale'
   
 
-  set completeopt=longest,menuone,preview
+  set completeopt=menuone,noselect,preview
 
   Plug 'roxma/nvim-completion-manager'
   Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
