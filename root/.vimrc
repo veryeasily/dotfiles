@@ -75,7 +75,7 @@ set wildmode=longest,list,full
 set wildmenu
 
 " set's a reasonable timeout
-set timeout timeoutlen=300
+set timeout ttimeoutlen=100 timeoutlen=500
 
 " Centralize backups, swapfiles and undo history
 set backupdir=$HOME/.vim/backups
