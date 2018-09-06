@@ -27,7 +27,6 @@ if [[ -e "$HOME/.vimrc" ]]; then
   echo "Moving host's .vimrc to .vimrc.bak, You can source it from .vimrc if necessary"
   mv "$HOME/.vimrc" "$HOME/.vimrc.bak"
 fi
-echo "stow -t $HOME/ -S $DIR/root"
 ./stow.sh
 vim +PlugInstall +qall
 popd
