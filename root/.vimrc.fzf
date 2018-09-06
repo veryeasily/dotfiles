@@ -41,15 +41,16 @@ command! FZFMru call fzf#run({
 \  'options': '-m -x +s',
 \  'down':    '40%'})
 
-noremap <Leader><Leader><Leader>t <Esc>:<c-u>FZF<CR>
-noremap <Leader><Leader><Leader>g <Esc>viw"jy:<c-u>Rg<space><c-r>j
-noremap <Leader><Leader><Leader>r <Esc>:<c-u>Rg<space>
-noremap <Leader><Leader><Leader>l <Esc>:<c-u>Lines<cr>
-noremap <Leader><Leader><Leader>o <Esc>:<c-u>History<CR>
-noremap <Leader><Leader><Leader>b <Esc>:<c-u>Buffer<CR>
-noremap <Leader><Leader><Leader>u <Esc>:<c-u>FZFMru<CR>
-noremap <Leader><Leader><Leader>q <Esc>:History:<CR>
-noremap <Leader><Leader><Leader>/ <Esc>:History/<CR>
+noremap <Nul><Nul>t <Esc>:<c-u>FZF<CR>
+noremap <Nul><Nul>g <Esc>:<c-u>Rg<space>
+noremap <Nul><Nul>G <Esc>viw"jy:<c-u>Rg<space><c-r>j
+noremap <Nul><Nul>r <Esc>:<c-u>Rg<space>
+noremap <Nul><Nul>l <Esc>:<c-u>Lines<cr>
+noremap <Nul><Nul>o <Esc>:<c-u>History<CR>
+noremap <Nul><Nul>b <Esc>:<c-u>Buffer<CR>
+noremap <Nul><Nul>u <Esc>:<c-u>FZFMru<CR>
+noremap <Nul><Nul>q <Esc>:History:<CR>
+noremap <Nul><Nul>/ <Esc>:History/<CR>
 
 " function! FzyCommand(choice_command, vim_command)
 "   try
