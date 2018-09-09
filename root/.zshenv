@@ -2,6 +2,8 @@
 # export ZSH_TMUX_FIXTERM="true"
 # export COMPOSE_HTTP_TIMEOUT="10000"
 
+unset ZPLUG_CACHE_FILE
+
 typeset -gx -U path
 path=( \
     ~/bin(N-/) \

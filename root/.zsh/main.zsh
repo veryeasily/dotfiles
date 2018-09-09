@@ -6,7 +6,7 @@ fpath=($HOME/.zsh-completions $fpath)
 ZPLUG_SUDO_PASSWORD="$(cat "$HOME/.lju-pass")"
 ZPLUG_PROTOCOL=ssh
 
-zplug "zplug/zplug", hook-build:'zplug --self-manage'
+# zplug "zplug/zplug", hook-build:'zplug --self-manage'
 zplug "~/.zsh", from:local, use:"<->_*.zsh"
 
 zplug 'denysdovhan/spaceship-prompt', use:spaceship.zsh, from:github, as:theme
@@ -42,16 +42,16 @@ zplug "junegunn/fzf", \
   as:command, \
   use:bin/fzf-tmux
 
-zplug "BurntSushi/ripgrep", \
-  from:gh-r, \
-  as:command, \
-  rename-to:rg, \
-  use:"*x86_64-unknown-linux*"
+#zplug "BurntSushi/ripgrep", \
+  #from:gh-r, \
+  #as:command, \
+  #rename-to:rg, \
+  #use:"*x86_64-unknown-linux*"
 
-zplug 'knqyf263/pet', \
-  as:command, \
-  hook-build:'go get -d && go build' \
-  if:'(( $+commands[go] ))'
+#zplug 'knqyf263/pet', \
+  #as:command, \
+  #hook-build:'go get -d && go build' \
+  #if:'(( $+commands[go] ))'
 
 zplug "philovivero/distribution", \
   as:command, \
@@ -64,9 +64,9 @@ zplug "reorx/httpstat", \
   rename-to:'$1', \
   if:'(( $+commands[python] ))'
 
-zplug "jhawthorn/fzy", \
-  as:command, \
-  hook-build:"make && sudo make install"
+#zplug "jhawthorn/fzy", \
+  #as:command, \
+  #hook-build:"make && sudo make install"
 
 # ZSH_AUTOSUGGEST_USE_ASYNC=true
 # 
@@ -90,7 +90,7 @@ zplug "lib/spectrum", from:oh-my-zsh
 # zplug 'zsh-users/zsh-autosuggestions', as:plugin
 
 #function vim_prompt_info() {
-	#local new_str i_str n_str to_append
+  #local new_str i_str n_str to_append
   #if ! [ -z ${KEYMAP+x} ]; then
     #n_str="N"
     #i_str="I"
@@ -106,7 +106,7 @@ zplug "lib/spectrum", from:oh-my-zsh
 
 #function zle-line-init zle-keymap-select {
   #[ -z ${_LJU_OLD_PROMPT+x} ] && _LJU_OLD_PROMPT="$PROMPT"
-	#PROMPT='$(vim_prompt_info)'"$_LJU_OLD_PROMPT"
+  #PROMPT='$(vim_prompt_info)'"$_LJU_OLD_PROMPT"
   #zle reset-prompt
 #}
 #zle -N zle-line-init
