@@ -18,5 +18,5 @@ inoremap <expr> <c-k> pumvisible() ? "<c-p>" : "<c-k>"
 
 nnoremap gz <C-w>\|<C-w>_
 nnoremap g= <C-w>=
-tnoremap ,;    <c-w>:
+tnoremap <C-w>n <c-w>N
 tnoremap <Nul> <Esc>

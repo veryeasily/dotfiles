@@ -15,20 +15,6 @@ function change_volume(how)
     })
 end
 
-local naughtybrightid = nil
-function change_brightness(how)
-    os.execute("light " .. how)
-    awful.spawn.with_line_callback("light", {
-        stdout = function (line)
-            naughtybrightid = naughty.notify({
-                text = string.format("%0.1f%%", tonumber(line)),
-                title = "Brightness",
-                replaces_id = naughtybrightid
-            }).id
-        end
-    })
-end
-
 function make_global_keys(modkey)
     local globalkeys = awful.util.table.join(
         -- Audio keys

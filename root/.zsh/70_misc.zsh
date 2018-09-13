@@ -51,7 +51,7 @@ autoload -U edit-command-line
 zle -N edit-command-line
 
 export HISTFILE="$HOME/.zsh_history"
-export HISTSIZE=10000000
+export HISTSIZE=999999999
 export SAVEHIST=999999999
 
 # jenegunn/fzf
