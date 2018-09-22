@@ -19,7 +19,9 @@ set pastetoggle=<F2>
 set laststatus=2
 
 " See https://stackoverflow.com/a/16114535
-set nofixendofline
+if has('nofixedendofline')
+  set nofixendofline
+endif
 
 " Syntastic options
 set statusline=%t       "tail of the filename

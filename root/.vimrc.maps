@@ -18,5 +18,8 @@ inoremap <expr> <c-k> pumvisible() ? "<c-p>" : "<c-k>"
 
 nnoremap gz <C-w>\|<C-w>_
 nnoremap g= <C-w>=
-tnoremap <C-w>n <c-w>N
-tnoremap <Nul> <Esc>
+
+if v:version >= 800
+  tnoremap <C-w>n <c-w>N
+  tnoremap <Nul> <Esc>
+endif

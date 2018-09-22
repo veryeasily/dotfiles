@@ -34,7 +34,7 @@ If you want to see some applications, check [awesome-copycats](https://github.co
 - [alsa](https://github.com/lcpz/lain/wiki/alsa)
 - [alsabar](https://github.com/lcpz/lain/wiki/alsabar)
 - [bat](https://github.com/lcpz/lain/wiki/bat)
-- [calendar](https://github.com/lcpz/lain/wiki/calendar)
+- [cal](https://github.com/lcpz/lain/wiki/cal)
 - [cpu](https://github.com/lcpz/lain/wiki/cpu)
 - [fs](https://github.com/lcpz/lain/wiki/fs)
 - [imap](https://github.com/lcpz/lain/wiki/imap)

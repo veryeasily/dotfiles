@@ -11,6 +11,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'mattn/webapi-vim' " Required by gist-vim
 Plug 'mattn/gist-vim'
 
+Plug 'editorconfig/editorconfig-vim'
+
 " Make sure you use single quotes
 Plug 'junegunn/fzf', { 'dir': $HOME . '/.fzf', 'do': 'yes \| ./install --all' }
 Plug 'junegunn/fzf.vim'
@@ -73,7 +75,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
 
 if has('python3')
-  Plug 'ludovicchabant/vim-gutentags'
+  " Plug 'ludovicchabant/vim-gutentags'
 end
 
 Plug 'sheerun/vim-polyglot'

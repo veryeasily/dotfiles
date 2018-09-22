@@ -28,7 +28,7 @@ local wibox         = require("wibox")
 local beautiful     = require("beautiful")
 local naughty       = require("naughty")
 local lain          = require("lain")
-local menubar       = require("menubar")
+--local menubar       = require("menubar")
 local freedesktop   = require("freedesktop")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
                       require("awful.hotkeys_popup.keys")
@@ -160,7 +160,7 @@ local change_brightness = (function()
 end)()
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "chrome", "terminal", "chat", "etc" }
+awful.util.tagnames = { "chrome", "terminal", "chat", "4", "5" }
 awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
@@ -259,7 +259,7 @@ awful.util.mymainmenu = freedesktop.menu.build({
         -- other triads can be put here
     }
 })
-menubar.utils.terminal = terminal -- Set the Menubar terminal for applications that require it
+--menubar.utils.terminal = terminal -- Set the Menubar terminal for applications that require it
 -- }}}
 
 -- {{{ Screen
@@ -583,8 +583,10 @@ globalkeys = my_table.join(
               {description = "run gui editor", group = "launcher"}),
 
     -- Default
+    --[[ Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
+              {description = "show the menubar", group = "launcher"})
+    --]]
     --[[ dmenu
     awful.key({ modkey }, "x", function ()
             os.execute(string.format("dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
@@ -756,8 +758,8 @@ awful.rules.rules = {
       properties = { titlebars_enabled = true } },
 
     -- Set Firefox to always map on the first tag on screen 1.
-    --{ rule = { class = "Google-chrome" },
-      --properties = { screen = 1, tag = awful.util.tagnames[1] } },
+    { rule = { class = "Google-chrome" },
+      properties = { screen = 1, tag = awful.util.tagnames[1] } },
 
     { rule_any = { role = { "pop-up" }, class = { "Shutter" } },
       properties = { floating = true, opacity = 0.9 } },
