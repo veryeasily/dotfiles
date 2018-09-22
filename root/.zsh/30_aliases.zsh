@@ -1,5 +1,4 @@
 # alias d='docker'
-alias g='git'
 alias d='docker'
 
 # BEGIN copied stuff
@@ -170,3 +169,5 @@ alias clogs='docker-compose logs'
 alias cat='bat'
 
 alias RG='rg --color=always'
+
+alias g='sr google'

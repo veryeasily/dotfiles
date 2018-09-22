@@ -23,15 +23,7 @@ if [[ -f ~/.zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=~/.zsh/main.zsh
     source ~/.zplug/init.zsh
 
-    #if ! zplug check --verbose; then
-        #printf "Install? [y/N]: "
-        #if read -q; then
-            #echo; zplug install
-        #fi
-        #echo
-    #fi
     zplug load
-    spaceship_vi_mode_enable
 fi
 
 if [[ -f ~/.zshrc.local ]]; then
@@ -43,11 +35,6 @@ fi
 export GOPATH=$HOME/go
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# bindkey -M viins "^j" "tmux select-pane -D"
-# bindkey -M viins "^k" "tmux select-pane -U"
-# bindkey -M viins "^h" "tmux select-pane -L"
-# bindkey -M viins "^l" "tmux select-pane -R"
 
 source ~/.fzf/shell/completion.zsh
 source ~/.fzf/shell/key-bindings.zsh
