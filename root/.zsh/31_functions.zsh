@@ -2,7 +2,7 @@
 function bak {
   [ -z "$1" ] && echo "bak requires a file argument to backup" && return 1
   local new_name
-  new_name="$1.$(date -u +"%Y-%m-%d-%H%M%S").bak"
+  new_name="$1.$(date -u +"%Y-%m-%d-%H:%S").bak"
   echo "Creating backup $new_name"
   cp $1 $new_name
 }

@@ -22,4 +22,9 @@ nnoremap g= <C-w>=
 if v:version >= 800
   tnoremap <C-w>n <c-w>N
   tnoremap <Nul> <Esc>
+  tnoremap <silent> h <c-w>N:TmuxNavigateLeft<cr>
+  tnoremap <silent> j <c-w>N:TmuxNavigateDown<cr>
+  tnoremap <silent> k <c-w>N:TmuxNavigateUp<cr>
+  tnoremap <silent> l <c-w>N:TmuxNavigateRight<cr>
+  tnoremap <silent> \ <c-w>N:TmuxNavigatePrevious<cr>
 endif

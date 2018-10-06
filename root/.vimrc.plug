@@ -73,6 +73,7 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
+Plug 'SpaceVim/gtags.vim'
 
 if has('python3')
   " Plug 'ludovicchabant/vim-gutentags'

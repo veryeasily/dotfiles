@@ -43,11 +43,14 @@ zplug "junegunn/fzf", \
   as:command, \
   use:bin/fzf-tmux
 
-#zplug "BurntSushi/ripgrep", \
-  #from:gh-r, \
-  #as:command, \
-  #rename-to:rg, \
-  #use:"*x86_64-unknown-linux*"
+zplug "BurntSushi/ripgrep", \
+  from:gh-r, \
+  as:command, \
+  rename-to:rg, \
+  use:"*x86_64-unknown-linux-musl*"
+
+zplug "BurntSushi/ripgrep", \
+  use:"complete"
 
 #zplug 'knqyf263/pet', \
   #as:command, \

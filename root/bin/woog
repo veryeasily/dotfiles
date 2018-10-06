@@ -17,4 +17,4 @@ done
 
 #could use wmctrl -a, but it's not always reliable in awesome with dual screens
 wmctrl -r "$term - Google Search" -b add,demands_attention
-echo "awful.client.urgent.jumpto()" |awesome-client
+echo "require('awful').client.urgent.jumpto()" |awesome-client
