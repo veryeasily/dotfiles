@@ -83,6 +83,7 @@ zplug "reorx/httpstat", \
 
 zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/docker-compose", from:oh-my-zsh
+zplug "plugins/aws", from:oh-my-zsh
 zplug "plugins/jump", from:oh-my-zsh
 zplug "plugins/github", from:oh-my-zsh
 zplug "lib/spectrum", from:oh-my-zsh

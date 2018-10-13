@@ -126,7 +126,7 @@ setopt append_history
 
 setopt always_last_prompt
 setopt auto_cd
-setopt auto_menu
+setopt menu_complete
 setopt auto_param_keys
 setopt auto_param_slash
 setopt auto_pushd

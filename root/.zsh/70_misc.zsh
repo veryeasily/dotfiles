@@ -1,3 +1,4 @@
+
 # Important
 zstyle ':completion:*:default' menu select=2
 
@@ -11,8 +12,10 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
 zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
 zstyle ':completion:*' use-cache true
+zstyle ':completion::complete:*' cache-path "$HOME/.zcache"
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 
 # Directory
@@ -22,6 +25,9 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # default: --
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
+
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 
 autoload -Uz cdr
 autoload -Uz history-search-end

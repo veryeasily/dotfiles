@@ -86,14 +86,14 @@ Plug 'mxw/vim-jsx'
 " Test framework for vimscripts. See https://github.com/junegunn/vader.vim
 Plug 'junegunn/vader.vim'
 
-let g:ale_enabled = 1
-let g:ale_set_quickfix = 1
-let g:ale_lint_delay = 2000
-map <Leader>ad <Plug>(ale_detail)
-map <Leader>an <Plug>(ale_next)
-map <Leader>ap <Plug>(ale_previous)
-
 if v:version >= 800
+  let g:ale_enabled = 1
+  let g:ale_set_quickfix = 0
+  let g:ale_lint_delay = 2000
+  map <Leader>ad <Plug>(ale_detail)
+  map <Leader>an <Plug>(ale_next)
+  map <Leader>ap <Plug>(ale_previous)
+
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
   Plug 'maralla/completor.vim', { 'do': 'make js' }
