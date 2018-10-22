@@ -1,0 +1,15 @@
+[user]
+  email = veryveryeasily@gmail.com
+  name = Luke Underwood
+[push]
+  default = simple
+[alias]
+  # the acronym stands for "subtree add"
+  subtreeadd = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
+  # the acronym stands for "subtree update"
+  subtreeupdate = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
+  co = "checkout"
+[github]
+  user = veryeasily
+[core]
+  excludesfile = /home/mors/.gitignore_global

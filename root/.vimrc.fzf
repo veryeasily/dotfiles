@@ -41,16 +41,29 @@ command! FZFMru call fzf#run({
 \  'options': '-m -x +s',
 \  'down':    '40%'})
 
-noremap <Nul><Nul>t <Esc>:<c-u>FZF<CR>
-noremap <Nul><Nul>g <Esc>:<c-u>Rg<space>
-noremap <Nul><Nul>G <Esc>viw"jy:<c-u>Rg<space><c-r>j
-noremap <Nul><Nul>r <Esc>:<c-u>Rg<space>
-noremap <Nul><Nul>l <Esc>:<c-u>Lines<cr>
-noremap <Nul><Nul>o <Esc>:<c-u>History<CR>
-noremap <Nul><Nul>b <Esc>:<c-u>Buffer<CR>
-noremap <Nul><Nul>u <Esc>:<c-u>FZFMru<CR>
-noremap <Nul><Nul>q <Esc>:History:<CR>
-noremap <Nul><Nul>/ <Esc>:History/<CR>
+if has('gui_running')
+  noremap <c-space><c-space>t <Esc>:<c-u>FZF<CR>
+  noremap <c-space><c-space>g <Esc>:<c-u>Rg<space>
+  noremap <c-space><c-space>G <Esc>viw"jy:<c-u>Rg<space><c-r>j
+  noremap <c-space><c-space>r <Esc>:<c-u>Rg<space>
+  noremap <c-space><c-space>l <Esc>:<c-u>Lines<cr>
+  noremap <c-space><c-space>o <Esc>:<c-u>History<CR>
+  noremap <c-space><c-space>b <Esc>:<c-u>Buffer<CR>
+  noremap <c-space><c-space>u <Esc>:<c-u>FZFMru<CR>
+  noremap <c-space><c-space>q <Esc>:History:<CR>
+  noremap <c-space><c-space>/ <Esc>:History/<CR>
+else
+  noremap <Nul><Nul>t <Esc>:<c-u>FZF<CR>
+  noremap <Nul><Nul>g <Esc>:<c-u>Rg<space>
+  noremap <Nul><Nul>G <Esc>viw"jy:<c-u>Rg<space><c-r>j
+  noremap <Nul><Nul>r <Esc>:<c-u>Rg<space>
+  noremap <Nul><Nul>l <Esc>:<c-u>Lines<cr>
+  noremap <Nul><Nul>o <Esc>:<c-u>History<CR>
+  noremap <Nul><Nul>b <Esc>:<c-u>Buffer<CR>
+  noremap <Nul><Nul>u <Esc>:<c-u>FZFMru<CR>
+  noremap <Nul><Nul>q <Esc>:History:<CR>
+  noremap <Nul><Nul>/ <Esc>:History/<CR>
+endif
 
 " function! FzyCommand(choice_command, vim_command)
 "   try

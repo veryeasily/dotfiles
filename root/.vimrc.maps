@@ -6,6 +6,7 @@ nnoremap gm m
 " Leave insert and visual mode more easily
 " noremap! jk <Esc>`^
 noremap! <Nul> <Esc>
+noremap! <c-space> <Esc>
 
 " Window navigation commands
 " noremap <c-j> <c-w>j
@@ -19,9 +20,16 @@ inoremap <expr> <c-k> pumvisible() ? "<c-p>" : "<c-k>"
 nnoremap gz <C-w>\|<C-w>_
 nnoremap g= <C-w>=
 
-if v:version >= 800
+" For holding control or not
+noremap <F3>           <Esc>:noh<CR>
+noremap <F4>           <Esc>:set invnumber<CR>
+
+noremap <Leader>/ <Esc>/\M
+
+if has('terminal')
   tnoremap <C-w>n <c-w>N
   tnoremap <Nul> <Esc>
+  tnoremap <c-space> <Esc>
   tnoremap <silent> h <c-w>N:TmuxNavigateLeft<cr>
   tnoremap <silent> j <c-w>N:TmuxNavigateDown<cr>
   tnoremap <silent> k <c-w>N:TmuxNavigateUp<cr>

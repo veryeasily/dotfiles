@@ -29,6 +29,7 @@ Plug 'mileszs/ack.vim'
 " Syntax highlighting
 let g:jsx_ext_required = 1
 Plug 'sheerun/vim-polyglot'
+Plug 'vito-c/jq.vim'
 
 let g:rooter_use_lcd = 1
 " Next line prevents vim-rooter from echoing whenever it changes directory.
@@ -70,8 +71,6 @@ Plug 'rakr/vim-one'
 let g:gruvbox_contrast_light="hard"
 Plug 'morhetz/gruvbox'
 
-Plug 'vim-airline/vim-airline'
-
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
 Plug 'SpaceVim/gtags.vim'
 
@@ -82,14 +81,18 @@ end
 Plug 'sheerun/vim-polyglot'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'mxw/vim-jsx'
+Plug 'pearofducks/ansible-vim'
 
 " Test framework for vimscripts. See https://github.com/junegunn/vader.vim
 Plug 'junegunn/vader.vim'
 
 if v:version >= 800
+
+  let g:airline#extensions#ale#enabled = 0
   let g:ale_enabled = 1
-  let g:ale_set_quickfix = 0
   let g:ale_lint_delay = 2000
+  let g:ale_set_quickfix = 0
+
   map <Leader>ad <Plug>(ale_detail)
   map <Leader>an <Plug>(ale_next)
   map <Leader>ap <Plug>(ale_previous)
@@ -100,7 +103,11 @@ if v:version >= 800
   Plug 'shawncplus/phpcomplete.vim'
   let g:completor_php_omni_trigger = '\$?\w+|\$?\w+\s+=\s+\w+'
   Plug 'w0rp/ale'
+
 endif
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " neovim specific
 if has('nvim')
@@ -149,3 +156,28 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+if has('termguicolors')
+  set termguicolors
+
+  """
+  " COLORS
+  " set Vim-specific sequences for RGB colors
+  " Borrowed from https://github.com/vim/vim/issues/993
+
+  silent! let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  silent! let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+if &diff
+  silent! colorscheme jellyx
+  let g:airline_theme = 'papercolor'
+elseif has('gui_running')
+  silent! colorscheme Tomorrow-Night-Eighties
+  let g:airline_theme = 'tomorrow'
+else
+  silent! colorscheme PaperColor
+  let g:airline_theme = 'papercolor'
+endif
+
+set background=dark

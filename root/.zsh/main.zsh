@@ -36,12 +36,9 @@ zplug "junegunn/fzf-bin", \
   rename-to:"fzf", \
   frozen:1
 
-# zplug "junegunn/fzf", \
-#   use:"shell/*.zsh"
-
 zplug "junegunn/fzf", \
   as:command, \
-  use:bin/fzf-tmux
+  use:"{bin/fzf-tmux,shell/*.zsh}"
 
 zplug "BurntSushi/ripgrep", \
   from:gh-r, \

@@ -166,8 +166,13 @@ alias crwt='docker-compose run --rm watchtest'
 alias cps='docker-compose ps'
 alias clogs='docker-compose logs'
 
-alias cat='bat'
-
 alias RG='rg --color=always'
 
 alias g='sr google'
+
+alias an='ansible'
+alias ap='ansible-playbook'
+alias ang='ansible-galaxy'
+
+alias cat='bat'
+alias oldcat='/bin/cat'

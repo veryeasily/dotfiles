@@ -16,8 +16,8 @@ alias tmux='TERM=xterm-256color tmux'
 # Get into tmux if we aren't already
 [ -z ${TMUX+x}  ] && {exec tmux new-session && exit $?;}
 
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.cache/zshcompdump
+# zstyle ':completion:*' use-cache on
+# zstyle ':completion:*' cache-path ~/.cache/zshcompdump
 
 if [[ -f ~/.zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=~/.zsh/main.zsh

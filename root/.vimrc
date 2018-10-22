@@ -24,21 +24,21 @@ if has('nofixedendofline')
 endif
 
 " Syntastic options
-set statusline=%t       "tail of the filename
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
-set statusline+=%y      "filetype
-set statusline+=Curent:\ %l\ Total:\ %4L
-set statusline+=\ \ \ \ \ \ \ \ \ \ %{getcwd()} "this is my hack for whitespace
-set statusline+=%=      "left/right separator
-set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
+"set statusline=%t       "tail of the filename
+"set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+"set statusline+=%{&ff}] "file format
+"set statusline+=%h      "help file flag
+"set statusline+=%m      "modified flag
+"set statusline+=%r      "read only flag
+"set statusline+=%y      "filetype
+"set statusline+=Curent:\ %l\ Total:\ %4L
+"set statusline+=\ \ \ \ \ \ \ \ \ \ %{getcwd()} "this is my hack for whitespace
+"set statusline+=%=      "left/right separator
+"set statusline+=%#warningmsg#
+"" set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%c,     "cursor column
+"set statusline+=%l/%L   "cursor line/total lines
+"set statusline+=\ %P    "percent through file
 
 set showcmd " Display our current \[count\]
 set incsearch
@@ -156,26 +156,8 @@ set gdefault
 
 set nu
 
+set nomagic
+
 """""""""""""""""""""""""
 " END original ~/.vimrc "
 """"""""""""""""""""""""
-
-if has('termguicolors')
-  set termguicolors
-
-  """
-  " COLORS
-  " set Vim-specific sequences for RGB colors
-  " Borrowed from https://github.com/vim/vim/issues/993
-
-  silent! let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  silent! let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-
-if &diff
-  silent! colorscheme jellyx
-else
-  silent! colorscheme gruvbox
-endif
-
-set background=dark
