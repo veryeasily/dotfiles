@@ -156,8 +156,6 @@ set gdefault
 
 set nu
 
-set nomagic
-
 """""""""""""""""""""""""
 " END original ~/.vimrc "
 """"""""""""""""""""""""

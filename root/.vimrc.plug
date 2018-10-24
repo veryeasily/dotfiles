@@ -56,7 +56,9 @@ nnoremap <silent> l :TmuxNavigateRight<cr>
 nnoremap <silent> \ :TmuxNavigatePrevious<cr>
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
+
 Plug 'haya14busa/incsearch.vim'
+
 Plug 'Kuniwak/vint'
 Plug 'mattn/emmet-vim'
 Plug 'moll/vim-node'
@@ -126,12 +128,11 @@ if has('nvim')
 endif
 call plug#end()
 
-set nocompatible
-
 let g:CommandTFileScanner = 'git'
 
 let g:EasyClipShareYanks = 1
-map <Leader><Leader> <Plug>(easymotion-prefix)
+map <Nul> <Plug>(easymotion-prefix)
+map <Leader>s <Plug>(easymotion-s)
 
 let g:user_emmet_mode='inv'
 let g:user_emmet_install_global = 0
@@ -176,8 +177,21 @@ elseif has('gui_running')
   silent! colorscheme Tomorrow-Night-Eighties
   let g:airline_theme = 'tomorrow'
 else
-  silent! colorscheme PaperColor
-  let g:airline_theme = 'papercolor'
+  silent! colorscheme desert
+  let g:airline_theme = 'onedark'
 endif
 
 set background=dark
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" incsearch.vim config
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" :h g:incsearch#auto_nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)

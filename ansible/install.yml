@@ -1,0 +1,34 @@
+# vim: ft=yaml.ansible
+---
+- name: Configure ansible
+  hosts: localhost
+  tasks:
+    - name: Tell ansible to manage localhost
+      add_host:
+        hostname: localhost
+        ansible_connection: local
+        groups:
+          "[] + [{{ dotfiles_wants_awesomewm | bool | ternary('awesome','') }}]"
+
+    - name: Install packages we need
+      package:
+        name: "{{ item }}"
+        state: present
+      loop: [git, stow]
+
+    - name: Clone awesome-copycats repo if necessary
+      git:
+        repo: 'https://github.com/veryeasily/awesome-copycats'
+        dest: '../root/.config/awesome'
+        version: master
+
+    - name: Stow the ./root folder
+      command: ./stow.sh
+      args:
+        chdir: ../
+
+  vars_prompt:
+    - name: dotfiles_wants_awesomewm
+      prompt: Do you want to install awesome-wm config?
+      default: true
+      private: no
