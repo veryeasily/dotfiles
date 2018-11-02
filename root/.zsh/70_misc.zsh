@@ -73,4 +73,4 @@ export FZF_IGNORE_LIST="'^/snap|node_modules|vendor|.rbenv|.phpbrew|.pyenv|bundl
 export FZF_DEFAULT_COMMAND="fd --hidden --type file --no-ignore-vcs --ignore-file $HOME/.ignore"
 
 export LC_COLLATE="C"
-export CDPATH="$CDPATH:$HOME/code:$HOME"
+export CDPATH="$CDPATH:$HOME/code:$HOME:$HOME/.marks"

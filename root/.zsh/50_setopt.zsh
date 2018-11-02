@@ -1,37 +1,10 @@
-# Do not print the directory stack after pushd or popd.
-setopt pushd_silent
-# Replace 'cd -' with 'cd +'
-setopt pushd_minus
-
-# Ignore duplicates to add to pushd
-setopt pushd_ignore_dups
-
-# pushd no arg == pushd $HOME
-setopt pushd_to_home
-
-# Check spell command
-setopt correct
-
-# Check spell all
-# setopt correct_all
-
-# Prohibit overwrite by redirection(> & >>) (Use >! and >>! to bypass.)
-# setopt no_clobber
-
-# Deploy {a-c} -> a b c
-setopt brace_ccl
-
-# Enable 8bit
-setopt print_eight_bit
-
-# sh_word_split
-setopt sh_word_split
-
-# Change
-#~$ echo 'hoge' \' 'fuga'
-# to
-#~$ echo 'hoge '' fuga'
-setopt rc_quotes
+setopt monitor # zplug acts crazy without this sometimes
+setopt pushd_ignore_dups # Ignore duplicates to add to pushd
+setopt pushd_to_home # pushd no arg == pushd $HOME
+setopt correct # Check spell command
+setopt brace_ccl # Deploy {a-c} -> a b c
+setopt print_eight_bit # Enable 8bit
+setopt sh_word_split # sh_word_split
 
 # Case of multi redirection and pipe,
 # use 'tee' and 'cat', if needed
@@ -62,13 +35,6 @@ setopt path_dirs
 
 # Show exit status if it's except zero.
 setopt print_exit_value
-
-# Show expaning and executing in what way
-#setopt xtrace
-
-# Confirm when executing 'rm *'
-# setopt rm_star_wait
-setopt rm_star_silent
 
 # Let me know immediately when terminating job
 setopt notify
@@ -108,36 +74,31 @@ setopt mail_warning
 setopt hist_save_nodups
 
 
-
-
-
-
 # Remove comannd of 'hostory' or 'fc -l' from history list
 # setopt hist_no_store
 
 # Remove functions from history list
 setopt hist_no_functions
 
-
-
 # Append to history file
 setopt append_history
 
-
 setopt always_last_prompt
-setopt auto_cd
+
+setopt no_auto_cd
+setopt auto_pushd
+setopt pushd_silent
+setopt pushd_minus
+setopt chase_links
+
 setopt menu_complete
 setopt auto_param_keys
 setopt auto_param_slash
-setopt auto_pushd
 setopt complete_in_word
 setopt globdots
 setopt interactive_comments
 setopt list_types
 setopt magic_equal_subst
-
-# zplug acts crazy without this sometimes
-setopt monitor
 
 ###
 # Taken from ./70_misc.zsh

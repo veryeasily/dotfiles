@@ -57,8 +57,6 @@ nnoremap <silent> \ :TmuxNavigatePrevious<cr>
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
 
-Plug 'haya14busa/incsearch.vim'
-
 Plug 'Kuniwak/vint'
 Plug 'mattn/emmet-vim'
 Plug 'moll/vim-node'
@@ -126,6 +124,10 @@ if has('nvim')
   " There used to be tons of deoplete, tern, and supertab stuff here! Check the
   " git history for more info!
 endif
+
+Plug 'haya14busa/incsearch.vim'
+Plug 'osyo-manga/vim-over'
+
 call plug#end()
 
 let g:CommandTFileScanner = 'git'
@@ -189,6 +191,9 @@ set background=dark
 " :h g:incsearch#auto_nohlsearch
 set hlsearch
 let g:incsearch#auto_nohlsearch = 1
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 map n  <Plug>(incsearch-nohl-n)
 map N  <Plug>(incsearch-nohl-N)
 map *  <Plug>(incsearch-nohl-*)

@@ -38,9 +38,8 @@ Pry.config.ls.private_method_color = :bright_black
 # == PLUGINS ===
 # awesome_print gem: great syntax colorized printing
 # look at ~/.aprc for more settings for awesome_print
-require 'interactive_editor'
-require 'rubygems'
-require 'awesome_print'
+require 'rubygems' rescue nil
+require 'awesome_print' rescue nil
 # Pry.config.print = proc {|output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output)}
 #begin
 
