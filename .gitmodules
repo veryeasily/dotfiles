@@ -2,3 +2,7 @@
 	path = root/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 	branch = master
+[submodule "root/.config/awesome"]
+	path = root/.config/awesome
+	url = https://github.com/veryeasily/awesome-dotfiles
+	branch = master
