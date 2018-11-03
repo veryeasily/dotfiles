@@ -1,7 +1,8 @@
-" vi: ft=vim
 if !exists(':PlugInstall')
   if system('command -v curl || echo "Curl required to auto-install vim-plug.."')
-    echo system('curl -o /home/mors/.vim/autoload/plug.vim -L -C - https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+    !mkdir ~/.vim/autoload >/dev/null 2>&1
+    !curl -o /home/mors/.vim/autoload/plug.vim -L -C - 
+       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   endif
 endif
 
@@ -213,3 +214,7 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim: ft=vim
