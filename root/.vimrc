@@ -152,8 +152,6 @@ set history=10000
 " see https://parceljs.org/hmr.html
 set backupcopy=yes
 
-set gdefault
-
 set nu
 
 """""""""""""""""""""""""

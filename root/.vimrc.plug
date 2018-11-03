@@ -1,4 +1,10 @@
 " vi: ft=vim
+if !exists(':PlugInstall')
+  if system('command -v curl || echo "Curl required to auto-install vim-plug.."')
+    echo system('curl -o /home/mors/.vim/autoload/plug.vim -L -C - https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+  endif
+endif
+
 call plug#begin('~/.vim/plugged')
 
 let g:tern_map_keys=1
@@ -127,6 +133,13 @@ endif
 
 Plug 'haya14busa/incsearch.vim'
 Plug 'osyo-manga/vim-over'
+
+" Vim named bookmarks
+highlight BookmarkSign ctermbg=NONE ctermfg=160
+highlight BookmarkLine ctermbg=194 ctermfg=NONE
+let g:bookmark_sign = '♥'
+let g:bookmark_highlight_lines = 1
+Plug 'MattesGroeger/vim-bookmarks'
 
 call plug#end()
 
