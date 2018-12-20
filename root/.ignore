@@ -2,9 +2,4 @@
 .git
 node_modules
 vendor
-tmp
-public
 tags
-test
-# tests
-spec

@@ -79,8 +79,8 @@ alias nvim='vim -N -u NONE -i NONE'
 # fi
 
 # Global aliases
-alias -g C='| xclip -sel clipboard'
-alias -g CC='| tr -d "\n" | xclip -sel clipboard'
+alias -g CP='| xclip -sel clipboard'
+alias -g CPP='| tr -d "\n" | xclip -sel clipboard'
 alias -g G='| grep'
 alias -g GG='| multi_grep'
 alias -g W='| wc'
@@ -130,7 +130,9 @@ function devpath() {
 }
 
 # for help less
-alias -g HL=' 2>&1 | less'
+alias -g HL=' --help 2>&1 | less'
+
+alias -g L=' 2>&1 | less'
 
 # END copied stuff
 
@@ -176,3 +178,5 @@ alias ang='ansible-galaxy'
 
 alias cat='bat'
 alias oldcat='/bin/cat'
+
+alias mux='tmuxinator'

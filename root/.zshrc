@@ -47,5 +47,11 @@ _fzf_compgen_path() {
 # export FZF_COMPLETION_TRIGGER=''
 # bindkey '^T' fzf-completion
 # bindkey '^I' $fzf_default_completion
+bindkey '^Sc' fzf-cd-widget
 
 [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
+
+[ -s "$LUKE_BUILD/z/z.sh" ] && . "$LUKE_BUILD/z/z.sh"
+
+# see https://github.com/sindresorhus/pure/wiki#show-number-of-jobs-in-prompt
+PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '

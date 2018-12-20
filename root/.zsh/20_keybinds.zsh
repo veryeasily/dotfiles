@@ -275,7 +275,7 @@ bindkey '^@' vi-cmd-mode
 bindkey '^sl' clear-screen
 bindkey -s '^se' 'e -a^M'
 bindkey '^s;' execute-named-cmd
-bindkey '^sn' push-line
+bindkey '^sq' push-line
 
 # From
 # https://github.com/knqyf263/pet/tree/e2b42ac4c7067ae474d54a16054b840848c11d85#bashzsh

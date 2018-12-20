@@ -91,7 +91,9 @@ setopt pushd_silent
 setopt pushd_minus
 setopt chase_links
 
-setopt menu_complete
+setopt no_menu_complete
+setopt auto_menu
+
 setopt auto_param_keys
 setopt auto_param_slash
 setopt complete_in_word

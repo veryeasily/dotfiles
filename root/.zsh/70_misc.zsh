@@ -70,7 +70,7 @@ export FZF_DEFAULT_OPTS='
 --bind=ctrl-z:toggle-all
 '
 export FZF_IGNORE_LIST="'^/snap|node_modules|vendor|.rbenv|.phpbrew|.pyenv|bundle|cache'"
-export FZF_DEFAULT_COMMAND="fd --hidden --type file --no-ignore-vcs --ignore-file $HOME/.ignore"
+export FZF_DEFAULT_COMMAND="fd --hidden --type file --ignore-file $HOME/.ignore"
 
 export LC_COLLATE="C"
 export CDPATH="$CDPATH:$HOME/code:$HOME:$HOME/.marks"

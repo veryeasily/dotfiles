@@ -1,0 +1,28 @@
+---
+version: '2.4'
+
+services:
+  main:
+    command:
+      - /bin/bash
+      - '-c'
+      - |
+          rm -f tmp/pids/server.pid &>/dev/null;
+          yarn \
+            && bundle install --jobs=4 --retry=3 \
+            && bundle exec rake db:create db:migrate \
+            && bundle exec puma -C config/puma.rb
+    entrypoint:
+      - '/entrypoint.sh'
+    volumes:
+      - ./.local/entrypoint.sh:/entrypoint.sh
+      - /home/mors/.vimrc:/home/shed/.vimrc
+      - /home/mors/.vimrc.plug:/home/shed/.vimrc.plug
+      - /home/mors/.vimrc.maps:/home/shed/.vimrc.maps
+      - /home/mors/.vimrc.fzf:/home/shed/.vimrc.fzf
+      - /home/mors/.vim:/home/shed/.vim
+      - /home/mors/.pryrc:/home/shed/.pryrc
+      - /home/mors/.editrc:/home/shed/.editrc
+      - /home/mors/.inputrc:/home/shed/.inputrc
+      - /home/mors/.pry_history:/home/shed/.pry_history
+    user: root

@@ -2,6 +2,8 @@
 # export ZSH_TMUX_FIXTERM="true"
 # export COMPOSE_HTTP_TIMEOUT="10000"
 
+export HIHOME="/media/hi/home"
+
 unset ZPLUG_CACHE_FILE
 
 typeset -gx -U path
@@ -61,12 +63,15 @@ if command -v go 1>/dev/null 2>&1; then
   export GOPATH="$HOME/go"
   export PATH="$PATH:$(go env GOPATH)/bin"
 fi
+
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if ! command -v pyenv 1>/dev/null 2>&1; then
   git clone git@github.com:pyenv/pyenv.git ~/.pyenv
+  git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 fi
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
@@ -75,5 +80,3 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 # [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 
 [[ -e "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"
-
-source /home/mors/.phpbrew/bashrc

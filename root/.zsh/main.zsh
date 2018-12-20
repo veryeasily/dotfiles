@@ -12,7 +12,6 @@ zplug "~/.zsh", from:local, use:"<->_*.zsh"
 zplug 'mafredri/zsh-async', from:github
 zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
 
-zplug "rupa/z", use:"z.sh"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
@@ -59,11 +58,11 @@ zplug "philovivero/distribution", \
   use:distribution, \
   if:'(( $+commands[perl] ))'
 
-zplug "reorx/httpstat", \
-  as:command, \
-  use:'(httpstat).py', \
-  rename-to:'$1', \
-  if:'(( $+commands[python] ))'
+#zplug "reorx/httpstat", \
+  #as:command, \
+  #use:'(httpstat).py', \
+  #rename-to:'$1', \
+  #if:'(( $+commands[python] ))'
 
 #zplug "jhawthorn/fzy", \
   #as:command, \
@@ -80,7 +79,7 @@ zplug "reorx/httpstat", \
 
 zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/docker-compose", from:oh-my-zsh
-zplug "plugins/aws", from:oh-my-zsh
+#zplug "plugins/aws", from:oh-my-zsh
 zplug "plugins/jump", from:oh-my-zsh
 zplug "plugins/github", from:oh-my-zsh
 zplug "lib/spectrum", from:oh-my-zsh
