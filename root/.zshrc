@@ -9,22 +9,32 @@ if [[ "$TERM" = "xterm" ]]; then TERM="xterm-256color" fi
 # fi
 alias tmux='TERM=xterm-256color tmux'
 
-# # See
-# # https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
-[[ -e ~/.dircolors ]] && eval "$(dircolors "$HOME/.dircolors")"
-
-# Get into tmux if we aren't already
-[ -z ${TMUX+x}  ] && {exec tmux new-session && exit $?;}
-
-# zstyle ':completion:*' use-cache on
-# zstyle ':completion:*' cache-path ~/.cache/zshcompdump
+for file in $(ls ~/.zsh/*.zsh | grep -v main.zsh); do
+  source $file
+done
 
 if [[ -f ~/.zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=~/.zsh/main.zsh
     source ~/.zplug/init.zsh
 
+    # Install plugins if there are plugins that have not been installed
+    if ! zplug check --verbose; then
+        printf "Install? [y/N]: "
+        if read -q; then
+            echo; zplug install
+        fi
+    fi
+
+    # Then, source plugins and add commands to $PATH
     zplug load
 fi
+
+# # Get into tmux if we aren't already
+# [ -z ${TMUX+x}  ] && {exec tmux new-session && exit $?;}
+
+# # See
+# # https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
+[[ -e ~/.dircolors ]] && eval "$(dircolors "$HOME/.dircolors")"
 
 if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
@@ -49,9 +59,9 @@ _fzf_compgen_path() {
 # bindkey '^I' $fzf_default_completion
 bindkey '^Sc' fzf-cd-widget
 
-[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
+# [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 
 [ -s "$LUKE_BUILD/z/z.sh" ] && . "$LUKE_BUILD/z/z.sh"
 
 # see https://github.com/sindresorhus/pure/wiki#show-number-of-jobs-in-prompt
-PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
+# PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '

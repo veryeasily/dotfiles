@@ -1,20 +1,17 @@
 # vim:ft=zsh
 
-# folder of all of your autocomplete functions
-fpath=($HOME/.zsh-completions $fpath)
-
-ZPLUG_SUDO_PASSWORD="$(cat "$HOME/.lju-pass")"
-ZPLUG_PROTOCOL=ssh
-
 # zplug "zplug/zplug", hook-build:'zplug --self-manage'
-zplug "~/.zsh", from:local, use:"<->_*.zsh"
 
-zplug 'mafredri/zsh-async', from:github
-zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
-
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search", defer:3
+# zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/docker-compose", from:oh-my-zsh
+zplug "plugins/jump", from:oh-my-zsh
+zplug "plugins/github", from:oh-my-zsh
+zplug "plugins/terraform", from:oh-my-zsh
+zplug "lib/spectrum", from:oh-my-zsh
+zplug "themes/sorin", from:oh-my-zsh, as:theme
 
 zplug "glidenote/hub-zsh-completion"
 zplug 'Valodim/zsh-curl-completion'
@@ -42,6 +39,7 @@ zplug "junegunn/fzf", \
 zplug "BurntSushi/ripgrep", \
   from:gh-r, \
   as:command, \
+  at:0.10.0, \
   rename-to:rg, \
   use:"*x86_64-unknown-linux-musl*"
 
@@ -52,11 +50,6 @@ zplug "BurntSushi/ripgrep", \
   #as:command, \
   #hook-build:'go get -d && go build' \
   #if:'(( $+commands[go] ))'
-
-zplug "philovivero/distribution", \
-  as:command, \
-  use:distribution, \
-  if:'(( $+commands[perl] ))'
 
 #zplug "reorx/httpstat", \
   #as:command, \
@@ -76,13 +69,6 @@ zplug "philovivero/distribution", \
 # if zplug check 'b4b4r07/history'; then
 #     export ZSH_HISTORY_AUTO_SYNC=false
 # fi
-
-zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/docker-compose", from:oh-my-zsh
-#zplug "plugins/aws", from:oh-my-zsh
-zplug "plugins/jump", from:oh-my-zsh
-zplug "plugins/github", from:oh-my-zsh
-zplug "lib/spectrum", from:oh-my-zsh
 
 # Make zsh autostart tmux
 # export ZSH_TMUX_AUTOSTART=true

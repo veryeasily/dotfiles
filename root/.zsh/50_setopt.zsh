@@ -34,7 +34,7 @@ setopt no_flow_control
 setopt path_dirs
 
 # Show exit status if it's except zero.
-setopt print_exit_value
+setopt no_print_exit_value
 
 # Let me know immediately when terminating job
 setopt notify

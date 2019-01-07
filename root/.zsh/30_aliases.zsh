@@ -129,10 +129,14 @@ function devpath() {
     return 1
 }
 
+alias -g H=' --help 2>&1'
+alias -g L=' 2>&1 | less'
+
 # for help less
 alias -g HL=' --help 2>&1 | less'
 
-alias -g L=' 2>&1 | less'
+# maybe a little nicer than "| less" ??
+alias -g B=' 2>&1 | bat'
 
 # END copied stuff
 

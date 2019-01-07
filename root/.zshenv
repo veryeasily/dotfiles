@@ -6,29 +6,28 @@ export HIHOME="/media/hi/home"
 
 unset ZPLUG_CACHE_FILE
 
-typeset -gx -U path
-path=( \
-    ~/bin(N-/) \
-    ~/.zplug/bin(N-/) \
-    ~/.tmux/bin(N-/) \
-    "$path[@]" \
-    )
-# 
-# # NOTE: set fpath before compinit
-typeset -gx -U fpath
-fpath=( \
-    ~/.zsh/completion(N-/) \
-    ~/.zsh/functions(N-/) \
-    ~/.zsh/plugins/zsh-completions(N-/) \
-    /usr/local/share/zsh/site-functions(N-/) \
-    $fpath \
-)
+#typeset -gx -U path
+#path=( \
+    #~/bin(N-/) \
+    #~/.zplug/bin(N-/) \
+    #~/.tmux/bin(N-/) \
+    #"$path[@]" \
+    #)
+## 
+## # NOTE: set fpath before compinit
+#typeset -gx -U fpath
+#fpath=( \
+    #~/.zsh/completion(N-/) \
+    #~/.zsh/functions(N-/) \
+    #~/.zsh/plugins/zsh-completions(N-/) \
+    #/usr/local/share/zsh/site-functions(N-/) \
+    #$fpath \
+#)
 # 
 # # autoload
 autoload -Uz run-help
 autoload -Uz add-zsh-hook
 autoload -Uz colors && colors
-autoload -Uz compinit && compinit -u
 autoload -Uz is-at-least
 
 export EDITOR=vim

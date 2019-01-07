@@ -1,7 +1,7 @@
-if !exists(':PlugInstall')
+if empty(glob($HOME."/.vim/autoload/plug.vim"))
   if system('command -v curl || echo "Curl required to auto-install vim-plug.."')
     !mkdir ~/.vim/autoload >/dev/null 2>&1
-    !curl -o /home/mors/.vim/autoload/plug.vim -L -C - 
+    !curl -o $HOME/.vim/autoload/plug.vim -L -C - 
        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   endif
 endif
@@ -69,7 +69,7 @@ Plug 'othree/html5.vim'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 
 " Colorschemes
@@ -108,9 +108,10 @@ if v:version >= 800
   if has('python3')
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
+    let g:completor_php_omni_trigger = '\$?\w+|\$?\w+\s+=\s+\w+'
+    let g:completor_blacklist = ['tagbar', 'qf', 'netrw', 'unite', 'vimwiki', 'nerdtree']
     Plug 'maralla/completor.vim', { 'do': 'make js' }
     Plug 'shawncplus/phpcomplete.vim'
-    let g:completor_php_omni_trigger = '\$?\w+|\$?\w+\s+=\s+\w+'
   endif
 
   Plug 'w0rp/ale'
@@ -188,18 +189,6 @@ endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
-if has('termguicolors')
-  set termguicolors
-
-  """
-  " COLORS
-  " set Vim-specific sequences for RGB colors
-  " Borrowed from https://github.com/vim/vim/issues/993
-
-  silent! let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  silent! let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-
 if &diff
   silent! colorscheme jellyx
   let g:airline_theme = 'papercolor'
@@ -207,8 +196,8 @@ elseif has('gui_running')
   silent! colorscheme Tomorrow-Night-Eighties
   let g:airline_theme = 'tomorrow'
 else
-  silent! colorscheme desert
-  let g:airline_theme = 'onedark'
+  silent! colorscheme Tomorrow-Night
+  let g:airline_theme = 'base16_embers'
 endif
 
 set background=dark
@@ -228,6 +217,22 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+
+if has('termguicolors')
+  """
+  " COLORS
+  " set Vim-specific sequences for RGB colors
+  " Borrowed from https://github.com/vim/vim/issues/993
+
+  silent! let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  silent! let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+  set termguicolors
+
+  hi! Normal ctermbg=NONE guibg=NONE
+
+  set notermguicolors
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

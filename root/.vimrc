@@ -1,6 +1,11 @@
 " vi: ft=vim
 set encoding=utf-8
 set nocompatible
+
+"profile start profile.log
+"profile func *
+"profile file *
+
 filetype plugin indent on
 syntax on
  
@@ -157,3 +162,5 @@ set nu
 """""""""""""""""""""""""
 " END original ~/.vimrc "
 """"""""""""""""""""""""
+
+"profile pause
