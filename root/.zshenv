@@ -3,6 +3,7 @@
 # export COMPOSE_HTTP_TIMEOUT="10000"
 
 export HIHOME="/media/hi/home"
+export BIGDRIVE="$HIHOME/bigdrive"
 
 unset ZPLUG_CACHE_FILE
 
@@ -34,34 +35,48 @@ export EDITOR=vim
 export PAGER=less
 export LESS="-isRM"
 
+export ANDROID_HOME="/usr/lib/android-sdk"
+export ANDROID_SDK_ROOT="/usr/lib/android-sdk"
+export VAGRANT_HOME="$BIGDRIVE/.vagrant.d"
+
 if [[ -z "$XDG_DATA_HOME" ]]; then
   export XDG_DATA_HOME="$HOME/.local/share"
   [[ -e "$XDG_DATA_HOME" ]] ||  mkdir -p "$XDG_DATA_HOME"
 fi
 
+
+################################################################################
+# RUBY STUFF
+################################################################################
+
 export RBENV_ROOT="$HOME/.rbenv"
 export PATH="$RBENV_ROOT/bin:$PATH"
 eval "$(rbenv init -)"
 
-export NVM_DIR="$HOME/.nvm"
 
-# if [[ -z "$VIM" ]]; then
+################################################################################
+# NODE STUFF
+################################################################################
+
+export NVM_DIR="$HOME/.nvm"
 if [[ -e "$NVM_DIR/nvm.sh" ]]; then
   . "$NVM_DIR/nvm.sh"
 fi
-# else
-#   export PATH="$PATH:$NVM_DIR/versions/node/$(cat $NVM_DIR/alias/default)/bin"
-# fi
 
-# We add the following incase yarn messed up.
+# The yarn stuff is a little weird because it messes up sometimes.
 # More info here:
 # https://github.com/yarnpkg/yarn/issues/648
-export PATH="$HOME/.yarn/bin:$PATH"
-export PATH="$HOME/.cargo/bin:${PATH}:/home/mors/bin"
+export PATH="$HOME/.cargo/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH:$HOME/bin"
+
 if command -v go 1>/dev/null 2>&1; then
   export GOPATH="$HOME/go"
   export PATH="$PATH:$(go env GOPATH)/bin"
 fi
+
+
+################################################################################
+# PYTHON STUFF
+################################################################################
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -72,6 +87,11 @@ fi
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+
+################################################################################
+# PHP STUFF
+################################################################################
+
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 # export COMPOSE_API_VERSION=1.25
@@ -79,3 +99,5 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 # [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 
 [[ -e "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"
+
+export JAVA_OPTS="$JAVA_OPTS"' -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'

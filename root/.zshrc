@@ -9,6 +9,8 @@ if [[ "$TERM" = "xterm" ]]; then TERM="xterm-256color" fi
 # fi
 alias tmux='TERM=xterm-256color tmux'
 
+[ -s "$LUKE_BUILD/z/z.sh" ] && . "$LUKE_BUILD/z/z.sh"
+
 for file in $(ls ~/.zsh/*.zsh | grep -v main.zsh); do
   source $file
 done
@@ -60,8 +62,6 @@ _fzf_compgen_path() {
 bindkey '^Sc' fzf-cd-widget
 
 # [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
-
-[ -s "$LUKE_BUILD/z/z.sh" ] && . "$LUKE_BUILD/z/z.sh"
 
 # see https://github.com/sindresorhus/pure/wiki#show-number-of-jobs-in-prompt
 # PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '

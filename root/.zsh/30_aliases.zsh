@@ -79,10 +79,10 @@ alias nvim='vim -N -u NONE -i NONE'
 # fi
 
 # Global aliases
-alias -g CP='| xclip -sel clipboard'
-alias -g CPP='| tr -d "\n" | xclip -sel clipboard'
-alias -g G='| grep'
-alias -g GG='| multi_grep'
+# alias -g CP='| xclip -sel clipboard'
+alias -g CP='| tr -d "\n" | xclip -sel clipboard'
+alias -g G='| rg'
+alias -g GG='| grep'
 alias -g W='| wc'
 alias -g X='| xargs'
 alias -g F='| "$(available $INTERACTIVE_FILTER)"'
@@ -130,10 +130,10 @@ function devpath() {
 }
 
 alias -g H=' --help 2>&1'
-alias -g L=' 2>&1 | less'
+alias -g L=' 2>&1 | less -F -R'
 
 # for help less
-alias -g HL=' --help 2>&1 | less'
+alias -g HL=' --help 2>&1 L'
 
 # maybe a little nicer than "| less" ??
 alias -g B=' 2>&1 | bat'
@@ -147,16 +147,13 @@ fi
 
 alias _='sudo'
 
-alias tmuxdie="tmux kill-session -t 0"
-alias mux="tmuxinator"
 alias el="exa -la"
-alias rgl="rg_into_less"
-
-alias sushi="sudo ssh -F ~/.ssh/config"
-
 alias j='jump'
-
 alias l='ls -la'
+alias mux="tmuxinator"
+alias rgl="rg_into_less"
+alias sushi="sudo ssh -F ~/.ssh/config"
+alias tmuxdie="tmux kill-session -t 0"
 
 # From https://gist.github.com/maxcnunes/7b5eae9cb884f126a70f
 alias c='docker-compose'
@@ -172,7 +169,7 @@ alias crwt='docker-compose run --rm watchtest'
 alias cps='docker-compose ps'
 alias clogs='docker-compose logs'
 
-alias RG='rg --color=always'
+alias rgrg='rg --color=always'
 
 alias g='sr google'
 
@@ -180,7 +177,5 @@ alias an='ansible'
 alias ap='ansible-playbook'
 alias ang='ansible-galaxy'
 
-alias cat='bat'
-alias oldcat='/bin/cat'
-
-alias mux='tmuxinator'
+# alias cat='bat'
+alias ncat='bat'

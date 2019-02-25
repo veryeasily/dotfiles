@@ -20,6 +20,10 @@ Plug 'mattn/gist-vim'
 
 Plug 'editorconfig/editorconfig-vim'
 
+Plug 'ctrlpvim/ctrlp.vim'
+
+" let g:fzf_layout = { 'down': '~100%' }
+
 " Make sure you use single quotes
 Plug 'junegunn/fzf', { 'dir': $HOME . '/.fzf', 'do': 'yes \| ./install --all' }
 Plug 'junegunn/fzf.vim'
@@ -42,12 +46,11 @@ let g:rooter_use_lcd = 1
 
 Plug 'airblade/vim-rooter'
 
-Plug 'ap/vim-css-color'
-
 " TPope stuff
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
+Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
@@ -96,7 +99,7 @@ Plug 'junegunn/vader.vim'
 
 if v:version >= 800
 
-  let g:airline#extensions#ale#enabled = 0
+  "let g:airline#extensions#ale#enabled = 0
   let g:ale_enabled = 1
   let g:ale_lint_delay = 2000
   let g:ale_set_quickfix = 0
@@ -111,14 +114,15 @@ if v:version >= 800
     let g:completor_php_omni_trigger = '\$?\w+|\$?\w+\s+=\s+\w+'
     let g:completor_blacklist = ['tagbar', 'qf', 'netrw', 'unite', 'vimwiki', 'nerdtree']
     Plug 'maralla/completor.vim', { 'do': 'make js' }
+    " Plug 'kyouryuukunn/completor-necovim'
     Plug 'shawncplus/phpcomplete.vim'
   endif
 
   Plug 'w0rp/ale'
 endif
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 
 " neovim specific
 if has('nvim')
@@ -155,9 +159,9 @@ call plug#end()
 let g:CommandTFileScanner = 'git'
 
 let g:EasyClipShareYanks = 1
-map <Nul> <Plug>(easymotion-prefix)
-map s <Plug>(easymotion-s)
-map S <Plug>(easymotion-bd-t)
+"map <Nul> <Plug>(easymotion-prefix)
+"map s <Plug>(easymotion-s)
+"map S <Plug>(easymotion-bd-t)
 
 let g:user_emmet_mode='inv'
 let g:user_emmet_install_global = 0
@@ -179,25 +183,38 @@ augroup NERD
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 
-function! s:fzf_statusline()
-  " Override statusline as you like
-  highlight fzf1 ctermfg=161 ctermbg=251
-  highlight fzf2 ctermfg=23 ctermbg=251
-  highlight fzf3 ctermfg=237 ctermbg=251
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
+"function! s:fzf_statusline()
+  "" Override statusline as you like
+  "highlight fzf1 ctermfg=161 ctermbg=251
+  "highlight fzf2 ctermfg=23 ctermbg=251
+  "highlight fzf3 ctermfg=237 ctermbg=251
+  "setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+"endfunction
 
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
+"autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+if has('termguicolors')
+  """
+  " COLORS
+  " set Vim-specific sequences for RGB colors
+  " Borrowed from https://github.com/vim/vim/issues/993
+  set termguicolors
+  silent! let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  silent! let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+if has('gui_running')
+  set guifont=Fira\ Code\ weight=450\ 12
+endif
 
 if &diff
-  silent! colorscheme jellyx
-  let g:airline_theme = 'papercolor'
-elseif has('gui_running')
-  silent! colorscheme Tomorrow-Night-Eighties
-  let g:airline_theme = 'tomorrow'
+  silent! colorscheme gruvbox
+  let g:color_scheme = 'gruvbox'
+  "let g:airline_theme = 'papercolor'
 else
   silent! colorscheme Tomorrow-Night
-  let g:airline_theme = 'base16_embers'
+  let g:color_scheme = 'Tomorrow-Night'
+  "let g:airline_theme = 'base16_embers'
 endif
 
 set background=dark
@@ -217,22 +234,6 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
-
-if has('termguicolors')
-  """
-  " COLORS
-  " set Vim-specific sequences for RGB colors
-  " Borrowed from https://github.com/vim/vim/issues/993
-
-  silent! let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  silent! let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-  set termguicolors
-
-  hi! Normal ctermbg=NONE guibg=NONE
-
-  set notermguicolors
-endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

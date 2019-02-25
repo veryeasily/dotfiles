@@ -10,6 +10,7 @@ zplug "plugins/docker-compose", from:oh-my-zsh
 zplug "plugins/jump", from:oh-my-zsh
 zplug "plugins/github", from:oh-my-zsh
 zplug "plugins/terraform", from:oh-my-zsh
+zplug "plugins/adb", from:oh-my-zsh
 zplug "lib/spectrum", from:oh-my-zsh
 zplug "themes/sorin", from:oh-my-zsh, as:theme
 
@@ -21,20 +22,10 @@ zplug "stedolan/jq", \
   from:gh-r, \
   rename-to:jq
 
-zplug 'sharkdp/fd', \
-  from:gh-r, \
-  as:command, \
-  rename-to:"fd"
-
-zplug "junegunn/fzf-bin", \
-  as:command, \
-  from:gh-r, \
-  rename-to:"fzf", \
-  frozen:1
-
-zplug "junegunn/fzf", \
-  as:command, \
-  use:"{bin/fzf-tmux,shell/*.zsh}"
+#zplug 'sharkdp/fd', \
+  #from:gh-r, \
+  #as:command, \
+  #rename-to:"fd"
 
 zplug "BurntSushi/ripgrep", \
   from:gh-r, \

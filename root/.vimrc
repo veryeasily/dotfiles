@@ -10,8 +10,8 @@ filetype plugin indent on
 syntax on
  
 " Map leader keys
-let mapleader = " "
-let maplocalleader = " "
+let mapleader = ","
+let maplocalleader = ","
 
 " profile file {/home/mors/.vimrc.main,/home/mors/.vimrc.plug}
 source ~/.vimrc.plug
@@ -164,3 +164,4 @@ set nu
 """"""""""""""""""""""""
 
 "profile pause
+set exrc

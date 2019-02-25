@@ -1,5 +1,6 @@
 *.min.*
+*.sql*
 .git
 node_modules
-vendor
 tags
+vendor
