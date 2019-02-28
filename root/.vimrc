@@ -70,6 +70,7 @@ set sessionoptions-=options
 set smarttab
 set tags=./tags;/
 set tw=79
+set autochdir
 
 set sw=2
 set ts=2

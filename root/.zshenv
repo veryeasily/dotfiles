@@ -58,10 +58,9 @@ eval "$(rbenv init -)"
 # NODE STUFF
 ################################################################################
 
-export NVM_DIR="$HOME/.nvm"
-if [[ -e "$NVM_DIR/nvm.sh" ]]; then
-  . "$NVM_DIR/nvm.sh"
-fi
+# fnm
+export PATH=$HOME/.fnm:$PATH
+eval `fnm env --multi`
 
 # The yarn stuff is a little weird because it messes up sometimes.
 # More info here:
@@ -78,14 +77,14 @@ fi
 # PYTHON STUFF
 ################################################################################
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if ! command -v pyenv 1>/dev/null 2>&1; then
-  git clone git@github.com:pyenv/pyenv.git ~/.pyenv
-  git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
-fi
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#if ! command -v pyenv 1>/dev/null 2>&1; then
+  #git clone git@github.com:pyenv/pyenv.git ~/.pyenv
+  #git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+#fi
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 
 
 ################################################################################
@@ -97,7 +96,5 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 # export COMPOSE_API_VERSION=1.25
 
 # [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
-
-[[ -e "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"
 
 export JAVA_OPTS="$JAVA_OPTS"' -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'

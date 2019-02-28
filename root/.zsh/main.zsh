@@ -30,7 +30,6 @@ zplug "stedolan/jq", \
 zplug "BurntSushi/ripgrep", \
   from:gh-r, \
   as:command, \
-  at:0.10.0, \
   rename-to:rg, \
   use:"*x86_64-unknown-linux-musl*"
 
@@ -38,9 +37,10 @@ zplug "BurntSushi/ripgrep", \
   use:"complete"
 
 #zplug 'knqyf263/pet', \
+  #from:gh-r, \
   #as:command, \
-  #hook-build:'go get -d && go build' \
-  #if:'(( $+commands[go] ))'
+  #use:pet, \
+  #use:"*linux_amd64*"
 
 #zplug "reorx/httpstat", \
   #as:command, \

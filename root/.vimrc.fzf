@@ -2,6 +2,16 @@
 " File specifically for integration between VIM and FZF
 
 " Borrowed from
+" https://github.com/junegunn/fzf.vim/issues/47#issuecomment-160237795
+function! s:search_from_root()
+  let git_root = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+  execute 'FZF' git_root
+  lcd %:p:h
+endfunction
+
+command! ProjectFiles call s:search_from_root()
+
+" Borrowed from
 " [here](https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2)
 " --column: Show column number
 " --line-number: Show line number
@@ -17,14 +27,12 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 command! -bar -bang MapsAll call fzf#vim#maps("", <bang>0)
 
 " See http://www.wezm.net/technical/2016/09/ripgrep-with-vim/
-command! -bang -nargs=* Rg
-      \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --color=always --ignore-case '.shellescape(<q-args>), 1,
-      \   <bang>0 ? fzf#vim#with_preview('up:60%')
-      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-      \   <bang>0)
-
-nnoremap <C-p>a :Rg 
+"command! -bang -nargs=* Rg
+      "\ call fzf#vim#grep(
+      "\   'rg --column --line-number --no-heading --color=always --ignore-case '.shellescape(<q-args>), 1,
+      "\   <bang>0 ? fzf#vim#with_preview('up:60%')
+      "\           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      "\   <bang>0)
 
 nnoremap <silent> <Leader>C :call fzf#run({
       \   'source':
@@ -42,7 +50,7 @@ command! FZFMru call fzf#run({
 \  'down':    '40%'})
 
 if has('gui_running')
-  noremap <c-space><c-space>t <Esc>:<c-u>FZF<CR>
+  noremap <c-space><c-space>t <Esc>:<c-u>ProjectFiles<CR>
   noremap <c-space><c-space>g <Esc>:<c-u>Rg<space>
   noremap <c-space><c-space>G <Esc>viw"jy:<c-u>Rg<space><c-r>j
   noremap <c-space><c-space>r <Esc>:<c-u>Rg<space>
@@ -53,7 +61,7 @@ if has('gui_running')
   noremap <c-space><c-space>q <Esc>:History:<CR>
   noremap <c-space><c-space>/ <Esc>:History/<CR>
 else
-  noremap <Nul><Nul>t <Esc>:<c-u>FZF<CR>
+  noremap <Nul><Nul>t <Esc>:<c-u>ProjectFiles<CR>
   noremap <Nul><Nul>g <Esc>:<c-u>Rg<space>
   noremap <Nul><Nul>G <Esc>viw"jy:<c-u>Rg<space><c-r>j
   noremap <Nul><Nul>r <Esc>:<c-u>Rg<space>

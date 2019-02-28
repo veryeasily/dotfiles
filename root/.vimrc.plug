@@ -14,6 +14,7 @@ let g:tern_request_timeout = 2
 let g:tern_show_argument_hints="on_move"
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-haml'
 
 Plug 'mattn/webapi-vim' " Required by gist-vim
 Plug 'mattn/gist-vim'
@@ -21,6 +22,8 @@ Plug 'mattn/gist-vim'
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'cakebaker/scss-syntax.vim'
 
 " let g:fzf_layout = { 'down': '~100%' }
 
@@ -42,16 +45,7 @@ let g:jsx_ext_required = 1
 Plug 'sheerun/vim-polyglot'
 Plug 'vito-c/jq.vim'
 
-let g:rooter_use_lcd = 1
-
-Plug 'airblade/vim-rooter'
-
 " TPope stuff
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 
@@ -79,15 +73,12 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'flazz/vim-colorschemes'
 Plug 'jacoborus/tender.vim'
 Plug 'rakr/vim-one'
+
 let g:gruvbox_contrast_light="hard"
 Plug 'morhetz/gruvbox'
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': ['javascript', 'javascript.jsx'] }
 Plug 'SpaceVim/gtags.vim'
-
-if has('python3')
-  " Plug 'ludovicchabant/vim-gutentags'
-end
 
 Plug 'sheerun/vim-polyglot'
 Plug 'ekalinin/Dockerfile.vim'
@@ -154,6 +145,21 @@ Plug 'danro/rename.vim'
 
 Plug 'davidhalter/jedi'
 
+let g:gutentags_cache_dir = $HOME.'/.vim/gutentags'
+exec 'silent! !mkdir -p' g:gutentags_cache_dir
+let g:gutentags_generate_on_empty_buffer = 1
+let g:gutentags_define_advanced_commands = 1
+let g:gutentags_project_root = ['Gemfile']
+let g:gutentags_ctags_options_file = $HOME.'/.ctags'
+let g:gutentags_ctags_exclude = ['node_modules', 'log', 'tmp', 'public', 'dist', 'build']
+Plug 'ludovicchabant/vim-gutentags'
+
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv'
+
 call plug#end()
 
 let g:CommandTFileScanner = 'git'
@@ -176,12 +182,12 @@ autocmd FileType html,css,eruby EmmetInstall
 
 " NERDTree config
 " see: https://github.com/scrooloose/nerdtree#faq
-augroup NERD
-    au!
-    autocmd VimEnter * NERDTree
-    autocmd VimEnter * wincmd p
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-augroup END
+"augroup NERD
+    "au!
+    "autocmd VimEnter * NERDTree
+    "autocmd VimEnter * wincmd p
+    "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"augroup END
 
 "function! s:fzf_statusline()
   "" Override statusline as you like

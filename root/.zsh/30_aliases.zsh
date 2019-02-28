@@ -177,5 +177,6 @@ alias an='ansible'
 alias ap='ansible-playbook'
 alias ang='ansible-galaxy'
 
-# alias cat='bat'
-alias ncat='bat'
+alias cat='bat'
+# alias for gnucat
+alias gcat='cat'

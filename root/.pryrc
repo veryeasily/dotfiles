@@ -43,6 +43,7 @@ Pry.config.ls.private_method_color = :bright_black
 # look at ~/.aprc for more settings for awesome_print
 require 'rubygems'
 require 'awesome_print'
+AwesomePrint.pry!
 #Pry.config.print = proc {|output, value|
   #Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output)
 #}

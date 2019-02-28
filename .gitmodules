@@ -6,3 +6,9 @@
 	path = root/.config/awesome
 	url = https://github.com/veryeasily/awesome-dotfiles
 	branch = master
+[submodule "root/.rbenv"]
+	path = root/.rbenv
+	url = https://github.com/rbenv/rbenv
+[submodule "root/.pyenv"]
+	path = root/.pyenv
+	url = https://github.com/pyenv/pyenv

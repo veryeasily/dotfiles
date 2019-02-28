@@ -9,10 +9,12 @@ noremap! <Nul> <Esc>
 noremap! <c-space> <Esc>
 
 " Window navigation commands
-" noremap <c-j> <c-w>j
-" noremap <c-k> <c-w>k
-" noremap <c-l> <c-w>l
-" noremap <c-h> <c-w>h
+"nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
+"nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+"nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+"nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+map <leader>n :NERDTreeToggle<CR>
 
 inoremap <expr> <c-j> pumvisible() ? "<c-n>" : "<c-j>"
 inoremap <expr> <c-k> pumvisible() ? "<c-p>" : "<c-k>"
