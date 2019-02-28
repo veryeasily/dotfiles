@@ -1,0 +1,11 @@
+[Unit]
+Description=USB Keyboard Service
+
+After=graphical.target
+Requires=graphical.target
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/mors/.Xauthority
+ExecStart=/usr/bin/xmodmap /home/mors/.Xmodmap
