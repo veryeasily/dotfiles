@@ -9,6 +9,12 @@
 [submodule "root/.rbenv"]
 	path = root/.rbenv
 	url = https://github.com/rbenv/rbenv
+	branch = master
 [submodule "root/.pyenv"]
 	path = root/.pyenv
 	url = https://github.com/pyenv/pyenv
+	branch = master
+[submodule "root/.oh-my-zsh"]
+	path = root/.oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
+	branch = master

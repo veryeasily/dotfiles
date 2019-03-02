@@ -171,8 +171,8 @@ alias clogs='docker-compose logs'
 
 alias rgrg='rg --color=always'
 
-alias g='googler'
-alias goog='sr google'
+alias g='sr google'
+alias goog='googler'
 
 alias an='ansible'
 alias ap='ansible-playbook'
