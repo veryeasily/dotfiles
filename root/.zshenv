@@ -79,12 +79,14 @@ fi
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-if ! command -v pyenv 1>/dev/null 2>&1; then
-  git clone git@github.com:pyenv/pyenv.git ~/.pyenv
-  git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+else
+  echo you can install pyenv with
+  echo git clone git@github.com:pyenv/pyenv.git ~/.pyenv
+  echo git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 fi
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 
 ################################################################################
