@@ -2,6 +2,7 @@
 # export ZSH_TMUX_FIXTERM="true"
 # export COMPOSE_HTTP_TIMEOUT="10000"
 
+export PATH="/home/mors/.local/bin/pipenv:$PATH"
 export HIHOME="/media/hi/home"
 export BIGDRIVE="$HIHOME/bigdrive"
 
@@ -81,11 +82,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
 else
   echo you can install pyenv with
   echo git clone git@github.com:pyenv/pyenv.git ~/.pyenv
-  echo git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 fi
 
 

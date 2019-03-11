@@ -13,9 +13,6 @@ let g:tern_map_prefix='<space>'
 let g:tern_request_timeout = 2
 let g:tern_show_argument_hints="on_move"
 
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-haml'
-
 Plug 'mattn/webapi-vim' " Required by gist-vim
 Plug 'mattn/gist-vim'
 
@@ -44,10 +41,6 @@ Plug 'mileszs/ack.vim'
 let g:jsx_ext_required = 1
 Plug 'sheerun/vim-polyglot'
 Plug 'vito-c/jq.vim'
-
-" TPope stuff
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-surround'
 
 " Assorted
 let g:tmux_navigator_no_mappings = 1
@@ -84,6 +77,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'mxw/vim-jsx'
 Plug 'pearofducks/ansible-vim'
+
+Plug 'Chiel92/vim-autoformat'
 
 " Test framework for vimscripts. See https://github.com/junegunn/vader.vim
 Plug 'junegunn/vader.vim'
@@ -151,14 +146,21 @@ let g:gutentags_generate_on_empty_buffer = 1
 let g:gutentags_define_advanced_commands = 1
 let g:gutentags_project_root = ['Gemfile']
 let g:gutentags_ctags_options_file = $HOME.'/.ctags'
-let g:gutentags_ctags_exclude = ['node_modules', 'log', 'tmp', 'public', 'dist', 'build']
+let g:gutentags_ctags_exclude = ['vendor', 'node_modules', 'log', 'tmp', 'public', 'dist', 'build']
 Plug 'ludovicchabant/vim-gutentags'
 
+" TPope stuff
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-haml'
+
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 

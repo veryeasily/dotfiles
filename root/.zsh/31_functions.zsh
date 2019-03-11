@@ -41,3 +41,7 @@ function crm() {
 	docker-compose stop $1
 	docker-compose rm --force $1
 }
+
+function aws_prompt_info() {
+  printf "${AWS_PROFILE+(aws="$AWS_PROFILE") }"
+}

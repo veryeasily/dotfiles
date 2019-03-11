@@ -10,11 +10,99 @@ if [[ "$TERM" = "xterm" ]]; then TERM="xterm-256color" fi
 # Path to your oh-my-zsh installation.
 export ZSH="/home/mors/.oh-my-zsh"
 
+export ZSH_DOTFILES="$HOME/.zsh"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="sorin"
+# ORDER
+SPACESHIP_PROMPT_ORDER=(
+  time     #
+  vi_mode  # these sections will be
+  user     # before prompt char
+  host     #
+  char
+  dir
+  git
+  node
+  ruby
+  xcode
+  swift
+  golang
+  docker
+  venv
+  pyenv
+  aws
+)
+
+# USER
+SPACESHIP_USER_PREFIX="" # remove `with` before username
+SPACESHIP_USER_SUFFIX="" # remove space before host
+
+# HOST
+# Result will look like this:
+#   username@:(hostname)
+SPACESHIP_HOST_PREFIX="@:("
+SPACESHIP_HOST_SUFFIX=") "
+
+# DIR
+SPACESHIP_DIR_PREFIX='' # disable directory prefix, cause it's not the first section
+SPACESHIP_DIR_TRUNC='1' # show only last directory
+
+# GIT
+# Disable git symbol
+SPACESHIP_GIT_SYMBOL="" # disable git prefix
+SPACESHIP_GIT_BRANCH_PREFIX="" # disable branch prefix too
+# Wrap git in `git:(...)`
+SPACESHIP_GIT_PREFIX='git:('
+SPACESHIP_GIT_SUFFIX=") "
+SPACESHIP_GIT_BRANCH_SUFFIX="" # remove space after branch name
+# Unwrap git status from `[...]`
+SPACESHIP_GIT_STATUS_PREFIX=""
+SPACESHIP_GIT_STATUS_SUFFIX=""
+
+# NODE
+SPACESHIP_NODE_PREFIX="node:("
+SPACESHIP_NODE_SUFFIX=") "
+SPACESHIP_NODE_SYMBOL=""
+
+# RUBY
+SPACESHIP_RUBY_PREFIX="ruby:("
+SPACESHIP_RUBY_SUFFIX=") "
+SPACESHIP_RUBY_SYMBOL=""
+
+# XCODE
+SPACESHIP_XCODE_PREFIX="xcode:("
+SPACESHIP_XCODE_SUFFIX=") "
+SPACESHIP_XCODE_SYMBOL=""
+
+# SWIFT
+SPACESHIP_SWIFT_PREFIX="swift:("
+SPACESHIP_SWIFT_SUFFIX=") "
+SPACESHIP_SWIFT_SYMBOL=""
+
+# GOLANG
+SPACESHIP_GOLANG_PREFIX="go:("
+SPACESHIP_GOLANG_SUFFIX=") "
+SPACESHIP_GOLANG_SYMBOL=""
+
+# DOCKER
+SPACESHIP_DOCKER_PREFIX="docker:("
+SPACESHIP_DOCKER_SUFFIX=") "
+SPACESHIP_DOCKER_SYMBOL=""
+
+# VENV
+SPACESHIP_VENV_PREFIX="venv:("
+SPACESHIP_VENV_SUFFIX=") "
+
+# PYENV
+SPACESHIP_PYENV_PREFIX="python:("
+SPACESHIP_PYENV_SUFFIX=") "
+SPACESHIP_PYENV_SYMBOL=""
+ZSH_THEME='spaceship'
+
+ZSH_CUSTOM="$ZSH_DOTFILES/oh-my-zsh-custom"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -68,7 +156,7 @@ ZSH_THEME="sorin"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby docker docker-compose jump github terraform adb)
+plugins=(git ruby docker docker-compose jump github terraform adb lju_ansible zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,32 +197,6 @@ alias tmux='TERM=xterm-256color tmux'
 
 [ -s "$LUKE_BUILD/z/z.sh" ] && . "$LUKE_BUILD/z/z.sh"
 
-export ZSH_DOTFILES="$HOME/.zsh"
-
 for file in $(ls "$ZSH_DOTFILES"/*.zsh | grep -v main.zsh); do
   source $file
 done
-
-#[[ -e ~/.dircolors ]] && eval "$(dircolors "$HOME/.dircolors")"
-
-#PROMPT=" [%j]$PROMPT"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-source ~/.fzf/shell/completion.zsh
-source ~/.fzf/shell/key-bindings.zsh
-
-# Have to overwrite to make it use fd
-_fzf_compgen_path() {
-  echo "$1"
-  command fd --hidden --type file --no-ignore-vcs 2> /dev/null | sed 's@^\./@@'
-}
-# export FZF_COMPLETION_TRIGGER=''
-# bindkey '^T' fzf-completion
-# bindkey '^I' $fzf_default_completion
-bindkey '^Sc' fzf-cd-widget
-
-# [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
-
-# see https://github.com/sindresorhus/pure/wiki#show-number-of-jobs-in-prompt
-# PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
