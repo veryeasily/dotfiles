@@ -45,3 +45,16 @@ function crm() {
 function aws_prompt_info() {
   printf "${AWS_PROFILE+(aws="$AWS_PROFILE") }"
 }
+
+
+function shed_mode() {
+  export AWS_PROFILE=shed
+}
+
+function revolvy_mode() {
+  export AWS_PROFILE=revolvy
+}
+
+function veasily_mode() {
+  export AWS_PROFILE=veryveryeasily
+}

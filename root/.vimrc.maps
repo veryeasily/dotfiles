@@ -1,40 +1,28 @@
 " vi: ft=vim
-" bind gk to grep word under cursor
-nnoremap gk :Ag! "\b<C-R><C-W>\b"<CR><CR>
-nnoremap gm m
+noremap! jk <Esc>`^
 
-" Leave insert and visual mode more easily
-" noremap! jk <Esc>`^
-noremap! <Nul> <Esc>
-noremap! <c-space> <Esc>
-
-" Window navigation commands
-"nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
-"nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
-"nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
-"nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
-"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
-map <leader>n :NERDTreeToggle<CR>
-
-inoremap <expr> <c-j> pumvisible() ? "<c-n>" : "<c-j>"
-inoremap <expr> <c-k> pumvisible() ? "<c-p>" : "<c-k>"
+inoremap <expr> <C-j> pumvisible() ? "<C-n>" : "<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "<C-p>" : "<C-k>"
 
 nnoremap gz <C-w>\|<C-w>_
 nnoremap g= <C-w>=
 
-" For holding control or not
-noremap <F3>           <Esc>:noh<CR>
-noremap <F4>           <Esc>:set invnumber<CR>
-
+noremap <F3>      <Esc>:noh<CR>
+noremap <F4>      <Esc>:set invnumber<CR>
 noremap <Leader>/ <Esc>/\M
 
 if has('terminal')
-  tnoremap <C-w>n <c-w>N
+  tnoremap <C-n> <C-w>N
   tnoremap <Nul> <Esc>
-  tnoremap <c-space> <Esc>
-  tnoremap <silent> h <c-w>N:TmuxNavigateLeft<cr>
-  tnoremap <silent> j <c-w>N:TmuxNavigateDown<cr>
-  tnoremap <silent> k <c-w>N:TmuxNavigateUp<cr>
-  tnoremap <silent> l <c-w>N:TmuxNavigateRight<cr>
-  tnoremap <silent> \ <c-w>N:TmuxNavigatePrevious<cr>
+  tnoremap <C-Space> <Esc>
+  tnoremap <silent> h <C-w>N:TmuxNavigateLeft<cr>
+  tnoremap <silent> j <C-w>N:TmuxNavigateDown<cr>
+  tnoremap <silent> k <C-w>N:TmuxNavigateUp<cr>
+  tnoremap <silent> l <C-w>N:TmuxNavigateRight<cr>
+  tnoremap <silent> \ <C-w>N:TmuxNavigatePrevious<cr>
 endif
+
+vnoremap <Leader>'' :s#"#'#g<CR>
+vnoremap <C-c> "+y
+
+noremap <expr> <C-C> setreg('+', expand('%:p'))

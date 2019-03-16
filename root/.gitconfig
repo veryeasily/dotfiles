@@ -9,6 +9,7 @@
   # the acronym stands for "subtree update"
   subtreeupdate = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
   co = "checkout"
+  log-pretty = "log --graph --pretty --abbrev-commit"
 [github]
   user = veryeasily
 [core]

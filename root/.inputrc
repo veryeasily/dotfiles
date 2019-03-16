@@ -3,5 +3,4 @@ set editing-mode vi
 
 $if mode=vi
   set keymap vi-insert
-  "\C-j": vi-movement-mode
-  "\0": vi-movement-mode
+  "jk": vi-movement-mode

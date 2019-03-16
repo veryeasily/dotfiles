@@ -2,6 +2,10 @@
 # export ZSH_TMUX_FIXTERM="true"
 # export COMPOSE_HTTP_TIMEOUT="10000"
 
+export ZSH_DOT="$HOME/.zsh"
+
+source "$ZSH_DOT/30_aliases.zsh"
+
 export PATH="/home/mors/.local/bin/pipenv:$PATH"
 export HIHOME="/media/hi/home"
 export BIGDRIVE="$HIHOME/bigdrive"
@@ -15,7 +19,7 @@ unset ZPLUG_CACHE_FILE
     #~/.tmux/bin(N-/) \
     #"$path[@]" \
     #)
-## 
+##
 ## # NOTE: set fpath before compinit
 #typeset -gx -U fpath
 #fpath=( \
@@ -25,7 +29,7 @@ unset ZPLUG_CACHE_FILE
     #/usr/local/share/zsh/site-functions(N-/) \
     #$fpath \
 #)
-# 
+#
 # # autoload
 autoload -Uz run-help
 autoload -Uz add-zsh-hook
@@ -54,14 +58,6 @@ export RBENV_ROOT="$HOME/.rbenv"
 export PATH="$RBENV_ROOT/bin:$PATH"
 eval "$(rbenv init -)"
 
-
-################################################################################
-# NODE STUFF
-################################################################################
-
-# fnm
-export PATH=$HOME/.fnm:$PATH
-eval `fnm env --multi`
 
 # The yarn stuff is a little weird because it messes up sometimes.
 # More info here:
@@ -99,3 +95,5 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 # [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 
 export JAVA_OPTS="$JAVA_OPTS"' -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
+
+# export AWS_PROFILE="shed"

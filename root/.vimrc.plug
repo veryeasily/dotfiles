@@ -1,7 +1,7 @@
 if empty(glob($HOME."/.vim/autoload/plug.vim"))
   if system('command -v curl || echo "Curl required to auto-install vim-plug.."')
     !mkdir ~/.vim/autoload >/dev/null 2>&1
-    !curl -o $HOME/.vim/autoload/plug.vim -L -C - 
+    !curl -o $HOME/.vim/autoload/plug.vim -L -C -
        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   endif
 endif
@@ -50,13 +50,13 @@ nnoremap <silent> k :TmuxNavigateUp<cr>
 nnoremap <silent> l :TmuxNavigateRight<cr>
 nnoremap <silent> \ :TmuxNavigatePrevious<cr>
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'easymotion/vim-easymotion'
 
 Plug 'Kuniwak/vint'
 Plug 'mattn/emmet-vim'
 Plug 'moll/vim-node'
 Plug 'othree/html5.vim'
 
+let g:NERDTreeWinPos = 'right'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -76,7 +76,8 @@ Plug 'SpaceVim/gtags.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'mxw/vim-jsx'
-Plug 'pearofducks/ansible-vim'
+Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
+Plug 'vim-scripts/ZoomWin'
 
 Plug 'Chiel92/vim-autoformat'
 
@@ -113,7 +114,7 @@ endif
 " neovim specific
 if has('nvim')
   Plug 'w0rp/ale'
-  
+
 
   set completeopt=menuone,noselect,preview
 
@@ -126,7 +127,6 @@ if has('nvim')
   " git history for more info!
 endif
 
-Plug 'haya14busa/incsearch.vim'
 Plug 'osyo-manga/vim-over'
 
 " Vim named bookmarks
@@ -162,14 +162,25 @@ Plug 'tpope/vim-haml'
 
 Plug 'majutsushi/tagbar'
 
+Plug 'henrik/vim-indexed-search'
+Plug 'suan/vim-instant-markdown'
+Plug 'plasticboy/vim-markdown'
+
+Plug 'easymotion/vim-easymotion'
+let g:far#source = 'rg'
+Plug 'brooth/far.vim'
+Plug 'airblade/vim-rooter'
+
 call plug#end()
 
 let g:CommandTFileScanner = 'git'
 
 let g:EasyClipShareYanks = 1
-"map <Nul> <Plug>(easymotion-prefix)
-"map s <Plug>(easymotion-s)
-"map S <Plug>(easymotion-bd-t)
+map <Leader> <Plug>(easymotion-prefix)
+map <Leader>W <Plug>(easymotion-bd-W)
+map <Leader>f <Plug>(easymotion-s)
+map <Leader>t <Plug>(easymotion-bd-t)
+map <Leader>w <Plug>(easymotion-bd-w)
 
 let g:user_emmet_mode='inv'
 let g:user_emmet_install_global = 0
@@ -179,17 +190,25 @@ let g:user_emmet_leader_key='<C-p>'
 let g:marvim_find_key = '<leader>m'
 let g:marvim_find_key = '<leader>M'
 
-autocmd FileType html,css,javascript.jsx,typescript.tsx EmmetInstall
-autocmd FileType html,css,eruby EmmetInstall
+augroup EMMET
+  au!
+  autocmd FileType html,css,javascript.jsx,typescript.tsx EmmetInstall
+  autocmd FileType html,css,eruby EmmetInstall
+augroup END
 
 " NERDTree config
 " see: https://github.com/scrooloose/nerdtree#faq
-"augroup NERD
-    "au!
-    "autocmd VimEnter * NERDTree
-    "autocmd VimEnter * wincmd p
-    "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"augroup END
+augroup NERD
+  au!
+  autocmd VimEnter * NERDTreeVCS
+  autocmd VimEnter * wincmd p
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
+
+augroup TAGBAR
+  au!
+  autocmd FileType * nested :call tagbar#autoopen()
+augroup END
 
 "function! s:fzf_statusline()
   "" Override statusline as you like
@@ -227,22 +246,4 @@ endif
 
 set background=dark
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" incsearch.vim config
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" :h g:incsearch#auto_nohlsearch
-set hlsearch
-let g:incsearch#auto_nohlsearch = 1
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim: ft=vim

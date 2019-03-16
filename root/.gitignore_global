@@ -2,3 +2,4 @@ tags
 .junk
 .idea/
 *.iml
+.envrc

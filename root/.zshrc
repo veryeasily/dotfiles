@@ -1,16 +1,14 @@
-# bindkey -d
-
-# Return if zsh is called from Vim
+alias tmux='TERM=xterm-256color tmux'
 
 if [[ "$TERM" = "xterm" ]]; then TERM="xterm-256color" fi
+
+if [[ ! "$TMUX" ]]; then tmux; exit $?; fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/mors/.oh-my-zsh"
-
-export ZSH_DOTFILES="$HOME/.zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -24,16 +22,17 @@ SPACESHIP_PROMPT_ORDER=(
   host     #
   char
   dir
+  jobs
   git
   node
   ruby
+  golang
   xcode
   swift
-  golang
-  docker
   venv
   pyenv
   aws
+  docker
 )
 
 # USER
@@ -102,7 +101,7 @@ SPACESHIP_PYENV_SUFFIX=") "
 SPACESHIP_PYENV_SYMBOL=""
 ZSH_THEME='spaceship'
 
-ZSH_CUSTOM="$ZSH_DOTFILES/oh-my-zsh-custom"
+ZSH_CUSTOM="$ZSH_DOT/oh-my-zsh-custom"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -160,6 +159,7 @@ plugins=(git ruby docker docker-compose jump github terraform adb lju_ansible zs
 
 source $ZSH/oh-my-zsh.sh
 
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -193,10 +193,23 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $VIMRUNTIME ]]; then
 #     return 0
 # fi
-alias tmux='TERM=xterm-256color tmux'
 
 [ -s "$LUKE_BUILD/z/z.sh" ] && . "$LUKE_BUILD/z/z.sh"
 
-for file in $(ls "$ZSH_DOTFILES"/*.zsh | grep -v main.zsh); do
+for file in $(ls "$ZSH_DOT"/*.zsh | grep -v main.zsh); do
   source $file
 done
+
+[[ -s "/home/mors/.gvm/scripts/gvm" ]] && source "/home/mors/.gvm/scripts/gvm"
+
+export BAT_THEME='TwoDark'
+
+[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
+
+command -v thefuck &>/dev/null && eval $(thefuck --alias)
+
+eval "$(direnv hook zsh)"
+
+# I dont trust fnm enough to put it in my zshenv
+export PATH=$HOME/.fnm:$PATH
+eval `fnm env --multi`

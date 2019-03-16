@@ -8,10 +8,10 @@ set nocompatible
 
 filetype plugin indent on
 syntax on
- 
+
 " Map leader keys
-let mapleader = ","
-let maplocalleader = ","
+let mapleader = ' '
+let maplocalleader = ' '
 
 " profile file {/home/mors/.vimrc.main,/home/mors/.vimrc.plug}
 source ~/.vimrc.plug
@@ -160,9 +160,31 @@ set backupcopy=yes
 
 set nu
 
+set hidden
+
 """""""""""""""""""""""""
 " END original ~/.vimrc "
 """"""""""""""""""""""""
 
 "profile pause
 set exrc
+
+" Borrowed from http://bit.do/ruby_styleguide_rubocop
+" VIM 7.3+ has support for highlighting a specified column.
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  " Emulate
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
+endif
+set listchars+=trail:░
+
+"result=''
+"current=''
+"for i in $(seq 1 12); do
+ "current="$( curl -s https://vimawesome.com/api/plugins?query=ruby&page=${i} | jq -M '.plugins[] | { name: .name, stars: .github_stars }' -C )"
+ "echo "Iteration i=$i"
+ "echo "current=$current"
+ "result="$(printf "${result}\n$current")"
+"done
+"export result="$result"

@@ -2,7 +2,7 @@
 # bindkey -v
 # # Vim-like escaping jj keybind
 # bindkey -M viins 'jj' vi-cmd-mode
-# 
+#
 # # Add emacs-like keybind to viins mode
 bindkey -M viins '^F'  forward-char
 bindkey -M viins '^B'  backward-char
@@ -30,7 +30,7 @@ bindkey -M menuselect '^[^k' vi-up-line-or-history
 bindkey -M menuselect '^[^l' vi-forward-char
 bindkey -M menuselect '^[^i' complete-word
 bindkey -M vicmd v edit-command-line
-# 
+#
 # bindkey -M vicmd '^A'  beginning-of-line
 # bindkey -M vicmd '^E'  end-of-line
 # bindkey -M vicmd '^K'  kill-line
@@ -41,10 +41,10 @@ bindkey -M vicmd v edit-command-line
 # bindkey -M vicmd '^U'  backward-kill-line
 # bindkey -M vicmd '/'   vi-history-search-forward
 # bindkey -M vicmd '?'   vi-history-search-backward
-# 
+#
 # bindkey -M vicmd 'gg' beginning-of-line
 # bindkey -M vicmd 'G'  end-of-line
-# 
+#
 # # if is-at-least 5.0.8; then
 # #     autoload -Uz surround
 # #     zle -N delete-surround surround
@@ -55,32 +55,32 @@ bindkey -M vicmd v edit-command-line
 # #     bindkey -a ys add-surround
 # #     bindkey -a S add-surround
 # # fi
-# 
+#
 # if false; then
 # # bind P and N for EMACS mode
 # has 'history-substring-search-up' &&
 #     bindkey -M emacs '^P' history-substring-search-up
 # has 'history-substring-search-down' &&
 #     bindkey -M emacs '^N' history-substring-search-down
-# 
+#
 # # bind k and j for VI mode
 # has 'history-substring-search-up' &&
 #     bindkey -M vicmd 'k' history-substring-search-up
 # has 'history-substring-search-down' &&
 #     bindkey -M vicmd 'j' history-substring-search-down
-# 
+#
 # # bind P and N keys
 # has 'history-substring-search-up' &&
 #     bindkey '^P' history-substring-search-up
 # has 'history-substring-search-down' &&
 #     bindkey '^N' history-substring-search-down
 # fi
-# 
+#
 # # Insert a last word
 # zle -N insert-last-word smart-insert-last-word
 # zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
 # bindkey -M viins '^]' insert-last-word
-# 
+#
 # # Surround a forward word by single quote
 # quote-previous-word-in-single() {
 #     modify-current-argument '${(qq)${(Q)ARG}}'
@@ -88,7 +88,7 @@ bindkey -M vicmd v edit-command-line
 # }
 # zle -N quote-previous-word-in-single
 # bindkey -M viins '^Q' quote-previous-word-in-single
-# 
+#
 # # Surround a forward word by double quote
 # quote-previous-word-in-double() {
 #     modify-current-argument '${(qqq)${(Q)ARG}}'
@@ -96,12 +96,12 @@ bindkey -M vicmd v edit-command-line
 # }
 # zle -N quote-previous-word-in-double
 # bindkey -M viins '^Xq' quote-previous-word-in-double
-# 
+#
 # bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
-# 
+#
 # #bindkey -s 'vv' "!vi\n"
 # #bindkey -s ':q' "^A^Kexit\n"
-# 
+#
 # #
 # # functions
 # #
@@ -114,7 +114,7 @@ bindkey -M vicmd v edit-command-line
 # }
 # zle -N _delete-char-or-list-expand
 # bindkey '^D' _delete-char-or-list-expand
-# 
+#
 # # Ctrl-R
 # _peco-select-history() {
 #     if true; then
@@ -124,7 +124,7 @@ bindkey -M vicmd v edit-command-line
 #             | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' \
 #             | fzf --query "$LBUFFER"
 #         )"
-# 
+#
 #         CURSOR=$#BUFFER
 #         #zle accept-line
 #         #zle clear-screen
@@ -139,7 +139,7 @@ bindkey -M vicmd v edit-command-line
 # }
 # # zle -N _peco-select-history
 # # bindkey '^r' _peco-select-history
-# 
+#
 # _start-tmux-if-it-is-not-already-started() {
 #     BUFFER="${${${(M)${+commands[tmuxx]}#1}:+tmuxx}:-tmux}"
 #     if has "tmux_automatically_attach"; then
@@ -152,20 +152,20 @@ bindkey -M vicmd v edit-command-line
 # if ! is_tmux_runnning; then
 #     bindkey '^T' _start-tmux-if-it-is-not-already-started
 # fi
-# 
+#
 # do-enter() {
 #     if [[ -n $BUFFER ]]; then
 #         zle accept-line
 #         return $status
 #     fi
-# 
+#
 #     : ${ls_done:=false}
 #     : ${git_ls_done:=false}
-# 
+#
 #     if [[ $PWD != $GIT_OLDPWD ]]; then
 #         git_ls_done=false
 #     fi
-# 
+#
 #     echo
 #     if is_git_repo; then
 #         if $git_ls_done; then
@@ -181,12 +181,12 @@ bindkey -M vicmd v edit-command-line
 #             ${=aliases[ls]} && ls_done=true
 #         fi
 #     fi
-# 
+#
 #     zle reset-prompt
 # }
 # zle -N do-enter
 # bindkey '^m' do-enter
-# 
+#
 # peco-select-gitadd() {
 #     local selected_file_to_add
 #     selected_file_to_add="$(
@@ -196,7 +196,7 @@ bindkey -M vicmd v edit-command-line
 #         | awk -F ' ' '{print $NF}' \
 #         | tr "\n" " "
 #     )"
-# 
+#
 #     if [ -n "$selected_file_to_add" ]; then
 #         BUFFER="git add $selected_file_to_add"
 #         CURSOR=$#BUFFER
@@ -206,13 +206,13 @@ bindkey -M vicmd v edit-command-line
 # }
 # zle -N peco-select-gitadd
 # bindkey '^g^a' peco-select-gitadd
-# 
+#
 # exec-oneliner() {
 #     local oneliner_f
 #     oneliner_f="${ONELINER_FILE:-~/.commnad.list}"
-# 
+#
 #     [[ ! -f $oneliner_f || ! -s $oneliner_f ]] && return
-# 
+#
 #     local cmd q k res accept
 #     while accept=0; cmd="$(
 #         cat <$oneliner_f \
@@ -241,7 +241,7 @@ bindkey -M vicmd v edit-command-line
 #             break
 #         fi
 #     done
-# 
+#
 #     local len
 #     if [[ -n $cmd ]]; then
 #         BUFFER="$(tr -d '@' <<<"$cmd" | perl -pe 's/\n/; /' | sed -e 's/; $//')"
@@ -256,7 +256,7 @@ bindkey -M vicmd v edit-command-line
 # }
 # zle -N exec-oneliner
 # bindkey '^x^x' exec-oneliner
-# 
+#
 # # expand global aliases by space
 # # http://blog.patshead.com/2012/11/automatically-expaning-zsh-global-aliases---simplified.html
 # globalias() {
@@ -266,16 +266,15 @@ bindkey -M vicmd v edit-command-line
 #   fi
 #   zle self-insert
 # }
-# 
+#
 # zle -N globalias
-# 
+#
 # bindkey " " globalias
 
-bindkey '^@' vi-cmd-mode
+bindkey 'jk' vi-cmd-mode
 bindkey '^sl' clear-screen
 bindkey -s '^se' 'e -a^M'
 bindkey '^s;' execute-named-cmd
-bindkey '^sq' push-line
 
 # From
 # https://github.com/knqyf263/pet/tree/e2b42ac4c7067ae474d54a16054b840848c11d85#bashzsh

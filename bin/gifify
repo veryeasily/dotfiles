@@ -3,12 +3,29 @@
 input=$(readlink -f "$1");
 directory=$(dirname "$input")
 output=$(basename "${input%%.*}");
-ffmpeg \
-    -i "$input" \
-    -pix_fmt rgb8 \
-    "${output}.gif" \
-    && gifsicle \
-        --optimize=3 \
-        --output "${directory}/${output}-optimized.gif" \
-        --resize-height 600 \
-        "${output}.gif"
+
+ffmpeg -y -i "$input" \
+  -vf fps=20,scale=640:-1:flags=lanczos,palettegen palette.png
+
+ffmpeg -i "$input" -i palette.png -filter_complex \
+  "fps=20,scale=640:-1:flags=lanczos[x];[x][1:v]paletteuse" "$output.gif"
+
+#ffmpeg \
+    #-i "$input" \
+    #-pix_fmt rgb8 \
+    #-vf 'fps=15,scale=iw/4:-1:flags=palettegen' palette.png \
+    #"${output}.gif"
+
+gifsicle \
+  -O3 \
+  --colors 64 \
+  --output "${directory}/${output}-optimized.gif" \
+  "${output}.gif"
+
+[ -e "$output.gif" ] && rm -f "$output.gif"
+
+#gifsicle \
+  #-O3 \
+  #--output "${directory}/${output}-optimized.gif" \
+  #--resize-height 600 \
+  #"${output}.gif"
