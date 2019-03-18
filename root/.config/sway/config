@@ -48,10 +48,10 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+j exec i3-focus.py left
+bindsym $mod+k exec i3-focus.py down
+bindsym $mod+l exec i3-focus.py up
+bindsym $mod+semicolon exec i3-focus.py right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -100,6 +100,9 @@ bindsym $mod+a focus parent
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
+
+bindsym Print exec grim "/home/mors/Pictures/Screenshot - $(date -R).png"
+bindsym Print+Shift exec slurp | grim -g - "/home/mors/Pictures/Screenshot - $(date -R).png"
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -178,6 +181,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 input 1:1:AT_Translated_Set_2_keyboard {
+    xkb_options ctrl:nocaps
+}
+
+input 1241:5890:USB_Keyboard {
     xkb_options ctrl:nocaps
 }
 

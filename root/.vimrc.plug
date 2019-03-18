@@ -49,13 +49,18 @@ nnoremap <silent> j :TmuxNavigateDown<cr>
 nnoremap <silent> k :TmuxNavigateUp<cr>
 nnoremap <silent> l :TmuxNavigateRight<cr>
 nnoremap <silent> \ :TmuxNavigatePrevious<cr>
-Plug 'christoomey/vim-tmux-navigator'
+" We use my fork modified for i3
+Plug 'veryeasily/vim-tmux-navigator'
 
 Plug 'Kuniwak/vint'
 Plug 'mattn/emmet-vim'
 Plug 'moll/vim-node'
 Plug 'othree/html5.vim'
 
+let g:tagbar_width = 20
+Plug 'majutsushi/tagbar'
+
+let g:NERDTreeWinSize = 20
 let g:NERDTreeWinPos = 'right'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -88,6 +93,7 @@ if v:version >= 800
 
   "let g:airline#extensions#ale#enabled = 0
   let g:ale_enabled = 1
+  let g:ale_lint_on_enter = 0
   let g:ale_lint_delay = 2000
   let g:ale_set_quickfix = 0
 
@@ -159,8 +165,8 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
-
-Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-obsession'
 
 Plug 'henrik/vim-indexed-search'
 Plug 'suan/vim-instant-markdown'
@@ -207,7 +213,7 @@ augroup END
 
 augroup TAGBAR
   au!
-  autocmd FileType * nested :call tagbar#autoopen()
+  autocmd VimEnter * nested :call tagbar#autoopen()
 augroup END
 
 "function! s:fzf_statusline()

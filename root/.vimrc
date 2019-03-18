@@ -188,3 +188,5 @@ set listchars+=trail:░
  "result="$(printf "${result}\n$current")"
 "done
 "export result="$result"
+
+set relativenumber cursorline

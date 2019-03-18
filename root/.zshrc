@@ -2,7 +2,7 @@ alias tmux='TERM=xterm-256color tmux'
 
 if [[ "$TERM" = "xterm" ]]; then TERM="xterm-256color" fi
 
-if [[ ! "$TMUX" ]]; then tmux; exit $?; fi
+# if [[ ! "$TMUX" ]]; then tmux; exit $?; fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -155,7 +155,7 @@ ZSH_CUSTOM="$ZSH_DOT/oh-my-zsh-custom"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby docker docker-compose jump github terraform adb lju_ansible zsh-completions)
+plugins=(z git ruby docker docker-compose jump github terraform adb lju_ansible zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
 

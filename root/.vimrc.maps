@@ -7,9 +7,26 @@ inoremap <expr> <C-k> pumvisible() ? "<C-p>" : "<C-k>"
 nnoremap gz <C-w>\|<C-w>_
 nnoremap g= <C-w>=
 
-noremap <F3>      <Esc>:noh<CR>
-noremap <F4>      <Esc>:set invnumber<CR>
+fu! LukeToggleNERDAndTagbar()
+  call g:NERDTreeCreator.ToggleTabTree('')
+  call tagbar#ToggleWindow()
+endf
+
+noremap <F3> <Esc>:noh<CR>
+noremap <F4> <Esc>:set invnumber<CR>
+noremap <F5> <Esc><C-U>:call LukeToggleNERDAndTagbar()<CR>
+
 noremap <Leader>/ <Esc>/\M
+
+noremap <C-H> <C-W>h
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-L> <C-W>l
+noremap <M-H> <Esc><C-U>:TmuxNavigateLeft<cr>
+noremap <M-J> <Esc><C-U>:TmuxNavigateDown<cr>
+noremap <M-K> <Esc><C-U>:TmuxNavigateUp<cr>
+noremap <M-L> <Esc><C-U>:TmuxNavigateRight<cr>
+noremap <M-\> <Esc><C-U>:TmuxNavigatePrevious<cr>
 
 if has('terminal')
   tnoremap <C-n> <C-w>N
@@ -23,6 +40,16 @@ if has('terminal')
 endif
 
 vnoremap <Leader>'' :s#"#'#g<CR>
-vnoremap <C-c> "+y
 
-noremap <expr> <C-C> setreg('+', expand('%:p'))
+fu! LukeCopyToClipboard()
+  try
+    let @+=expand('%:p')
+    echo 'Copied to clipboard ' . @+
+  catch /^Vim\%((\a\+)\)\=:E354/
+    if has('nvim')
+      echohl WarningMsg | echom 'Can not find clipboard, for more info see :h clipboard' | echohl None
+    else
+      echohl WarningMsg | echom 'You need to compile you vim with +clipboard feature' | echohl None
+    endif
+  endtry
+endf

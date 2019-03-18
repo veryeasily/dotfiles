@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 11
+font pango:monospace 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -29,10 +29,26 @@ font pango:monospace 11
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-#exec --no-startup-id alacritty
-#mark "quake_term"
-#for_window [class="^Alacritty$"] move scratchpad
-#bindsym $mod+q [con_mark="^quake_term$"] scratchpad show
+# Set background image with feh
+exec feh --bg-scale /home/mors/.config/i3/wall.png
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec dropbox start -i
+exec syndaemon -i 1 -d  -t -K
+exec nm-applet
+exec volti
+exec blueman-applet
+exec unagi
+exec unclutter -idle 2 -root
+exec udiskie --tray
+exec redshift-gtk
+exec update-manager
+exec simplescreenrecorder --start-hidden
+exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+
+## siji font said to do this after it was installed
+#exec xset +fp /home/mors/.local/share/fonts
+#exec xset fp rehash
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -48,10 +64,14 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+#bindsym $mod+j focus left
+#bindsym $mod+k focus down
+#bindsym $mod+l focus up
+#bindsym $mod+semicolon focus right
+bindsym $mod+j exec i3-focus.py left
+bindsym $mod+k exec i3-focus.py down
+bindsym $mod+l exec i3-focus.py up
+bindsym $mod+semicolon exec i3-focus.py right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -110,10 +130,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-assign [class="^Alacritty$"] → $ws1
-assign [class="^Google-chrome$"] → $ws2
-assign [class="^Zeal$"] → $ws3
 assign [class="^Slack$"] → $ws4
+for_window [instance="^quake$"] move scratchpad
+for_window [instance="^zeal$"] move scratchpad
+for_window [instance="^google-chrome$"] move scratchpad
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -146,6 +166,15 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
+bindsym Print          exec flameshot full -c
+bindsym Print+Shift    exec flameshot gui
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -175,6 +204,25 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
+#bar {
+        #position top
+        #status_command i3status
+        #tray_padding 1
+        #font pango:monospace 11
+#}
+
+exec alacritty --class quake
+exec zeal
+exec google-chrome
+
+bindsym $mod+grave [instance="^quake$"] scratchpad show
+bindsym $mod+z [instance="^zeal$"] scratchpad show
+bindsym $mod+x [instance="^google-chrome$"] scratchpad show
+
+bindsym $mod+Shift+grave [instance="^quake$"] scratchpad show, scratchpad show
+bindsym $mod+Shift+z [instance="^zeal$"] scratchpad show, scratchpad show
+bindsym $mod+Shift+x [instance="^google-chrome$"]  scratchpad show, scratchpad show
+
+for_window [class="^Kazam$"] floating enable
+for_window [class="^Polybar$"] border normal 0
+for_window [class="^flameshot$" title="^Configuration$"] floating enable
