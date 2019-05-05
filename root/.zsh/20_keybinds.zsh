@@ -289,3 +289,5 @@ bindkey '^ss' pet-select
 
 # Remove ^Q command so vim can use it
 # bindkey -r '^Q'
+
+bindkey -r '^L'

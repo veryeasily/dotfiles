@@ -155,7 +155,20 @@ ZSH_CUSTOM="$ZSH_DOT/oh-my-zsh-custom"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git ruby docker docker-compose jump github terraform adb lju_ansible zsh-completions)
+plugins=( \
+  adb \
+  docker \
+  docker-compose \
+  git \
+  github \
+  jump \
+  lju_ansible \
+  ripgrep \
+  ruby \
+  terraform \
+  z \
+  zsh-completions \
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -212,4 +225,8 @@ eval "$(direnv hook zsh)"
 
 # I dont trust fnm enough to put it in my zshenv
 export PATH=$HOME/.fnm:$PATH
-eval `fnm env --multi`
+eval "$(fnm env --multi --use-on-cd)"
+
+[[ -e "$HOME/.dircolors" ]] && eval "$( dircolors -b $HOME/.dircolors )"
+
+[[ -e ~/.zsh ]] && fpath=(~/.zsh/ $fpath)

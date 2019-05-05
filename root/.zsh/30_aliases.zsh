@@ -38,6 +38,8 @@ alias lu='ls -ltur'        # Sort by and show access time, most recent last
 alias lt='ls -ltr'         # Sort by date, most recent last
 alias lr='ls -lR'          # Recursive ls
 
+alias rg='rg -S'
+
 # The ubiquitous 'll': directories first, with alphanumeric sorting:
 #alias ll='ls -lv --group-directories-first'
 
@@ -151,7 +153,9 @@ alias rgl="rg_into_less"
 alias sushi="sudo ssh -F ~/.ssh/config"
 alias tmuxdie="tmux kill-session -t 0"
 
-alias rgrg='rg --color=always'
+alias rgc='rg --color=always'
+
+alias c='docker-compose'
 
 alias g='sr google'
 alias goog='googler'

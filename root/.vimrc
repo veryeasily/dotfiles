@@ -2,20 +2,15 @@
 set encoding=utf-8
 set nocompatible
 
-"profile start profile.log
-"profile func *
-"profile file *
-
 filetype plugin indent on
 syntax on
 
 " Map leader keys
-let mapleader = ' '
-let maplocalleader = ' '
+let mapleader = ','
+let maplocalleader = ','
 
-" profile file {/home/mors/.vimrc.main,/home/mors/.vimrc.plug}
+source ~/.vimrc.functions
 source ~/.vimrc.plug
-""" END PLUGIN RELATED STUFF
 
 " Toggle paste mode
 set pastetoggle=<F2>
@@ -28,23 +23,6 @@ if has('nofixedendofline')
   set nofixendofline
 endif
 
-" Syntastic options
-"set statusline=%t       "tail of the filename
-"set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-"set statusline+=%{&ff}] "file format
-"set statusline+=%h      "help file flag
-"set statusline+=%m      "modified flag
-"set statusline+=%r      "read only flag
-"set statusline+=%y      "filetype
-"set statusline+=Curent:\ %l\ Total:\ %4L
-"set statusline+=\ \ \ \ \ \ \ \ \ \ %{getcwd()} "this is my hack for whitespace
-"set statusline+=%=      "left/right separator
-"set statusline+=%#warningmsg#
-"" set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%c,     "cursor column
-"set statusline+=%l/%L   "cursor line/total lines
-"set statusline+=\ %P    "percent through file
-
 set showcmd " Display our current \[count\]
 set incsearch
 
@@ -52,7 +30,6 @@ if filereadable($HOME.'/.vimrc.maps')
    source ~/.vimrc.maps
 end
 
-" round << and >> to the nearest shiftwidth
 set shiftround
 
 " See: https://github.com/BurntSushi/ripgrep/issues/425#issuecomment-381446152
@@ -61,8 +38,6 @@ set grepformat=%f:%l:%c:%m,%f:%l:%m
 
 set bs=indent,eol,start
 
-" Sets the ability for comments at the beginning of files to set vim
-" properties.
 set modeline
 set hlsearch
 set ruler
@@ -70,11 +45,10 @@ set sessionoptions-=options
 set smarttab
 set tags=./tags;/
 set tw=79
-set autochdir
 
-set sw=2
-set ts=2
-set sts=2
+set sw=4
+set ts=4
+set sts=4
 set expandtab
 set smarttab
 
@@ -150,8 +124,6 @@ function! MacroInput(txt)
 endfunction
 
 set nocompatible
-source ~/.vimrc.fzf
-" source ~/.vimrc.highlights.vim
 
 set history=10000
 
@@ -162,31 +134,11 @@ set nu
 
 set hidden
 
-"""""""""""""""""""""""""
-" END original ~/.vimrc "
-""""""""""""""""""""""""
-
 "profile pause
 set exrc
 
-" Borrowed from http://bit.do/ruby_styleguide_rubocop
-" VIM 7.3+ has support for highlighting a specified column.
-if exists('+colorcolumn')
-  set colorcolumn=80
-else
-  " Emulate
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
-endif
-set listchars+=trail:░
+set relativenumber
+set updatetime=200
 
-"result=''
-"current=''
-"for i in $(seq 1 12); do
- "current="$( curl -s https://vimawesome.com/api/plugins?query=ruby&page=${i} | jq -M '.plugins[] | { name: .name, stars: .github_stars }' -C )"
- "echo "Iteration i=$i"
- "echo "current=$current"
- "result="$(printf "${result}\n$current")"
-"done
-"export result="$result"
-
-set relativenumber cursorline
+set ignorecase
+set smartcase

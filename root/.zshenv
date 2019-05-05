@@ -6,7 +6,7 @@ export ZSH_DOT="$HOME/.zsh"
 
 source "$ZSH_DOT/30_aliases.zsh"
 
-export PATH="/home/mors/.local/bin/pipenv:$PATH"
+export PATH="/home/mors/.local/bin/pipenv:/media/hi/home/bigdrive/bin:$PATH"
 export HIHOME="/media/hi/home"
 export BIGDRIVE="$HIHOME/bigdrive"
 
@@ -40,15 +40,15 @@ export EDITOR=vim
 export PAGER=less
 export LESS="-isRM"
 
-export ANDROID_HOME="/usr/lib/android-sdk"
-export ANDROID_SDK_ROOT="/usr/lib/android-sdk"
+export ANDROID_HOME="/media/hi/home/bigdrive/.local/lib/android-sdk"
+export ANDROID_SDK_ROOT="/media/hi/home/bigdrive/.local/lib/android-sdk"
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
 export VAGRANT_HOME="$BIGDRIVE/.vagrant.d"
 
 if [[ -z "$XDG_DATA_HOME" ]]; then
   export XDG_DATA_HOME="$HOME/.local/share"
   [[ -e "$XDG_DATA_HOME" ]] ||  mkdir -p "$XDG_DATA_HOME"
 fi
-
 
 ################################################################################
 # RUBY STUFF
@@ -57,7 +57,6 @@ fi
 export RBENV_ROOT="$HOME/.rbenv"
 export PATH="$RBENV_ROOT/bin:$PATH"
 eval "$(rbenv init -)"
-
 
 # The yarn stuff is a little weird because it messes up sometimes.
 # More info here:
@@ -68,7 +67,6 @@ if command -v go 1>/dev/null 2>&1; then
   export GOPATH="$HOME/go"
   export PATH="$PATH:$(go env GOPATH)/bin"
 fi
-
 
 ################################################################################
 # PYTHON STUFF
@@ -83,17 +81,10 @@ else
   echo git clone git@github.com:pyenv/pyenv.git ~/.pyenv
 fi
 
-
 ################################################################################
 # PHP STUFF
 ################################################################################
 
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
-# export COMPOSE_API_VERSION=1.25
-
-# [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
-
-export JAVA_OPTS="$JAVA_OPTS"' -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
-
-# export AWS_PROFILE="shed"
+# export JAVA_OPTS="$JAVA_OPTS"' -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'

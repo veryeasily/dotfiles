@@ -20,6 +20,7 @@ zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 
 # Directory
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*' special-dirs false
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # default: --
@@ -69,9 +70,14 @@ export FZF_DEFAULT_OPTS='
 --bind=ctrl-d:page-down
 --bind=ctrl-z:toggle-all
 '
+# Allow search to be extendable with a custom search we write (currently in
+# ~/.local/bin/proj_search
+if command -v proj_search &>/dev/null; then
+  export FZF_DEFAULT_COMMAND="proj_search"
+else
+  export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore-vcs --type file --ignore-file $HOME/.ignore"
+fi
 export FZF_IGNORE_LIST="'^/snap|node_modules|vendor|.rbenv|.phpbrew|.pyenv|bundle|cache|placeholders'"
-export FZF_DEFAULT_COMMAND="fd --hidden --type file --ignore-file $HOME/.ignore ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 export LC_COLLATE="C"
-export CDPATH="$CDPATH:$HOME/code:$HOME:$HOME/.marks"
+export CDPATH="$CDPATH:$HOME:$HOME/.marks"
