@@ -22,4 +22,4 @@ bindkey '^Sc' fzf-cd-widget
 # see https://github.com/sindresorhus/pure/wiki#show-number-of-jobs-in-prompt
 # PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
 
-command -v awless &>/dev/null && source <(awless completion zsh)
+# command -v awless &>/dev/null && source <(awless completion zsh)

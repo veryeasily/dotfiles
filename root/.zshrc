@@ -1,3 +1,6 @@
+# Set ZSH_PROFILE to debug startup times
+[[ $ZSH_PROFILE ]] && zmodload zsh/zprof
+
 alias tmux='TERM=xterm-256color tmux'
 
 if [[ "$TERM" = "xterm" ]]; then TERM="xterm-256color" fi
@@ -156,7 +159,11 @@ ZSH_CUSTOM="$ZSH_DOT/oh-my-zsh-custom"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=( \
+  ansible \
+  colorize \
+  common-aliases \
   adb \
+  react-native \
   docker \
   docker-compose \
   git \
@@ -230,3 +237,5 @@ eval "$(fnm env --multi --use-on-cd)"
 [[ -e "$HOME/.dircolors" ]] && eval "$( dircolors -b $HOME/.dircolors )"
 
 [[ -e ~/.zsh ]] && fpath=(~/.zsh/ $fpath)
+
+[[ $ZSH_PROFILE ]] && zprof

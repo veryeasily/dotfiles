@@ -1,0 +1,21 @@
+function! LJU_colors()
+ruby << EOF
+require 'logger'
+colors = Vim.evaluate('split(globpath(&rtp, "colors/*.vim"), \'\\n\')')
+color = File.basename(colors[rand(colors.length)], '.vim')
+puts "#{Time.now} INFO: color = #{color}"
+Vim.command("set background=dark")
+Vim.command("colorscheme #{color}")
+Vim.command("hi Normal guibg=NONE ctermbg=NONE")
+Vim.command("hi NonText guibg=NONE ctermbg=NONE")
+EOF
+endfunction
+
+" From :help editorconfig.txt
+function! LJU_filetype_hook(config)
+    if has_key(a:config, 'vim_filetype')
+        let &filetype = a:config['vim_filetype']
+    endif
+
+    return 0   " Return 0 to show no error happened
+endfunction

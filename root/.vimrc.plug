@@ -152,8 +152,8 @@ Plug 'tpope/vim-surround'
 Plug 'plasticboy/vim-markdown'
 Plug 'easymotion/vim-easymotion'
 Plug 'brooth/far.vim'
-Plug 'flazz/vim-colorschemes'
 Plug 'KabbAmine/zeavim.vim'
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
@@ -207,7 +207,9 @@ endif
 if &diff
   silent! colorscheme gruvbox
 else
-  silent! colorscheme Atelier_DuneDark
+  " silent! colorscheme Atelier_DuneDark
+  let g:solarized_termtrans = 1
+  silent! colorscheme solarized
   hi Normal guibg=NONE ctermbg=NONE
   hi NonText guibg=NONE ctermbg=NONE
 endif
