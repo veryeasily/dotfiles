@@ -1,7 +1,7 @@
 # Set ZSH_PROFILE to debug startup times
 [[ $ZSH_PROFILE ]] && zmodload zsh/zprof
 
-if [[ -n $VIMRUNTIME ]]; then
+if [[ -n $VIMRUNTIME ]] && ! [[ -n $VIM_TERMINAL ]]; then
     return 0
 fi
 
@@ -144,22 +144,22 @@ COMPLETION_WAITING_DOTS="true"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-plugins=( \
-  zsh-completions \
-  ansible \
-  colorize \
-  adb \
-  react-native \
-  docker \
-  docker-compose \
-  git \
-  github \
-  jump \
-  lju_ansible \
-  ripgrep \
-  ruby \
-  terraform \
-  z \
+plugins=(
+  zsh-completions
+  ansible
+  colorize
+  adb
+  react-native
+  docker
+  docker-compose
+  git
+  github
+  jump
+  lju_ansible
+  ripgrep
+  ruby
+  terraform
+  z
 )
 
 BAT_THEME='TwoDark'
@@ -173,28 +173,6 @@ LUKE_ZSH_DIR="${LUKE_ZSH_DIR:-$HOME/.zsh}"
 ZSH_CUSTOM="$LUKE_ZSH_DIR/oh-my-zsh-custom"
 source $ZSH/oh-my-zsh.sh
 
-for file in $(ls "$LUKE_ZSH_DIR"/*.zsh); do
-  source $file
-done
-
-################################################################################
-# FZF stuff
-################################################################################
-
-# Have to overwrite to make it use fd
-_fzf_compgen_path() {
-  echo "$1"
-  command fd --hidden --type file --no-ignore-vcs 2> /dev/null | sed 's@^\./@@'
-}
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-bindkey '^Sc' fzf-cd-widget
-
-[[ -e "$HOME/.dircolors" ]] && eval "$( dircolors -b $HOME/.dircolors )"
-
-################################################################################
-# Misc and compinit (generates completion)
-################################################################################
-command -v thefuck &>/dev/null && eval $(thefuck --alias)
-autoload -U compinit && compinit
+[[ -e "$LUKE_ZSH_DIR/main.zsh" ]] && source "$LUKE_ZSH_DIR/main.zsh"
 
 [[ $ZSH_PROFILE ]] && zprof
