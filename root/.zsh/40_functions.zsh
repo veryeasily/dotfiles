@@ -55,6 +55,6 @@ function revolvy_mode() {
   export AWS_PROFILE=revolvy
 }
 
-function veasily_mode() {
+function me_mode() {
   export AWS_PROFILE=veryveryeasily
 }

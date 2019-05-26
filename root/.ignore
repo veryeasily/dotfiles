@@ -1,5 +1,6 @@
 *.min.*
 *.sql*
+.cache
 .git
 node_modules
 tags

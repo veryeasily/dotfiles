@@ -137,7 +137,7 @@ set hidden
 "profile pause
 set exrc
 
-set relativenumber
+set norelativenumber
 set updatetime=200
 
 set ignorecase

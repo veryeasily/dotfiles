@@ -27,14 +27,17 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/example]
+[bar/bottom]
 ;monitor = ${env:MONITOR:HDMI-1}
+enable-ipc = true
 width = 100%
 height = 27
 ;offset-x = 1%
-;offset-y = 1%
+;offset-y = 0
 radius = 6.0
-fixed-center = false
+fixed-center = true
+dpi = 192
+bottom = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -48,12 +51,12 @@ border-color = #00000000
 padding-left = 0
 padding-right = 2
 
-module-margin-left = 1
+module-margin-left = 2
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=15;1
+font-0 = fixed:pixelsize=13;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=15;1
+font-2 = siji:pixelsize=13;1
 
 modules-left = bspwm i3
 modules-center = 
@@ -61,18 +64,21 @@ modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan 
 
 tray-position = right
 tray-padding = 2
+tray-scale = 1.0
+tray-maxsize = 64
+;tray-offset-y = -5
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
 ;override-redirect = true
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -136,7 +142,8 @@ index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
+fuzzy-match = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
@@ -417,7 +424,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
 
 ; vim:ft=dosini
