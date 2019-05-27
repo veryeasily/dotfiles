@@ -420,6 +420,12 @@ export SAVEHIST=999999999
 
 [[ -e "$HOME/.dircolors" ]] && eval "$( dircolors -b $HOME/.dircolors )"
 
+# I dont trust fnm enough to put it in my zshenv
+export PATH=$HOME/.fnm:$PATH
+eval "$(fnm env --multi --use-on-cd)"
+
+eval "$(direnv hook zsh)"
+
 command -v thefuck &>/dev/null && eval $(thefuck --alias)
 export LC_COLLATE="C"
 #PROMPT=" [%j]$PROMPT"

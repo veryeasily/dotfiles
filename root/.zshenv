@@ -61,9 +61,3 @@ export PATH="/home/mors/.ebcli-virtual-env/executables:$PATH"
 export PATH="/home/mors/.deno/bin:$PATH"
 
 [[ -s "/home/mors/.gvm/scripts/gvm" ]] && source "/home/mors/.gvm/scripts/gvm"
-
-eval "$(direnv hook zsh)"
-
-# I dont trust fnm enough to put it in my zshenv
-export PATH=$HOME/.fnm:$PATH
-eval "$(fnm env --multi --use-on-cd)"
