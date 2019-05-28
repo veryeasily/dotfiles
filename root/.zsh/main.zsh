@@ -418,9 +418,9 @@ export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=999999999
 export SAVEHIST=999999999
 
-[[ -e "$HOME/.dircolors" ]] && eval "$( dircolors -b $HOME/.dircolors )"
+# [[ -e "$HOME/.dircolors" ]] && eval "$( dircolors -b $HOME/.dircolors )"
 
-# I dont trust fnm enough to put it in my zshenv
+# fnm can't go in zshenv cause there's no way to disable text output
 export PATH=$HOME/.fnm:$PATH
 eval "$(fnm env --multi --use-on-cd)"
 
@@ -428,15 +428,6 @@ eval "$(direnv hook zsh)"
 
 command -v thefuck &>/dev/null && eval $(thefuck --alias)
 export LC_COLLATE="C"
-#PROMPT=" [%j]$PROMPT"
-()
-{
-    local f
-    for f in ./*secret*.zsh(N-.)
-    do
-        source "$f"
-    done
-}
 
 ################################################################################
 # FZF stuff
