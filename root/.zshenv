@@ -54,10 +54,6 @@ fi
 # RUBY STUFF
 ################################################################################
 
-export RBENV_ROOT="$HOME/.rbenv"
-export PATH="$RBENV_ROOT/bin:$PATH"
-eval "$(rbenv init -)"
-
 # The yarn stuff is a little weird because it messes up sometimes.
 # More info here:
 # https://github.com/yarnpkg/yarn/issues/648
@@ -84,6 +80,9 @@ fi
 ################################################################################
 # PHP STUFF
 ################################################################################
+
+# export NVM_DIR="$HOME/.nvm"
+# source "$(/usr/local/bin/brew --prefix nvm)/nvm.sh"
 
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 

@@ -11,7 +11,7 @@ if [[ "$TERM" = "xterm" ]]; then TERM="xterm-256color" fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/mors/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -230,12 +230,25 @@ command -v thefuck &>/dev/null && eval $(thefuck --alias)
 
 eval "$(direnv hook zsh)"
 
-# I dont trust fnm enough to put it in my zshenv
-export PATH=$HOME/.fnm:$PATH
-eval "$(fnm env --multi --use-on-cd)"
+# # I dont trust fnm enough to put it in my zshenv
+# export PATH=$HOME/.fnm:$PATH
+# eval "$(fnm env --multi --use-on-cd)"
 
-[[ -e "$HOME/.dircolors" ]] && eval "$( dircolors -b $HOME/.dircolors )"
+if [[ -e "$HOME/.dircolors" ]] && command -v dircolors &>/dev/null; then
+    eval "$( dircolors -b $HOME/.dircolors )"
+fi
 
 [[ -e ~/.zsh ]] && fpath=(~/.zsh/ $fpath)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export RBENV_ROOT="$HOME/.rbenv"
+export PATH="$RBENV_ROOT/bin:$PATH"
+eval "$(rbenv init -)"
+
+[[ -s "/Users/hi/.gvm/scripts/gvm" ]] && source "/Users/hi/.gvm/scripts/gvm"
+# fnm
+
+command -v gmake &>/dev/null && alias make=gmake
 
 [[ $ZSH_PROFILE ]] && zprof

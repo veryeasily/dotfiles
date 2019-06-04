@@ -75,7 +75,7 @@ export FZF_DEFAULT_OPTS='
 if command -v proj_search &>/dev/null; then
   export FZF_DEFAULT_COMMAND="proj_search"
 else
-  export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore-vcs --type file --ignore-file $HOME/.ignore"
+  export FZF_DEFAULT_COMMAND="rg --hidden --no-ignore-vcs --files --ignore-file ./.ignore --ignore-file $HOME/.ignore"
 fi
 export FZF_IGNORE_LIST="'^/snap|node_modules|vendor|.rbenv|.phpbrew|.pyenv|bundle|cache|placeholders'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

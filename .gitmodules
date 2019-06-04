@@ -24,3 +24,6 @@
 [submodule "root/.bash_it"]
 	path = root/.bash_it
 	url = https://github.com/Bash-it/bash-it
+[submodule "root/.zsh/oh-my-zsh-custom/plugins/zsh-completions"]
+	path = root/.zsh/oh-my-zsh-custom/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions

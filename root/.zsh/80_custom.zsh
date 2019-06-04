@@ -1,5 +1,3 @@
-[[ -e ~/.dircolors ]] && eval "$(dircolors "$HOME/.dircolors")"
-
 #PROMPT=" [%j]$PROMPT"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
