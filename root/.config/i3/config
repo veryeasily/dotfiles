@@ -2,11 +2,12 @@
 # It will not be overwritten, so edit it as you like.
 
 set $mod Mod4
-set $altkey Mod1
+set $alt Mod1
+set $ctrl Control
 
 # See for_window [class="^.*"] border pixel 0
 for_window [class="^.*"] border pixel 2px
-gaps inner 10
+# gaps inner 10
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -18,7 +19,7 @@ floating_modifier $mod
 # Set background image with feh
 exec feh --bg-scale /home/mors/.config/i3/wall.png
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id dropbox start -i
 exec --no-startup-id syndaemon -i 1 -d  -t -K
 exec --no-startup-id nm-applet
@@ -30,7 +31,7 @@ exec --no-startup-id flameshot
 exec --no-startup-id unclutter -idle 2 -root
 exec --no-startup-id xset r rate 300 50
 exec_always --no-startup-id setxkbmap -option ctrl:swapcaps
-exec udiskie --tray
+# exec udiskie --tray
 exec redshift-gtk
 exec slack
 exec update-manager
@@ -102,11 +103,6 @@ set $chrome_key i
 set $zeal_key h
 set $slack_key u
 
-for_window [instance="^slack$"] move scratchpad
-for_window [instance="^quake$"] move scratchpad
-for_window [instance="^zeal$"] move scratchpad
-for_window [class="^google-chrome-quake$" window_role="^browser$"] move scratchpad
-
 # switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -150,24 +146,78 @@ bindsym Shift+Print exec flameshot full -c
 bindsym $mod+m exec rofi -show window
 bindsym $mod+n exec rofi -show drun
 
+bindsym $mod+comma exec compton-trans -c -o -- -5
+bindsym $mod+period exec compton-trans -c -o -- +5
+
+set $move Mod4
+set $fixed Control
+set $more Shift
+set $center
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym $move+j move left 10 px
+        bindsym $move+k move down 10 px
+        bindsym $move+l move up 10 px
+        bindsym $move+semicolon move right 10 px
+
+        bindsym $center+j resize shrink width 10 px or 10 ppt, move right 5 px
+        bindsym $center+k resize grow height 10 px or 10 ppt, move up 5 px
+        bindsym $center+l resize shrink height 10 px or 10 ppt, move down 5 px
+        bindsym $center+semicolon resize grow width 10 px or 10 ppt, move left 5 px
+
+        bindsym $fixed+j resize shrink width 10 px or 10 ppt
+        bindsym $fixed+k resize grow height 10 px or 10 ppt
+        bindsym $fixed+l resize shrink height 10 px or 10 ppt
+        bindsym $fixed+semicolon resize grow width 10 px or 10 ppt
+
+        bindsym $move+$more+j move left 50 px
+        bindsym $move+$more+k move down 50 px
+        bindsym $move+$more+l move up 50 px
+        bindsym $move+$more+semicolon move right 50 px
+
+        bindsym $center+$more+j resize shrink width 50 px or 50 ppt, move right 25 px
+        bindsym $center+$more+k resize grow height 50 px or 50 ppt, move up 25 px
+        bindsym $center+$more+l resize shrink height 50 px or 50 ppt, move down 25 px
+        bindsym $center+$more+semicolon resize grow width 50 px or 50 ppt, move left 25 px
+
+        bindsym $fixed+$more+j resize shrink width 50 px or 50 ppt
+        bindsym $fixed+$more+k resize grow height 50 px or 50 ppt
+        bindsym $fixed+$more+l resize shrink height 50 px or 50 ppt
+        bindsym $fixed+$more+semicolon resize grow width 50 px or 50 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym $move+Left move left 10 px
+        bindsym $move+Down move down 10 px
+        bindsym $move+Up move up 10 px
+        bindsym $move+Right move right 10 px
+
+        bindsym $center+Left resize shrink width 10 px or 10 ppt, move right 5 px
+        bindsym $center+Down resize grow height 10 px or 10 ppt, move up 5 px
+        bindsym $center+Up resize shrink height 10 px or 10 ppt, move down 5 px
+        bindsym $center+Right resize grow width 10 px or 10 ppt, move left 5 px
+
+        bindsym $fixed+Left resize shrink width 10 px or 10 ppt
+        bindsym $fixed+Down resize grow height 10 px or 10 ppt
+        bindsym $fixed+Up resize shrink height 10 px or 10 ppt
+        bindsym $fixed+Right resize grow width 10 px or 10 ppt
+
+        bindsym $move+$more+Left move left 50 px
+        bindsym $move+$more+Down move down 50 px
+        bindsym $move+$more+Up move up 50 px
+        bindsym $move+$more+Right move right 50 px
+
+        bindsym $center+$more+Left resize shrink width 50 px or 50 ppt, move right 25 px
+        bindsym $center+$more+Down resize grow height 50 px or 50 ppt, move up 25 px
+        bindsym $center+$more+Up resize shrink height 50 px or 50 ppt, move down 25 px
+        bindsym $center+$more+Right resize grow width 50 px or 50 ppt, move left 25 px
+
+        bindsym $fixed+$more+Left resize shrink width 50 px or 50 ppt
+        bindsym $fixed+$more+Down resize grow height 50 px or 50 ppt
+        bindsym $fixed+$more+Up resize shrink height 50 px or 50 ppt
+        bindsym $fixed+$more+Right resize grow width 50 px or 50 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -179,12 +229,13 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-#bar {
+bar {
+        i3bar_command $HOME/.config/polybar/launch.sh
         #position top
         #status_command i3status
-        #tray_padding 1
+        tray_padding 0
         #font pango:monospace 11
-#}
+}
 
 exec alacritty --class quake
 exec zeal
@@ -194,25 +245,29 @@ exec OS_POSIX=true google-chrome --class=google-chrome-quake
 ################################################################################
 # Show quakes
 ################################################################################
+# Screenheight: 1080px
+# Polybar Height: 32px
+# Space left: 1048px
+################################################################################
 
 bindsym --release $mod+$chrome_key \
         [class="^google-chrome-quake$" window_role="^browser$"] \
                 move container to workspace current, \
                 scratchpad show, \
                 scratchpad show \
-                move to position 64 96, resize set 1792 920 px
+                move to position 8 8, resize set 1904 1032 px
 
 bindsym --release $mod+$alacritty_key [instance="^quake$"] \
                 move container to workspace current, \
                 scratchpad show, \
                 scratchpad show \
-                move to position 16 48, resize set 1888 750 px
+                move to position 16 16, resize set 1888 750 px
 
 bindsym --release $mod+$zeal_key [instance="^zeal$"] \
                 move container to workspace current, \
                 scratchpad show, \
                 scratchpad show \
-                move to position 32 392, resize set 1856 656 px
+                move to position 16 376, resize set 1888 656 px
 
 bindsym --release $mod+$slack_key [instance="^slack$"] \
                 move container to workspace current, \
@@ -220,34 +275,43 @@ bindsym --release $mod+$slack_key [instance="^slack$"] \
                 scratchpad show \
                 move to position 128 457, resize set 1664 495 px
 
-
 ################################################################################
 # Hide quakes
 ################################################################################
 
-bindsym --release $altkey+$chrome_key \
+bindsym --release $alt+$chrome_key \
         [class="^google-chrome-quake$" window_role="^browser$"] \
                 scratchpad show, \
                 move container to workspace current, \
                 scratchpad show
 
-bindsym --release $altkey+$alacritty_key [instance="^quake$"] \
+bindsym --release $alt+$alacritty_key [instance="^quake$"] \
         scratchpad show, \
         move container to workspace current, \
         scratchpad show
 
-bindsym --release $altkey+$zeal_key [instance="^zeal$"] \
+bindsym --release $alt+$zeal_key [instance="^zeal$"] \
         scratchpad show, \
         move container to workspace current, \
         scratchpad show
 
-bindsym --release $altkey+$slack_key [instance="^slack$"] \
+bindsym --release $alt+$slack_key [instance="^slack$"] \
         scratchpad show, \
         move container to workspace current, \
         scratchpad show
 
+################################################################################
+# Opacity (with compton)
+################################################################################
+
+for_window [instance="^slack$"] move scratchpad
+for_window [instance="^quake$"] move scratchpad
+for_window [instance="^zeal$"] move scratchpad
+for_window [class="^google-chrome-quake$" window_role="^browser$"] move scratchpad
 
 for_window [class="^Kazam$"] floating enable
+for_window [class="^Gnome-calculator$"] floating enable
+for_window [class="^kruler$"] floating enable
 for_window [class="^Polybar$"] border pixel 0
 for_window [class="^flameshot$" title="^Configuration$"] floating enable
 for_window [class="^google-chrome-quake$" window_role="^pop-up$"] floating enable

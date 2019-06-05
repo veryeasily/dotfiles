@@ -15,3 +15,5 @@ tags
 chrome-overrides
 *.bak
 */.tmux/resurrect
+*.crypt
+*.crypt.*

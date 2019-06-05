@@ -1,17 +1,13 @@
 # Set ZSH_PROFILE to debug startup times
 [[ $ZSH_PROFILE ]] && zmodload zsh/zprof
 
-alias tmux='TERM=xterm-256color tmux'
+if [[ -n $VIMRUNTIME ]] && ! [[ -n $VIM_TERMINAL ]]; then
+    return 0
+fi
 
-if [[ "$TERM" = "xterm" ]]; then TERM="xterm-256color" fi
-
-# if [[ ! "$TMUX" ]]; then tmux; exit $?; fi
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# alias tmux='TERM=xterm-256color tmux'
+# 
+# if [[ "$TERM" = "xterm" ]]; then TERM="xterm-256color" fi
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -104,8 +100,6 @@ SPACESHIP_PYENV_SUFFIX=") "
 SPACESHIP_PYENV_SYMBOL=""
 ZSH_THEME='spaceship'
 
-ZSH_CUSTOM="$ZSH_DOT/oh-my-zsh-custom"
-
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -135,7 +129,7 @@ ZSH_CUSTOM="$ZSH_DOT/oh-my-zsh-custom"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -150,104 +144,36 @@ ZSH_CUSTOM="$ZSH_DOT/oh-my-zsh-custom"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=( \
-  ansible \
-  colorize \
-  common-aliases \
-  adb \
-  react-native \
-  docker \
-  docker-compose \
-  git \
-  github \
-  jump \
-  lju_ansible \
-  ripgrep \
-  ruby \
-  terraform \
-  z \
-  zsh-completions \
+plugins=(
+  zsh-completions
+  ansible
+  colorize
+  adb
+  react-native
+  docker
+  docker-compose
+  git
+  github
+  jump
+  lju_ansible
+  ripgrep
+  ruby
+  terraform
+  z
 )
 
+BAT_THEME='TwoDark'
+
+################################################################################
+# Bootstrap everything
+################################################################################
+
+ZSH="$HOME/.oh-my-zsh"
+LUKE_ZSH_DIR="${LUKE_ZSH_DIR:-$HOME/.zsh}"
+ZSH_CUSTOM="$LUKE_ZSH_DIR/oh-my-zsh-custom"
 source $ZSH/oh-my-zsh.sh
 
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-
-# if [[ -n $VIMRUNTIME ]]; then
-#     return 0
-# fi
-
-[ -s "$LUKE_BUILD/z/z.sh" ] && . "$LUKE_BUILD/z/z.sh"
-
-for file in $(ls "$ZSH_DOT"/*.zsh | grep -v main.zsh); do
-  source $file
-done
-
-[[ -s "/home/mors/.gvm/scripts/gvm" ]] && source "/home/mors/.gvm/scripts/gvm"
-
-export BAT_THEME='TwoDark'
-
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
-
-command -v thefuck &>/dev/null && eval $(thefuck --alias)
-
-eval "$(direnv hook zsh)"
-
-# # I dont trust fnm enough to put it in my zshenv
-# export PATH=$HOME/.fnm:$PATH
-# eval "$(fnm env --multi --use-on-cd)"
-
-if [[ -e "$HOME/.dircolors" ]] && command -v dircolors &>/dev/null; then
-    eval "$( dircolors -b $HOME/.dircolors )"
-fi
-
-[[ -e ~/.zsh ]] && fpath=(~/.zsh/ $fpath)
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export RBENV_ROOT="$HOME/.rbenv"
-export PATH="$RBENV_ROOT/bin:$PATH"
-eval "$(rbenv init -)"
-
-[[ -s "/Users/hi/.gvm/scripts/gvm" ]] && source "/Users/hi/.gvm/scripts/gvm"
-# fnm
+[[ -e "$LUKE_ZSH_DIR/main.zsh" ]] && source "$LUKE_ZSH_DIR/main.zsh"
 
 command -v gmake &>/dev/null && alias make=gmake
 
