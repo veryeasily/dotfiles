@@ -166,6 +166,10 @@ alias c='docker-compose'
 alias g='sr google'
 alias goog='googler'
 
+alias rg='rg --color=always'
+alias rg.nocolor='rg --color=never'
+alias rg.vim='rg -l --color=never'
+
 alias cat='bat'
 alias gcat='cat' # alias for gnucat
 
@@ -190,7 +194,13 @@ alias -g H=' --help 2>&1'
 alias -g HL=' --help 2>&1 L' # for help less
 alias -g L=' 2>&1 | less -F -R'
 alias -g T='$(terraform state list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-#!/bin/zsh
+
+if is_mac; then
+    if command -v gmake &>/dev/null; then
+        alias make=gmake
+    fi
+fi
+
 function datebak {
   date -Is | tr : _
 }

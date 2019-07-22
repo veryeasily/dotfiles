@@ -46,12 +46,6 @@ set smarttab
 set tags=./tags;/
 set tw=79
 
-set sw=4
-set ts=4
-set sts=4
-set expandtab
-set smarttab
-
 " set tab completion in command mode
 set wildmode=longest,list,full
 set wildmenu
@@ -136,6 +130,12 @@ set hidden
 
 "profile pause
 set exrc
+
+set sw=4
+set ts=4
+set sts=4
+set expandtab
+set smarttab
 
 set norelativenumber
 set updatetime=200

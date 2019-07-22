@@ -38,15 +38,7 @@ let g:tagbar_width = 20
 " let g:tern_request_timeout = 2
 " let g:tern_show_argument_hints="on_move"
 let g:tmux_navigator_no_mappings = 1
-let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key='<C-p>'
-let g:user_emmet_mode='inv'
-let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
-
+let g:user_emmet_install_global = 1
 if executable('ripper-tags')
     let g:tagbar_type_ruby = {
         \ 'kinds'      : ['m:modules',
@@ -180,10 +172,10 @@ nnoremap <silent> l :TmuxNavigateRight<cr>
 nnoremap <silent> \ :TmuxNavigatePrevious<cr>
 map <Space> <Plug>(easymotion-prefix)
 map <Space>W <Plug>(easymotion-bd-W)
-map <Space>f <Plug>(easymotion-s)
-map <Space>t <Plug>(easymotion-bd-t)
 map <Space>w <Plug>(easymotion-bd-w)
 map <leader>fd <Plug>(TsuquyomiSplitDefinition)
+map gs <Plug>(easymotion-bd-t)
+map s <Plug>(easymotion-s)
 
 "augroup EMMET
   "au!

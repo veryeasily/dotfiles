@@ -15,5 +15,13 @@ tags
 chrome-overrides
 *.bak
 */.tmux/resurrect
+
+# Ignore gitcrypt files
 *.crypt
 *.crypt.*
+
+# Ignore local files
+*.local.*
+
+# Ignore stupid mac files
+.DS_Store

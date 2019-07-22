@@ -1,0 +1,14 @@
+*
+!.gitignore
+!alacritty
+!awesome
+!fontforge
+!i3
+!i3status
+!karabiner
+!nvim
+!pet
+!polybar
+!sway
+!compton.conf
+!redshift.conf

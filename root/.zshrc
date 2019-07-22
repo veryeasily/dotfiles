@@ -146,16 +146,13 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(
   zsh-completions
-  ansible
-  colorize
   adb
-  react-native
+  ansible
   docker
   docker-compose
   git
   github
-  jump
-  lju_ansible
+  react-native
   ripgrep
   ruby
   terraform
@@ -164,17 +161,26 @@ plugins=(
 
 BAT_THEME='TwoDark'
 
+# From:
+# https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 ################################################################################
 # Bootstrap everything
 ################################################################################
 
+# Oh-my-zsh
 ZSH="$HOME/.oh-my-zsh"
-LUKE_ZSH_DIR="${LUKE_ZSH_DIR:-$HOME/.zsh}"
-ZSH_CUSTOM="$LUKE_ZSH_DIR/oh-my-zsh-custom"
-source $ZSH/oh-my-zsh.sh
+ZSH_DIR="${ZSH_DIR:-$HOME/.zsh}"
+ZSH_CUSTOM="$ZSH_DIR/oh-my-zsh-custom"
+[[ -e "$ZSH/oh-my-zsh.sh" ]] && source $ZSH/oh-my-zsh.sh
 
-[[ -e "$LUKE_ZSH_DIR/main.zsh" ]] && source "$LUKE_ZSH_DIR/main.zsh"
+# My Main file
+[[ -e "$ZSH_DIR/main.zsh" ]] && source "$ZSH_DIR/main.zsh"
 
-command -v gmake &>/dev/null && alias make=gmake
+# Local override
+[[ -e ~/.zsh/zshrc.local.zsh ]] && source ~/.zsh/zshrc.local.zsh
 
 [[ $ZSH_PROFILE ]] && zprof
