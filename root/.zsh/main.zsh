@@ -202,7 +202,7 @@ if is_mac; then
 fi
 
 function datebak {
-  date -Is | tr : _
+  date +'%Y_%m_%d_%H_%M_%S'
 }
 
 function bak {
