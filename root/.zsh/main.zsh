@@ -5,7 +5,7 @@ has() {
 # reload resets Completion function
 reload() {
     local f
-    f=(~/.zsh/Completion/*(.))
+    f=("$ZSH_DIR/fpath/"*(.))
     unfunction $f:t 2>/dev/null
     autoload -U $f:t
 }
