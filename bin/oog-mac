@@ -1,0 +1,12 @@
+#!/bin/bash
+set -euo pipefail
+
+echo "Googling: $*"
+
+search="$1"
+shift
+for term in "$@"; do
+    search="$search%20$term"
+done
+url="https://www.google.com/search?q=$search"
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --new-window "$url"
