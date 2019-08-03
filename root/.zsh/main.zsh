@@ -163,12 +163,17 @@ alias sushi="sudo ssh -F ~/.ssh/config"
 alias d='docker'
 alias c='docker-compose'
 
-alias g='sr google'
-alias goog='googler'
+alias g='google'
 
-alias rg='rg --color=always'
+alias rg.color='rg --color=always'
 alias rg.nocolor='rg --color=never'
-alias rg.vim='rg -l --color=never'
+
+alias lj.json='python -m json.tool'
+
+alias -g LJ.BRANCH='$(git branch --all --sort creatordate | fzf-tmux --header-lines=1 --reverse --multi | awk "{print \$1}")'
+alias -g LJ.CP='| tr -d "\n" | xclip -sel clipboard'
+alias -g LJ.JSON='| lj.json'
+alias -g LJ.TERRAFORM='$(terraform state list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
 
 alias cat='bat'
 alias gcat='cat' # alias for gnucat
@@ -187,13 +192,10 @@ alias tf.ws='tf workspace select'
 alias he='heroku'
 
 alias -g B=' 2>&1 | bat' # maybe a little nicer than "| less" ??
-alias -g BR='$(git branch --all --sort creatordate | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-alias -g CP='| tr -d "\n" | xclip -sel clipboard'
 alias -g G='| rg'
 alias -g H=' --help 2>&1'
 alias -g HL=' --help 2>&1 L' # for help less
 alias -g L=' 2>&1 | less -F -R'
-alias -g T='$(terraform state list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
 
 if is_mac; then
     if command -v gmake &>/dev/null; then

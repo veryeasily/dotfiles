@@ -37,8 +37,10 @@ git submodule update --init --recursive
 sudo mkdir -p /usr/local/lib
 sudo git clone https://github.com/rbenv/rbenv "/usr/local/lib/rbenv"
 sudo git clone https://github.com/pyenv/pyenv "/usr/local/lib/pyenv"
+mkdir -p "$HOME/.rbenv"
+mkdir -p "$HOME/.pyenv"
 
-source $DIR/extras.sh
+source "$DIR/extras.sh"
 
 # Now fix YouCompleteMe
 # if ! hash python 2>/dev/null && hash git 2>/dev/null; then

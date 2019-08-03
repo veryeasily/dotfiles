@@ -1,0 +1,53 @@
+{
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "vim.easymotion": true,
+    "vim.leader": "<Space>",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        } 
+    ],
+    "vim.handleKeys": {
+        "<C-h>": false
+    },
+    "vim.easymotionMarkerFontFamily": "FuraCode Nerd Font",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "explorer.confirmDragAndDrop": false,
+    "typescript.tsdk": "/Users/hi/code/qs/deploy_self/services/frontend/node_modules/typescript/lib",
+    "workbench.sideBar.location": "left",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorCustomizations": {
+        "terminal.selectionBackground": "#f4de7566"
+    },
+    "terminal.integrated.fontSize": 14,
+    "window.zoomLevel": 0,
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.suggestSelection": "first",
+    "ruby.codeCompletion": "rcodetools",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "explorer.confirmDelete": false,
+    "[css]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "terminal.external.osxExec": "iTerm.app",
+    "emmet.syntaxProfiles": {
+        "jsx": {
+            "self_closing_tag": true,
+        }
+    },
+    "python.jediEnabled": false,
+}

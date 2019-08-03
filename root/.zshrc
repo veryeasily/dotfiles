@@ -34,3 +34,5 @@ fi
 [[ -e "$ZSH_DIR/zshrc.local.zsh" ]] && source "$ZSH_DIR/zshrc.local.zsh"
 
 [[ $ZSH_PROFILE ]] && zprof
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

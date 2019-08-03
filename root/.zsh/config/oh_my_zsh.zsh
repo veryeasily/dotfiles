@@ -48,11 +48,14 @@ plugins=(
   ansible
   docker
   docker-compose
+  fd
   git
   github
+  osx
   react-native
   ripgrep
   ruby
   terraform
+  web-search
   z
 )

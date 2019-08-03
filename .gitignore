@@ -1,19 +1,9 @@
-.vim/swaps/*
-.vim/undo/*
-.vim/backups/*
-/root/.vim/.netrwhist
-ssh/*
-!ssh/.keep
-!.vim/swaps/.keep
-!.vim/undo/.keep
-!.vim/backups/.keep
-root/.w-locations
-YouCompleteMe
-.vim/plugged
-tags
-!*/tags
+# ignore chrome devtool's local overrides
 chrome-overrides
+
 *.bak
+
+# ignore files made by the tmux-resurrect plugin
 */.tmux/resurrect
 
 # Ignore gitcrypt files
@@ -25,3 +15,19 @@ chrome-overrides
 
 # Ignore stupid mac files
 .DS_Store
+
+# ctags
+tags
+!*/tags
+
+# vim stuff
+.vim/plugged
+.vim/.netrwhist
+
+# these folders are depended on by my vimrc
+.vim/swaps/*
+!.vim/swaps/.keep
+.vim/undo/*
+!.vim/undo/.keep
+.vim/backups/*
+!.vim/backups/.keep
