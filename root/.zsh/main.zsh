@@ -173,6 +173,8 @@ alias lj.json='python -m json.tool'
 alias -g LJ.BRANCH='$(git branch --all --sort creatordate | fzf-tmux --header-lines=1 --reverse --multi | awk "{print \$1}")'
 alias -g LJ.CP='| tr -d "\n" | xclip -sel clipboard'
 alias -g LJ.JSON='| lj.json'
+alias -g LJ.HL=' --help 2>&1 B'
+alias -g LJ.HL.REAL_LESS=' --help 2>&1 L'
 alias -g LJ.TERRAFORM='$(terraform state list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
 
 alias cat='bat'
@@ -194,7 +196,7 @@ alias he='heroku'
 alias -g B=' 2>&1 | bat' # maybe a little nicer than "| less" ??
 alias -g G='| rg'
 alias -g H=' --help 2>&1'
-alias -g HL=' --help 2>&1 L' # for help less
+alias -g HL=' --help 2>&1 B' # for help less
 alias -g L=' 2>&1 | less -F -R'
 
 if is_mac; then
@@ -249,7 +251,9 @@ function revolvy_mode() {
 function me_mode() {
   export AWS_PROFILE=veryveryeasily
 }
-setopt monitor # zplug acts crazy without this sometimes
+
+# TODO: This may be messing up vscode
+# setopt monitor # zplug acts crazy without this sometimes
 setopt pushd_ignore_dups # Ignore duplicates to add to pushd
 setopt pushd_to_home # pushd no arg == pushd $HOME
 setopt correct # Check spell command
@@ -433,7 +437,7 @@ export SAVEHIST=999999999
 # [[ -e "$HOME/.dircolors" ]] && eval "$( dircolors -b $HOME/.dircolors )"
 
 # fnm can't go in zshenv cause there's no way to disable text output
-export PATH=$HOME/.fnm:$PATH
+export PATH="$HOME/.fnm:$PATH"
 eval "$(fnm env --multi --use-on-cd)"
 
 eval "$(direnv hook zsh)"

@@ -1,6 +1,6 @@
 [user]
-	email = veryveryeasily@gmail.com
-	name = Luke Underwood
+  email = veryveryeasily@gmail.com
+  name = Luke Underwood
 [push]
   default = simple
 [alias]
@@ -15,9 +15,9 @@
 [core]
   excludesfile = /home/mors/.gitignore_global
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
 [merge]
-	tool = opendiff
+  tool = gvimdiff3

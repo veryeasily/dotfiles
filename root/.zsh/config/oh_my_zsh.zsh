@@ -42,7 +42,12 @@ COMPLETION_WAITING_DOTS="true"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
+ZSH_TMUX_FIXTERM=true
+# ZSH_TMUX_AUTOSTART=true
+# ZSH_TMUX_AUTOCONNECT=true
+
 plugins=(
+  tmux
   zsh-completions
   adb
   ansible
@@ -51,6 +56,7 @@ plugins=(
   fd
   git
   github
+  jump
   osx
   react-native
   ripgrep

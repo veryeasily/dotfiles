@@ -166,6 +166,9 @@ Plug 'leafgarland/typescript-vim'
 Plug 'flowtype/vim-flow'
 Plug 'moll/vim-node'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'rizzatti/dash.vim'
+Plug 'rakr/vim-one'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -220,11 +223,10 @@ endif
 if &diff
   silent! colorscheme gruvbox
 else
-  " silent! colorscheme Atelier_DuneDark
-  let g:solarized_termtrans = 1
-  silent! colorscheme solarized
-  hi Normal guibg=NONE ctermbg=NONE
-  hi NonText guibg=NONE ctermbg=NONE
+  silent! colorscheme one
+  set background=dark
+  " hi Normal guibg=NONE ctermbg=NONE
+  " hi NonText guibg=NONE ctermbg=NONE
 endif
 
 " Vim named bookmarks

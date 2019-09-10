@@ -33,6 +33,17 @@ fi
 [[ -e "$ZSH_DIR/main.zsh" ]] && source "$ZSH_DIR/main.zsh"
 [[ -e "$ZSH_DIR/zshrc.local.zsh" ]] && source "$ZSH_DIR/zshrc.local.zsh"
 
-[[ $ZSH_PROFILE ]] && zprof
+# Set default TMUX session name
+
+if [[ "$TMUX" ]] && [[ "$(tmux display-message -p "#S")" = 0 ]]; then
+    tmux rename-session main
+fi
+
+# TODO: I don't know what this is doing here, but my node binaries got really
+# messed up when I removed it. (VSCode couldn't find prettier, etc.)
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Stop the profiler if it's running
+
+[[ $ZSH_PROFILE ]] && zprof
