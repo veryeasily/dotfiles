@@ -1,10 +1,12 @@
 #!/bin/bash
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+# Set location to be ~/.dotfiles (or whatever)
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$DIR" || exit 1
 
-# Avoid annoying problem where _all_ of ~/.config ends up in the dotfiles repo
-HOME_CONFIG="$HOME/.config"
-[[ -e "$HOME_CONFIG" ]] || mkdir "$HOME_CONFIG"
+# Prevent us from accidentally absorbing Documents and .config
+mkdir "$HOME/Documents" || echo '~/Documents already exists'
+mkdir "$HOME/.config" || echo '~/.config already exists'
 
+# Symlink all of $HOME/.dotfiles/root/'s files to $HOME/
 stow --override='.+' --target "$HOME" root
