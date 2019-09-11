@@ -5,8 +5,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$DIR" || exit 1
 
 # Prevent us from accidentally absorbing Documents and .config
-mkdir "$HOME/Documents" || echo '~/Documents already exists'
-mkdir "$HOME/.config" || echo '~/.config already exists'
+mkdir "$HOME/Documents" &>/dev/null || true
+mkdir "$HOME/.config" &>/dev/null || true
 
 # Symlink all of $HOME/.dotfiles/root/'s files to $HOME/
 stow --override='.+' --target "$HOME" root
