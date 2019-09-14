@@ -8,7 +8,7 @@ fi
 # Environment variables (oh-my-zsh and my own stuff)
 ZSH="$HOME/.oh-my-zsh"
 ZSH_DIR="${ZSH_DIR:-$HOME/.zsh}"
-ZSH_CUSTOM="$ZSH_DIR/oh-my-zsh-custom"
+ZSH_CUSTOM="$ZSH_DIR/omz-custom"
 BAT_THEME='TwoDark'
 ZSH_THEME='spaceship'
 

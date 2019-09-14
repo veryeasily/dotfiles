@@ -18,12 +18,12 @@
 	path = root/.oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 	branch = master
-[submodule "root/.zsh/oh-my-zsh-custom/themes/spaceship-prompt"]
+[submodule "root/.zsh/omz-custom/themes/spaceship-prompt"]
 	path = root/.zsh/omz-custom/themes/spaceship-prompt
 	url = https://github.com/denysdovhan/spaceship-prompt
 [submodule "root/.bash_it"]
 	path = root/.bash_it
 	url = https://github.com/Bash-it/bash-it
-[submodule "root/.zsh/oh-my-zsh-custom/plugins/zsh-completions"]
+[submodule "root/.zsh/omz-custom/plugins/zsh-completions"]
 	path = root/.zsh/omz-custom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
