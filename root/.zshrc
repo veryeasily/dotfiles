@@ -29,6 +29,11 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
+MY_ZSH_COMPS_LOCATION="$ZSH_CUSTOM/plugins/zsh-completions/src"
+if [[ -e "$MY_ZSH_COMPS_LOCATION" ]]; then
+    fpath=("$MY_ZSH_COMPS_LOCATION" $fpath)
+fi
+
 [[ -e "$ZSH/oh-my-zsh.sh" ]] && source $ZSH/oh-my-zsh.sh
 [[ -e "$ZSH_DIR/main.zsh" ]] && source "$ZSH_DIR/main.zsh"
 [[ -e "$ZSH_DIR/zshrc.local.zsh" ]] && source "$ZSH_DIR/zshrc.local.zsh"
