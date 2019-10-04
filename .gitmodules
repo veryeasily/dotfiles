@@ -27,3 +27,6 @@
 [submodule "root/.zsh/omz-custom/plugins/zsh-completions"]
 	path = root/.zsh/omz-custom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
+[submodule "root/.tfenv"]
+	path = root/.tfenv
+	url = https://github.com/tfutils/tfenv
