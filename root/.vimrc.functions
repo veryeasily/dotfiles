@@ -1,3 +1,5 @@
+" vim: ft=vim
+
 function! LJU_colors()
 ruby << EOF
 require 'logger'

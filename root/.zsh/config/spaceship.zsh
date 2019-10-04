@@ -1,3 +1,4 @@
+SPACESHIP_ROOT="$ZSH_CUSTOM/themes/spaceship-prompt"
 SPACESHIP_PROMPT_ORDER=(
   time     #
   vi_mode  # these sections will be

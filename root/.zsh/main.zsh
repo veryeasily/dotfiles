@@ -252,6 +252,18 @@ function me_mode() {
   export AWS_PROFILE=veryveryeasily
 }
 
+if is_mac; then
+    listening() {
+        if [ $# -eq 0 ]; then
+            sudo lsof -iTCP -sTCP:LISTEN -n -P
+        elif [ $# -eq 1 ]; then
+            sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+        else
+            echo "Usage: listening [pattern]"
+        fi
+    }
+fi
+
 # TODO: This may be messing up vscode
 # setopt monitor # zplug acts crazy without this sometimes
 setopt pushd_ignore_dups # Ignore duplicates to add to pushd
@@ -437,8 +449,12 @@ export SAVEHIST=999999999
 # [[ -e "$HOME/.dircolors" ]] && eval "$( dircolors -b $HOME/.dircolors )"
 
 # fnm can't go in zshenv cause there's no way to disable text output
-export PATH="$HOME/.fnm:$PATH"
-eval "$(fnm env --multi --use-on-cd)"
+# export PATH="$HOME/.fnm:$PATH"
+# eval "$(fnm env --multi --use-on-cd)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(direnv hook zsh)"
 

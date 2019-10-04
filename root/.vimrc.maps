@@ -53,15 +53,14 @@ noremap  <Leader>b <Esc>:<c-u>Buffer<CR>
 noremap  <Leader>g <Esc>:<c-u>Rg<space>
 noremap  <Leader>l <Esc>:<c-u>Lines<cr>
 noremap  <Leader>o <Esc>:<c-u>History<CR>
-noremap  <Leader>q <Esc>:History:<CR>
+noremap  <Leader>q <Esc>:<c-u>History:<CR>
 noremap  <Leader>r <Esc>:<c-u>Rg<space>
 noremap  <Leader>t <Esc>:<c-u>ProjectFiles<CR>
-noremap  <Leader>u <Esc>:<c-u>FZFMru<CR>
-noremap  \       <Esc><C-U>:TmuxNavigateLeft<cr>
-noremap  h       <Esc><C-U>:TmuxNavigateDown<cr>
-noremap  j       <Esc><C-U>:TmuxNavigateUp<cr>
-noremap  k       <Esc><C-U>:TmuxNavigateRight<cr>
-noremap  l       <Esc><C-U>:TmuxNavigatePrevious<cr>
+noremap  <C-h>     <Esc>:<C-u>TmuxNavigateLeft<cr>
+noremap  <C-j>     <Esc>:<C-u>TmuxNavigateDown<cr>
+noremap  <C-k>     <Esc>:<C-u>TmuxNavigateUp<cr>
+noremap  <C-l>     <Esc>:<C-u>TmuxNavigateRight<cr>
+noremap  <C-\>     <Esc>:<C-u>TmuxNavigatePrevious<cr>
 noremap! jk        <Esc>`^
 
 if has('terminal')

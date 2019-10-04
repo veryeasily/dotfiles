@@ -2,12 +2,14 @@
 set encoding=utf-8
 set nocompatible
 
+set cmdheight=2
+
 filetype plugin indent on
 syntax on
 
 " Map leader keys
-let mapleader = ','
-let maplocalleader = ','
+let mapleader = '\'
+let maplocalleader = '\'
 
 source ~/.vimrc.functions
 source ~/.vimrc.plug
@@ -23,8 +25,8 @@ if has('nofixedendofline')
   set nofixendofline
 endif
 
-set showcmd " Display our current \[count\]
-set incsearch
+" set showcmd " Display our current \[count\]
+" set incsearch
 
 if filereadable($HOME.'/.vimrc.maps')
    source ~/.vimrc.maps
@@ -42,9 +44,15 @@ set modeline
 set hlsearch
 set ruler
 set sessionoptions-=options
-set smarttab
+" set smarttab
 set tags=./tags;/
 set tw=79
+
+set sw=4
+set ts=4
+set sts=4
+set expandtab
+set smarttab
 
 " set tab completion in command mode
 set wildmode=longest,list,full
@@ -68,17 +76,6 @@ endif
 
 " Enable autowrapping while editing files
 au BufNewFile,BufRead * setlocal formatoptions=crqn
-
-" Ruby
-au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-au FileType ruby,eruby let g:rubycomplete_rails = 1
-au FileType ruby,eruby let g:rubycomplete_load_gemfile = 1
-au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-au FileType ruby,eruby setl tw=79 comments=:#\  isfname+=:
-
-" au BufNewFile,BufRead * setlocal formatoptions-=lo
-" au FileType ruby,eruby nn <buffer> <F5> :!clear<CR>:!ruby %<CR>
-" au FileType ruby,eruby nn <buffer> <F9> :!clear<CR>:!rspec %<CR>
 
 if !exists("*MakeScratch")
   function MakeScratch()
@@ -131,14 +128,10 @@ set hidden
 "profile pause
 set exrc
 
-set sw=4
-set ts=4
-set sts=4
-set expandtab
-set smarttab
-
 set norelativenumber
-set updatetime=200
+set updatetime=300
 
 set ignorecase
 set smartcase
+set shortmess+=c
+set signcolumn=yes

@@ -21,3 +21,5 @@
   process = git-lfs filter-process
 [merge]
   tool = gvimdiff3
+[submodule]
+	fetchJobs = 8

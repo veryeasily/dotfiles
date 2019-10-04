@@ -7,7 +7,7 @@ fi
 
 # Environment variables (oh-my-zsh and my own stuff)
 ZSH="$HOME/.oh-my-zsh"
-ZSH_DIR="${ZSH_DIR:-$HOME/.zsh}"
+ZSH_DIR="$HOME/.zsh"
 ZSH_CUSTOM="$ZSH_DIR/omz-custom"
 BAT_THEME='TwoDark'
 ZSH_THEME='spaceship'
@@ -16,12 +16,12 @@ function lju::source_if_exists() {
     [[ -e "$1" ]] && source "$1"
 }
 
-[[ -e "$ZSH_DIR/config/spaceship.zsh" ]] && source "$ZSH_DIR/config/spaceship.zsh"
-[[ -e "$ZSH_DIR/config/oh_my_zsh.zsh" ]] && source "$ZSH_DIR/config/oh_my_zsh.zsh"
+[[ -e "$HOME/.zsh/config/spaceship.zsh" ]] && source "$HOME/.zsh/config/spaceship.zsh"
+[[ -e "$HOME/.zsh/config/oh_my_zsh.zsh" ]] && source "$HOME/.zsh/config/oh_my_zsh.zsh"
 
 # Add custom completion functions
-if [[ -e "$ZSH_DIR/fpath" ]]; then
-  FPATH="$ZSH_DIR/fpath:$FPATH"
+if [[ -e "$HOME/.zsh/completions" ]]; then
+    fpath=("$HOME/.zsh/completions" $fpath)
 fi
 
 # From: https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
@@ -35,8 +35,8 @@ if [[ -e "$MY_ZSH_COMPS_LOCATION" ]]; then
 fi
 
 [[ -e "$ZSH/oh-my-zsh.sh" ]] && source $ZSH/oh-my-zsh.sh
-[[ -e "$ZSH_DIR/main.zsh" ]] && source "$ZSH_DIR/main.zsh"
-[[ -e "$ZSH_DIR/zshrc.local.zsh" ]] && source "$ZSH_DIR/zshrc.local.zsh"
+[[ -e "$HOME/.zsh/main.zsh" ]] && source "$HOME/.zsh/main.zsh"
+[[ -e "$HOME/.zsh/zshrc.local.zsh" ]] && source "$HOME/.zsh/zshrc.local.zsh"
 
 # Set default TMUX session name
 
@@ -48,7 +48,8 @@ fi
 # messed up when I removed it. (VSCode couldn't find prettier, etc.)
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # Stop the profiler if it's running
-
 [[ $ZSH_PROFILE ]] && zprof
+fpath=(~/.zsh.d/ $fpath)
