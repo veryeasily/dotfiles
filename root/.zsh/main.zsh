@@ -456,8 +456,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-eval "$(direnv hook zsh)"
-
 command -v thefuck &>/dev/null && eval $(thefuck --alias)
 export LC_COLLATE="C"
 
@@ -494,6 +492,18 @@ _fzf_compgen_path() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 bindkey '^Sc' fzf-cd-widget
+
+function make_centos_container() {
+    local name
+    name=$1
+    shift
+    docker run \
+        -d \
+        --privileged \
+        --name $name \
+        $@ \
+        geerlingguy/docker-centos7-ansible /usr/lib/systemd/systemd
+}
 
 ################################################################################
 # compinit (generates completion)

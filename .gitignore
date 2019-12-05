@@ -31,3 +31,4 @@ tags
 !.vim/undo/.keep
 .vim/backups/*
 !.vim/backups/.keep
+gutentags

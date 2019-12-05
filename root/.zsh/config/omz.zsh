@@ -48,7 +48,6 @@ ZSH_TMUX_FIXTERM=true
 
 plugins=(
   tmux
-  asdf
   adb
   ansible
   docker

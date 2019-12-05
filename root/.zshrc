@@ -17,7 +17,7 @@ function lju::source_if_exists() {
 }
 
 [[ -e "$HOME/.zsh/config/spaceship.zsh" ]] && source "$HOME/.zsh/config/spaceship.zsh"
-[[ -e "$HOME/.zsh/config/oh_my_zsh.zsh" ]] && source "$HOME/.zsh/config/oh_my_zsh.zsh"
+[[ -e "$HOME/.zsh/config/omz.zsh" ]] && source "$HOME/.zsh/config/omz.zsh"
 
 # Add custom completion functions
 if [[ -e "$HOME/.zsh/completions" ]]; then
@@ -50,6 +50,14 @@ fi
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
+if command -v direnv &>/dev/null; then
+    eval "$(direnv hook zsh)"
+fi
+
 # Stop the profiler if it's running
 [[ $ZSH_PROFILE ]] && zprof
 fpath=(~/.zsh.d/ $fpath)
+# fnm
+eval "$(fnm env --multi)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
