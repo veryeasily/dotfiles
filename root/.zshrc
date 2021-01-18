@@ -58,6 +58,6 @@ fi
 [[ $ZSH_PROFILE ]] && zprof
 fpath=(~/.zsh.d/ $fpath)
 # fnm
-eval "$(fnm env --multi)"
+eval "$(fnm env --use-on-cd)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

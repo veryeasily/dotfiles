@@ -1,5 +1,33 @@
-*
-!.gitignore
+################################################################################
+# Borrowed from: https://gist.github.com/hieblmedia/9318457
+################################################################################
+# #
+# # If all files excluded and you will include only specific sub-directories
+# # the parent path must matched before.
+# #
+# 
+# /**
+# !/.gitignore
+# 
+# ###############################
+# # Un-ignore the affected subdirectory
+# !/libraries/
+# # Ignore subdirectory and all including directories and files to match pattern as valid for the next pattern
+# /libraries/**
+# # This pattern only works with the two previous patterns
+# # (i remember it was working alone on older git versions)
+# !/libraries/myLibrary/
+# ###############################
+# 
+# # Another example
+# !/templates/
+# /templates/**
+# !/templates/myTemplate/
+
+
+/**
+!/.gitignore
+
 !/alacritty/
 !/awesome/
 !/fontforge/
@@ -9,5 +37,4 @@
 !/nvim/
 !/polybar/
 !/sway/
-!compton.conf
-!redshift.conf
+!/iterm2/

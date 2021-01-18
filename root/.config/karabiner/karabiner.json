@@ -103,7 +103,7 @@
                 "from": {
                   "key_code": "i",
                   "modifiers": {
-                    "mandatory": ["shift", "option", "command"],
+                    "mandatory": ["shift", "option", "control"],
                     "optional": ["caps_lock"]
                   }
                 },
@@ -142,6 +142,21 @@
               },
               {
                 "from": {
+                  "key_code": "k",
+                  "modifiers": {
+                    "mandatory": ["shift", "option", "control"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open '/Volumes/Samsung_X5/Applications/Unity/2020.2.1f1/Unity.app'"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
                   "key_code": "u",
                   "modifiers": {
                     "mandatory": ["shift", "option"],
@@ -149,6 +164,17 @@
                   }
                 },
                 "to": [{ "shell_command": "open '/Applications/Slack.app'" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "u",
+                  "modifiers": {
+                    "mandatory": ["shift", "option", "control"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [{ "shell_command": "open '/Applications/Discord.app'" }],
                 "type": "basic"
               },
               {

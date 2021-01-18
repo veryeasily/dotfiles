@@ -176,6 +176,9 @@ alias -g LJ.JSON='| lj.json'
 alias -g LJ.HL=' --help 2>&1 B'
 alias -g LJ.HL.REAL_LESS=' --help 2>&1 L'
 alias -g LJ.TERRAFORM='$(terraform state list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
+alias -g LJ.COLOR='--color=always'
+
+alias -g COLOR='--color=always'
 
 alias cat='bat'
 alias gcat='cat' # alias for gnucat

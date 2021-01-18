@@ -13,12 +13,12 @@
 [github]
   user = veryeasily
 [core]
-  excludesfile = /home/mors/.gitignore_global
+  excludesfile = /Users/hi/.gitignore_global
 [filter "lfs"]
   required = true
   clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [merge]
   tool = gvimdiff3
 [submodule]

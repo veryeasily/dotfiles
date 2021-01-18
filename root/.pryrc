@@ -1,25 +1,29 @@
-system('apt update && apt install -y vim') unless system('which vim 2>&1 1>/dev/null')
-
-system('apt update && apt install -y less') unless system('which less 2>&1 1>/dev/null')
-
 # === EDITOR ===
+require 'rubygems'
+
 Pry.editor = 'vim'
+# Pry.config.history.file = '~/.pry_history'
 
-Pry.config.history.file = "~/.pry_history"
-
-# == Pry-Nav - Using pry as a debugger ==
-Pry.commands.alias_command 'c', 'continue' rescue nil
-Pry.commands.alias_command 's', 'step' rescue nil
-Pry.commands.alias_command 'n', 'next' rescue nil
-Pry.commands.alias_command 'r!', 'reload!' rescue nil
-
-Pry.commands.block_command %r{s/(.*?)/(.*?)} do |source, dest|
-  eval_string.gsub!(/#{source}/) { dest }
-  run 'show-input'
+begin
+  require 'awesome_print'
+  AwesomePrint.pry!
+rescue StandardError
 end
 
-Pry.config.color = true
-Pry.config.theme = "solarized"
+
+# == Pry-Nav - Using pry as a debugger ==
+# Pry.commands.alias_command 'c', 'continue' rescue nil
+# Pry.commands.alias_command 's', 'step' rescue nil
+# Pry.commands.alias_command 'n', 'next' rescue nil
+# Pry.commands.alias_command 'r!', 'reload!' rescue nil
+
+# Pry.commands.block_command %r{s/(.*?)/(.*?)} do |source, dest|
+#   eval_string.gsub!(/#{source}/) { dest }
+#   run 'show-input'
+# end
+# 
+# Pry.config.color = true
+# Pry.config.theme = "solarized"
 
 # === CUSTOM PROMPT ===
 # This prompt shows the ruby version (useful for RVM)
@@ -43,9 +47,9 @@ Pry.config.theme = "solarized"
 # == PLUGINS ===
 # awesome_print gem: great syntax colorized printing
 # look at ~/.aprc for more settings for awesome_print
-require 'rubygems'
-require 'awesome_print'
-AwesomePrint.pry!
+
+# require 'awesome_print'
+# AwesomePrint.pry!
 
 # Pry.config.print = proc {|output, value|
 # Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output)

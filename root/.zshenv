@@ -16,3 +16,5 @@ autoload -Uz colors && colors
 autoload -Uz is-at-least
 
 export PATH="$HOME/.local/bin:$PATH"
+
+alias terminus='/Users/hi/terminus/vendor/bin/terminus'
