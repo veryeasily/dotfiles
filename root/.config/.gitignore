@@ -25,16 +25,19 @@
 # !/templates/myTemplate/
 
 
-/**
+/*
 !/.gitignore
 
 !/alacritty/
 !/awesome/
-!/fontforge/
 !/i3/
 !/i3status/
-!/karabiner/
+!/iterm2/
 !/nvim/
 !/polybar/
 !/sway/
-!/iterm2/
+
+!/karabiner/
+/karabiner/*
+/karabiner/**/*
+!/karabiner/karabiner.json

@@ -28,6 +28,8 @@ doc/latex-suite.html
 doc/latex-suite-quickstart/
 doc/latex-suite-quickstart.html
 
+Documents/freewrite/*
+
 ## Pathogen (to make it easier to use vim-latex-git)
 doc/tags
 *.pyc

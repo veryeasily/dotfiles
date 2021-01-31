@@ -12,6 +12,8 @@ ZSH_CUSTOM="$ZSH_DIR/omz-custom"
 BAT_THEME='TwoDark'
 ZSH_THEME='spaceship'
 
+ZSH_DISABLE_COMPFIX=true
+
 function lju::source_if_exists() {
     [[ -e "$1" ]] && source "$1"
 }
@@ -54,10 +56,18 @@ if command -v direnv &>/dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
+# fnm
+if [[ -e "$HOME/.fnm/bin" ]]; then
+    export PATH="$HOME/.fnm/bin:$PATH"
+    eval "$(fnm env --use-on-cd)"
+fi
+
 # Stop the profiler if it's running
 [[ $ZSH_PROFILE ]] && zprof
 fpath=(~/.zsh.d/ $fpath)
-# fnm
-eval "$(fnm env --use-on-cd)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fnm
+export PATH=/Users/hi/.fnm:$PATH
+eval "`fnm env`"

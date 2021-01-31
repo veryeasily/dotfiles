@@ -52,6 +52,24 @@ ostype() {
     echo ${(L):-$(uname)}
 }
 
+# # os_detect export the PLATFORM variable as you see fit
+# os_detect() {
+#     if [[ -n _LJU_PLATFORM ]]; then
+#         export PLATFORM="$_LJU_PLATFORM"
+#     else
+#         export PLATFORM
+# 
+#         case "$(ostype)" in
+#             *'linux'*)  PLATFORM='linux'   ;;
+#             *'darwin'*) PLATFORM='osx'     ;;
+#             *'bsd'*)    PLATFORM='bsd'     ;;
+#             *)          PLATFORM='unknown' ;;
+#         esac
+# 
+#         export _LJU_PLATFORM="$PLATFORM"
+#     fi
+# }
+
 # os_detect export the PLATFORM variable as you see fit
 os_detect() {
     export PLATFORM
@@ -455,9 +473,9 @@ export SAVEHIST=999999999
 # export PATH="$HOME/.fnm:$PATH"
 # eval "$(fnm env --multi --use-on-cd)"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 command -v thefuck &>/dev/null && eval $(thefuck --alias)
 export LC_COLLATE="C"
@@ -512,4 +530,5 @@ function make_centos_container() {
 # compinit (generates completion)
 ################################################################################
 
-autoload -U compinit && compinit
+fpath=("$HOME/.zsh/omz-custom/plugins/zsh-completions/src" $fpath)
+# autoload -U compinit && compinit
