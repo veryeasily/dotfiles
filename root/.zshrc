@@ -18,6 +18,8 @@ function lju::source_if_exists() {
     [[ -e "$1" ]] && source "$1"
 }
 
+fpath+=~/.zfunc
+
 [[ -e "$HOME/.zsh/config/spaceship.zsh" ]] && source "$HOME/.zsh/config/spaceship.zsh"
 [[ -e "$HOME/.zsh/config/omz.zsh" ]] && source "$HOME/.zsh/config/omz.zsh"
 

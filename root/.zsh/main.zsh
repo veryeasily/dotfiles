@@ -188,15 +188,20 @@ alias rg.nocolor='rg --color=never'
 
 alias lj.json='python -m json.tool'
 
+# Depends on the jump plugin from oh-my-zsh.
+# See:
+# https://github.com/ohmyzsh/ohmyzsh/blob/f75f8bb930c6c7aed5e4e7bded94936f6d9f7724/plugins/jump/jump.plugin.zsh
+alias j='jump'
+
 alias -g LJ.BRANCH='$(git branch --all --sort creatordate | fzf-tmux --header-lines=1 --reverse --multi | awk "{print \$1}")'
 alias -g LJ.CP='| tr -d "\n" | xclip -sel clipboard'
 alias -g LJ.JSON='| lj.json'
 alias -g LJ.HL=' --help 2>&1 B'
 alias -g LJ.HL.REAL_LESS=' --help 2>&1 L'
 alias -g LJ.TERRAFORM='$(terraform state list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-alias -g LJ.COLOR='--color=always'
+alias -g LJ.CO='--color=always'
 
-alias -g COLOR='--color=always'
+alias -g CO='--color=always'
 
 alias cat='bat'
 alias gcat='cat' # alias for gnucat
