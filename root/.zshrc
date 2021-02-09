@@ -59,10 +59,10 @@ if command -v direnv &>/dev/null; then
 fi
 
 # fnm
-if [[ -e "$HOME/.fnm/bin" ]]; then
-    export PATH="$HOME/.fnm/bin:$PATH"
-    eval "$(fnm env --use-on-cd)"
-fi
+# if [[ -e "$HOME/.fnm/bin" ]]; then
+#     export PATH="$HOME/.fnm/bin:$PATH"
+#     eval "$(fnm env --use-on-cd)"
+# fi
 
 # Stop the profiler if it's running
 [[ $ZSH_PROFILE ]] && zprof
@@ -72,4 +72,4 @@ fpath=(~/.zsh.d/ $fpath)
 
 # fnm
 export PATH=/Users/hi/.fnm:$PATH
-eval "`fnm env`"
+eval "`fnm env --use-on-cd`"

@@ -154,7 +154,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "open '/Volumes/Samsung_X5/Applications/Unity/2020.2.1f1/Unity.app'"
+                    "shell_command": "open '/Applications/Unity/2020.2.1f1/Unity.app'"
                   }
                 ],
                 "type": "basic"
@@ -230,6 +230,21 @@
                 "to": [
                   {
                     "shell_command": "open '/Applications/iTerm.app'"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "mandatory": ["shift", "option"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open '/Applications/LastPass.app'"
                   }
                 ],
                 "type": "basic"
